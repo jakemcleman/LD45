@@ -61,6 +61,7 @@ public class MovementController : MonoBehaviour
     private float _speedModifier;
     private float _wallRunTimer;
     private Vector3 _dirToWall;
+    private Vector3 _wallRunDir;
     private float _wallResetTimer;
 
     private float _currHeight;
@@ -466,13 +467,14 @@ public class MovementController : MonoBehaviour
         {
             case MotionState.Wallrun:
             {
-                _wallRunTimer = wallRunMaxTime;
-                _transitionBlocked = true;
-                break;
+                    _wallRunTimer = wallRunMaxTime;
+                    _transitionBlocked = true;
+                    _wallRunDir = Vector3.zero;
+                    break;
             }
             default:
             {
-                break;
+                    break;
             }
         }
     }
@@ -541,29 +543,33 @@ public class MovementController : MonoBehaviour
                 }
 
                 //Apply wallrun.
-                Vector3 velChange;
                 Vector3 horizontalVelocity = RemoveUpDir(_velocity);
-
-                //If not looking towards the wall
-                if (Vector3.Dot(RemoveUpDir(transform.forward), _dirToWall) < 0
-                    || Vector3.Angle(RemoveUpDir(transform.forward), _dirToWall) < 30)
+                
+                Vector3 forward = RemoveUpDir(transform.forward);
+                //For not looking towards wall.
+                if (Vector3.Dot(forward, _dirToWall) < 0)
                 {
-                    velChange = RemoveProjection(_velocity, _dirToWall);
-
-                    float magnitude = velChange.magnitude;
-                    if (magnitude <= wallRunSpeed)
+                    //Wall run dir not set, move up.
+                    if (Utility.Close(_wallRunDir, Vector3.zero))
                     {
-                        velChange.y = wallRunSpeed - magnitude;
-                        velChange.Normalize();
-                        velChange *= wallRunSpeed;
+                        _wallRunDir = new Vector3(0, wallRunSpeed);
                     }
+
+                }
+                //If looking within 30 degrees of wall
+                else if (Vector3.Angle(forward, _dirToWall) < 30)
+                {
+                    //Debug.Log($"[Wallrun Update] Should move straight up.");
+                    _wallRunDir = new Vector3(0, wallRunSpeed);
                 }
                 else
                 {
-                    velChange = wallRunSpeed * RemoveProjection(transform.forward, _dirToWall).normalized;
+                    _wallRunDir = wallRunSpeed * RemoveProjection(forward, _dirToWall).normalized;
+                    //Debug.Log($"[Wallrun Update] Wallrun across. {_wallRunDir}");
                 }
                 
-                _velocity = velChange;
+
+                _velocity = _wallRunDir;
                 
                 _uncapHorizontalSpeed = true;
             }

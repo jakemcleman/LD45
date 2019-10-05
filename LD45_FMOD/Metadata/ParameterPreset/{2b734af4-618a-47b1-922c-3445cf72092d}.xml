@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{2b734af4-618a-47b1-922c-3445cf72092d}">
+		<property name="name">
+			<value>BasicGun_Ammo</value>
+		</property>
+		<relationship name="folder">
+			<destination>{32a205ae-9ed5-4d80-9b20-b23097f2950f}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{640ef5e4-e783-476f-b47c-f510440b8023}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{640ef5e4-e783-476f-b47c-f510440b8023}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{a88fe5fb-887f-4d1d-8236-638017799c8b}">
+		<property name="assetPath">
+			<value>GunFoleyShotgun_BW.55914.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0453333333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1332f68-7a87-4263-8b46-37cf30ad35cd}</destination>
+		</relationship>
+	</object>
+</objects>

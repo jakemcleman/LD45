@@ -16,7 +16,7 @@ public class Weapon_Test : MonoBehaviour, IWeapon
 
     public float GetCurrentAmmoRatio()
     {
-        return 0.0f;
+        return 1.0f;
     }
 
     public bool Reload(WeaponWielder firerer)

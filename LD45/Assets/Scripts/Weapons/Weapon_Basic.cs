@@ -9,6 +9,8 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
     public int maxAmmo = 12;
     public int curAmmo;
 
+    private string weapon_path = "event:/SFX/Weapons/";
+
     private void Awake() 
     {
         curAmmo = maxAmmo;
@@ -21,7 +23,7 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
 
     public string GetInternalName()
     {
-        return "Test_Weapon";
+        return "BasicGun";
     }
 
     public float GetCurrentAmmoRatio()
