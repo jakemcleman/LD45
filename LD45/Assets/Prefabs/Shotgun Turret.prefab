@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 728548293413629486}
   - component: {fileID: 728548293413629487}
   - component: {fileID: 728548293413629484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shotgun Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +72,9 @@ MonoBehaviour:
   maxBarrelElevation: 60
   minBarrelDepression: 20
   accuracy: 0.95
+  maxMissAmount: 20
+  aimAdjustSpeed: 2
+  closeEnoughToShoot: 0.99
   autoFire: 0
   nonAutoFireRate: 1
 --- !u!114 &728548293413629487
@@ -118,7 +121,7 @@ GameObject:
   - component: {fileID: 728548293513910983}
   - component: {fileID: 728548293513910981}
   - component: {fileID: 728548293513910980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +190,7 @@ GameObject:
   - component: {fileID: 728548294208547284}
   - component: {fileID: 728548294208547286}
   - component: {fileID: 728548294208547287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +268,7 @@ GameObject:
   - component: {fileID: 728548294531839083}
   - component: {fileID: 728548294531839081}
   - component: {fileID: 728548294531839080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,6 +337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
@@ -409,6 +417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}

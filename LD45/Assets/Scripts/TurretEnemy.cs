@@ -27,20 +27,20 @@ public class TurretEnemy : MonoBehaviour
 
     private GameObject lastTarget = null;
     private Vector3 aimPoint;
+    private Vector3 idleAimPoint;
 
     private void Start()
     {
         fireTimer = 0;
+
+        idleAimPoint = transform.position + 10 * transform.forward;
     }
 
     private void OnDrawGizmos()
     {
-        if(aimPoint != transform.position)
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(aimPoint, 0.5f);
-            Gizmos.DrawLine(transform.position, aimPoint);
-        }
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(aimPoint, 0.5f);
+        Gizmos.DrawLine(transform.position, aimPoint);
     }
 
     private void Update()
@@ -48,6 +48,7 @@ public class TurretEnemy : MonoBehaviour
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject target = PickTarget(potentialTargets);
+        float distanceToTarget = Vector3.Distance(transform.position, aimPoint);
         if(target != null)
         {
             Vector3 realTargetPosition = target.transform.position;
@@ -55,7 +56,7 @@ public class TurretEnemy : MonoBehaviour
             CharacterController targetController = target.GetComponent<CharacterController>();
             Rigidbody targetRB = target.GetComponent<Rigidbody>();
 
-            float distanceToTarget = Vector3.Distance(transform.position, aimPoint);
+            distanceToTarget = Vector3.Distance(transform.position, aimPoint);
             Vector3 leadAim = target.transform.position;
 
 
@@ -71,22 +72,24 @@ public class TurretEnemy : MonoBehaviour
             }
 
             aimPoint = leadAim;
-            lastTarget = target;
-
-            if(fireTimer < nonAutoFireRate) fireTimer += Time.deltaTime;
-
-            RotateBaseTowardsTarget(aimPoint);
-            RotateArmsToTarget(aimPoint);
-
-            if(IsAimingAtTarget(aimPoint) 
-                && distanceToTarget < maxEngagementRange)
-            {
-                FireWeapons();
-            }
         }
         else
         {
-            aimPoint = transform.position;
+            aimPoint = idleAimPoint;
+        }
+
+        lastTarget = target;
+
+        if(fireTimer < nonAutoFireRate) fireTimer += Time.deltaTime;
+
+        RotateBaseTowardsTarget(aimPoint);
+        RotateArmsToTarget(aimPoint);
+
+        if(target != null
+            && IsAimingAtTarget(aimPoint) 
+            && distanceToTarget < maxEngagementRange)
+        {
+            FireWeapons();
         }
     }
     
@@ -196,6 +199,11 @@ public class TurretEnemy : MonoBehaviour
                     bestDist = dist;
                 }
             }
+        }
+
+        if(best == null)
+        {
+            Debug.Log("No target found");
         }
 
         return best;

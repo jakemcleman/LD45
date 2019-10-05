@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3507512855061615857}
   - component: {fileID: 5140967537726483637}
   - component: {fileID: 681927035620739845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_TurretBarrel_Var3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 568711322272251218}
   - component: {fileID: 568711322272251225}
   - component: {fileID: 568711322272251230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom Left Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 568711322612734724}
   - component: {fileID: 568711322612734723}
   - component: {fileID: 568711322612734720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom Right Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 568711322667608318}
   - component: {fileID: 568711322667608196}
   - component: {fileID: 568711322667608197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,8 +333,8 @@ MonoBehaviour:
   - {fileID: 76450747708612563}
   maxSightRange: 100
   maxEngagementRange: 100
-  yawRate: 45
-  barrelRate: 90
+  yawRate: 20
+  barrelRate: 30
   maxBarrelElevation: 45
   minBarrelDepression: 10
   accuracy: 0.95
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1565585311254056862}
   - component: {fileID: 7557344965472368040}
   - component: {fileID: 4313775953900390737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_TurretBarrel_Var3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 5464507535224704570}
   - component: {fileID: 76450747708612563}
   - component: {fileID: 3344365751869520711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top Left Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 3112441339431582410}
   - component: {fileID: 2832583940240915007}
   - component: {fileID: 2699961140716226325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_TurretBarrel_Var3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 6731860496606547308}
   - component: {fileID: 2321422863484647258}
   - component: {fileID: 8289948925586246563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_TurretBarrel_Var3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 1184299296037257440}
   - component: {fileID: 8227087161723776092}
   - component: {fileID: 3022836627291610363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top Right Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,6 +757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretQuad_Body
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
         type: 3}
