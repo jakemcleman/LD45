@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
 
     private Health health;
 
+    private ProgressBar healthBar;
+
     private Vector3 respawnPosition;
     private Vector3 respawnFacing;
 
@@ -23,6 +25,9 @@ public class PlayerHealth : MonoBehaviour
         health_state = FMODUnity.RuntimeManager.CreateInstance(health_event);
         health_state.setParameterByName("Player_Health", health.HealthRatio);
         health_state.start();
+
+        healthBar = GameObject.Find("FullHealthBar").GetComponent<ProgressBar>();
+        healthBar.Fill = health.HealthRatio;
 
         SetSpawnToCurrentState();
     }
@@ -41,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
     private void OnHealthChange(HealthChangeEvent e)
     {
         health_state.setParameterByName("Player_Health", health.HealthRatio);
+
+        healthBar.Fill = health.HealthRatio;
     }
 
     private void OnDeath()

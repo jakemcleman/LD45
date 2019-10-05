@@ -19,6 +19,11 @@ public class Weapon_Test : MonoBehaviour, IWeapon
         return 1.0f;
     }
 
+    public float GetReloadProgress()
+    {
+        return 1;
+    }
+
     public bool Reload(WeaponWielder firerer)
     {
         return false;

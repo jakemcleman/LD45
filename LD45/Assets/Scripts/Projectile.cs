@@ -52,6 +52,46 @@ public class Projectile : MonoBehaviour
 
     private void OnHitSomething(GameObject other)
     {
+        AudioDefs.Surface surface_type;
+
+        // Determine surface type of hit object
+        switch (other.tag)
+        {
+            case "Wood":
+                surface_type = AudioDefs.Surface.Wood;
+                break;
+            case "Stone":
+                surface_type = AudioDefs.Surface.Stone;
+                break;
+            case "Dirt":
+                surface_type = AudioDefs.Surface.Dirt;
+                break;
+            case "Metal":
+                surface_type = AudioDefs.Surface.Metal;
+                break;
+            case "Sandbag":
+                surface_type = AudioDefs.Surface.Sandbag;
+                break;
+            default:
+                surface_type = AudioDefs.Surface.None;
+                break;
+        }
+
+        Debug.Log(other.tag.ToString());
+        
+        // Only bother FMOD if there's an impact to play
+        if (surface_type != AudioDefs.Surface.None)
+        {
+            FMOD.Studio.EventInstance ImpactEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Weapons/Bullet_Impact");
+            FMOD.ATTRIBUTES_3D att = FMODUnity.RuntimeUtils.To3DAttributes(gameObject);
+            ImpactEvent.set3DAttributes(att);
+            
+            // Set the surface then play the event
+            ImpactEvent.setParameterByName("Surface", (int)surface_type);
+            ImpactEvent.start();
+            ImpactEvent.release();
+        }
+
         Health otherHealth = other.GetComponent<Health>();
 
         Debug.Log("Collided");
@@ -59,6 +99,14 @@ public class Projectile : MonoBehaviour
         if(otherHealth)
         {
             bool killed = otherHealth.TakeDamage(damageAmount);
+
+            if(killed)
+            {
+                // Death audio event here
+                Debug.Log("Target destroyed");
+            }
+            else 
+                Debug.Log("Did damage");
         }
 
         Destroy(gameObject);
