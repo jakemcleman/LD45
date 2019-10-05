@@ -109,18 +109,15 @@ public class TurretEnemy : MonoBehaviour
 
     private GameObject PickTarget(GameObject[] Targets) 
     {
-        // Short circuit if last target is still visible
-        if(lastTarget != null && CanSee(lastTarget))
-        {
-            return lastTarget;
-        }
-
         float bestDist = maxSightRange;
         GameObject best = null;
 
         foreach(GameObject target in Targets)
         {
             float dist = Vector3.Distance(transform.position, target.transform.position);
+
+            if(target == lastTarget) dist /= 2; // Favour last aquired target
+
             if(dist <= bestDist) 
             {
                 if(CanSee(target))
