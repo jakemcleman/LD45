@@ -113,7 +113,7 @@ public class MovementController : MonoBehaviour
 
         if ((_cc.collisionFlags & CollisionFlags.Sides) != 0)
         {
-            if (inputQueue[inputIndex].jumpInput && CanWallTech())
+            if (CanWallTech())
             {
                 _dirToWall = -hit.normal;
                 ChangeMotionState(MotionState.Wallrun);
@@ -278,14 +278,6 @@ public class MovementController : MonoBehaviour
         //Directional input is 0
         else
         {
-            //if (velocity.sqrMagnitude < 3)
-            //{
-            //    //Debug.Log("[ApplyAcceleration] Zeroing horizontal velocity.");
-            //    velocity.x = 0;
-            //    velocity.z = 0;
-            //    return;
-            //}
-
             //Decelerate
             Vector3 velChange;
             if (_cc.isGrounded)
@@ -479,7 +471,7 @@ public class MovementController : MonoBehaviour
                 numJumpsRemaining++;
                 Jump();
                 //ChangeMotionState(MotionState.Falling);
-                Debug.Log("[Wallrun Update] Fall off");
+                //Debug.Log("[Wallrun Update] Fall off");
                 return;
             }
 
@@ -490,7 +482,7 @@ public class MovementController : MonoBehaviour
                 {
                     //BreakWallRun();
                     transitionBlocked_ = false;
-                    Debug.Log("[Wallrun Update] Jump");
+                    //Debug.Log("[Wallrun Update] Jump");
                     numJumpsRemaining++;
                     Jump();
                 }
@@ -500,7 +492,7 @@ public class MovementController : MonoBehaviour
         {
             //BreakWallRun();
             transitionBlocked_ = false;
-            Debug.Log("[Wallrun Update] Timeout");
+            //Debug.Log("[Wallrun Update] Timeout");
             ChangeMotionState(MotionState.Falling);
         }
     }
