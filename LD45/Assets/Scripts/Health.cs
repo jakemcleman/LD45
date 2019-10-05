@@ -102,7 +102,7 @@ public class Health : MonoBehaviour
         HealthChangeEvent healthChange;
         healthChange.amount = amount;
         onHealthChange.Invoke(healthChange);
-        Debug.Log("Heal"+healthChange);
+        Debug.Log("Heal "+healthChange.amount);
 
         curHealth += amount;
 
