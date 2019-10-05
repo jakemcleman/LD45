@@ -1,9 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public struct HealthChangeEvent
+{
+    public float amount;
+}
+
+[System.Serializable]
+public class OnHealthChangeEvent : UnityEvent<HealthChangeEvent>
+{
+}
 
 public class Health : MonoBehaviour
 {
+    public OnHealthChangeEvent onHealthChange;
+    public UnityEvent onDeath;
+
     public float maxHealth = 100;
     public float damageMultiplier = 1;
 
@@ -34,11 +48,16 @@ public class Health : MonoBehaviour
             if(amount < 0) Debug.LogWarningFormat("Requested negative damage {0} to be dealt to {1}}", amount, gameObject.name);
         }
 
+        HealthChangeEvent healthChange;
+        healthChange.amount = amount * -damageMultiplier;
+        onHealthChange.Invoke(healthChange);
+
         curHealth -= amount * damageMultiplier;
 
         if(curHealth <= 0)
         {
             // TODO: die
+            onDeath.Invoke();
             return true;
         }
         else 
@@ -60,6 +79,10 @@ public class Health : MonoBehaviour
         {
             if(amount < 0) Debug.LogWarningFormat("Requested negative healing {0} to be done to {1}}", amount, gameObject.name);
         }
+
+        HealthChangeEvent healthChange;
+        healthChange.amount = amount;
+        onHealthChange.Invoke(healthChange);
 
         curHealth += amount;
 
