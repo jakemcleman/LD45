@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestEventName: event:/TestEvent
+  VCA_SFX_Path: vca:/SFX
+  VCA_Music_Path: vca:/Music
 --- !u!20 &362774178
 Camera:
   m_ObjectHideFlags: 0
