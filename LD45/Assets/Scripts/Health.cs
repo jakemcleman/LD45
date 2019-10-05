@@ -38,6 +38,12 @@ public class Health : MonoBehaviour
         curHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            TakeDamage(10.0f);
+    }
+
     /*
      * Deal an amount of damage, returns true if this deals a killing blow, false otherwise
      */
