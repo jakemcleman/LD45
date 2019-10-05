@@ -99,6 +99,16 @@ public class MovementController : MonoBehaviour
     #region Events
     public OnMotionStateEvent onMotionStateEvent;
 
+    public void ResetState()
+    {
+        _cc = GetComponent<CharacterController>();
+        _camera = GetComponent<PlayerCameraController>();
+        _currMotionState = MotionState.Falling;
+        _numJumpsRemaining = numJumps;
+        _uncapHorizontalSpeed = false;
+        _wallResetTimer = wallRunRegrabTime;
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         //Debug.Log("[Collision] Normal of coliding object: " + rayResults.normal);
@@ -139,12 +149,7 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _cc = GetComponent<CharacterController>();
-        _camera = GetComponent<PlayerCameraController>();
-        _currMotionState = MotionState.Falling;
-        _numJumpsRemaining = numJumps;
-        _uncapHorizontalSpeed = false;
-        _wallResetTimer = wallRunRegrabTime;
+        ResetState();
 
         _currHeight = normalHeight;
 

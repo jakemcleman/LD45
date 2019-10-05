@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class PlayerHealth : MonoBehaviour
 {
     [FMODUnity.EventRef]
@@ -10,24 +11,47 @@ public class PlayerHealth : MonoBehaviour
 
     private Health health;
 
+    private Vector3 respawnPosition;
+    private Vector3 respawnFacing;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         health = GetComponent<Health>();
         health.onHealthChange.AddListener(OnHealthChange);
+        health.onDeath.AddListener(OnDeath);
         health_state = FMODUnity.RuntimeManager.CreateInstance(health_event);
         health_state.start();
+
+        SetSpawnToCurrentState();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSpawn(Vector3 position, Vector3 facing)
     {
-        
+        respawnPosition = position;
+        respawnFacing = facing;
     }
 
-    void OnHealthChange(HealthChangeEvent e)
+    public void SetSpawnToCurrentState()
+    {
+        SetSpawn(transform.position, transform.forward);
+    }
+
+    private void OnHealthChange(HealthChangeEvent e)
     {
         Debug.Log("Health Ratio: " + health.HealthRatio);
         health_state.setParameterByName("Player_Health", health.HealthRatio);
+    }
+
+    private void OnDeath()
+    {
+        Respawn();
+    }
+
+    private void Respawn()
+    {
+        health.Heal(health.maxHealth);
+        transform.position = respawnPosition;
+        transform.forward = respawnFacing;
     }
 }
