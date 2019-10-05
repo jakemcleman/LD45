@@ -83,6 +83,7 @@ MonoBehaviour:
   maxAmmo: 60
   curAmmo: 0
   shotCooldownTime: 0.1
+  reloadTime: 1
   spreadAngle: 7
 --- !u!1 &1240873592
 GameObject:
@@ -175,6 +176,8 @@ MonoBehaviour:
   maxAmmo: 6
   curAmmo: 0
   projectilesPerShot: 12
+  shotCooldownTime: 0.5
+  reloadTime: 2
   spreadAngle: 15
 --- !u!1 &2044159526
 GameObject:
@@ -445,7 +448,7 @@ GameObject:
   - component: {fileID: 1799625302}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,21 +559,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a7f51c476fb55499e0d35a166e7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGroundSpeed: 12
-  maxAirSpeed: 15
-  groundAcceleration: 200
-  airAcceleration: 100
+  maxGroundSpeed: 25
+  maxAirSpeed: 35
+  maxGroundAcceleration: 300
+  groundAcceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9998779
+      inSlope: -0.009342457
+      outSlope: -0.009342457
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.22353578
+      value: 0.08790138
+      inSlope: -0.11176679
+      outSlope: -0.11176679
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.56938833
+      outWeight: 0.28092843
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.0059894053
+      outSlope: 0.0059894053
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.013404131
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAirAcceleration: 100
+  airAcceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.0015828982
+      outSlope: 0.0015828982
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.16869614
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.022063851
+      outSlope: -0.022063851
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.23593307
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   groundDeceleration: 800
   airDeceleration: 100
-  jumpSpeed: 10
+  jumpSpeed: 30
   numJumps: 2
   sprintModifier: 2
-  gravity: 20
+  gravity: 60
   maxFallSpeed: 40
   normalHeight: 2
   crouchHeight: 1
   wallRunMaxTime: 2
-  wallRunSpeed: 8
+  wallRunSpeed: 30
   wallRunRegrabTime: 1
   footstepTimeInterval: 0.5
   _currMotionState: 0
@@ -653,6 +713,9 @@ MonoBehaviour:
   onWeaponChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  onWeaponReloadEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1799625301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_event: event:/States/State_LowHealth
-  health_param: Player_Health
 --- !u!114 &1799625302
 MonoBehaviour:
   m_ObjectHideFlags: 0
