@@ -34,7 +34,7 @@ sysinfo.txt
 
 # FMOD Studio
 \Assets\Plugins\FMOD\Resources\FMODStudioCache.asset
-LD45\Assets\Plugins\FMOD\Resources\FMODStudioCache.asset.meta
+\Assets\Plugins\FMOD\Resources\FMODStudioCache.asset.meta
 
 # Builds
 *.apk
