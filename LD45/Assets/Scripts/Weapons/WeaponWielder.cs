@@ -55,6 +55,9 @@ public class WeaponWielder : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Weapons/" + CurrentWeapon.GetInternalName() + "_Fire", 
                                                  this.transform.position);
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(CurrentWeapon.GetInternalName() + "_Ammo", 
+                                                                     CurrentWeapon.GetCurrentAmmoRatio());
         }
     }
 
