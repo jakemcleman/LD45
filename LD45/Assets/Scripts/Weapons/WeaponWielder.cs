@@ -51,7 +51,9 @@ public class WeaponWielder : MonoBehaviour
 
     public void FirePrimary(bool fireAuto)
     {
-        CurrentWeapon.PrimaryFire(this, fireAuto);
+        if (CurrentWeapon.PrimaryFire(this, fireAuto))
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Weapons/" + CurrentWeapon.GetInternalName() + "_Fire", 
+                                                 this.transform.position);
     }
 
     private void Start()
