@@ -55,11 +55,11 @@ public class WeaponWielder : MonoBehaviour
     {
         if (CurrentWeapon.PrimaryFire(this, fireAuto))
         {
-            FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Fire", 
-                                                 this.transform.position);
-
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(CurrentWeapon.GetInternalName() + "_Ammo", 
-                                                                     CurrentWeapon.GetCurrentAmmoRatio());
+            FMOD.Studio.EventInstance fire = FMODUnity.RuntimeManager.CreateInstance(weapon_path + CurrentWeapon.GetInternalName() + "_Fire");
+            fire.setParameterByName(CurrentWeapon.GetInternalName() + "_Ammo", CurrentWeapon.GetCurrentAmmoRatio());
+            fire.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            fire.start();
+            fire.release();
         }
     }
 
