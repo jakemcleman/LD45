@@ -46,4 +46,9 @@ public class Weapon_None : MonoBehaviour, IWeapon
     {
         return 0;
     }
+
+    public float GetReloadProgress()
+    {
+        return 1;
+    }
 }

@@ -9,13 +9,17 @@ public class PlayerWeaponController : MonoBehaviour
 
     private int curWeaponIndex;
     private WeaponWielder wielder;
+    private ProgressBar reloadUI;
 
     private void Start()
     {
         wielder = GetComponent<WeaponWielder>();
+        reloadUI = GameObject.Find("ReloadIndicator").GetComponent<ProgressBar>();
 
         curWeaponIndex = 0;
         wielder.CurrentWeapon = weapons[curWeaponIndex].GetComponent<IWeapon>();
+
+        wielder.onWeaponReloadEvent.AddListener(OnWeaponReload);
     }
 
     private void Update()
@@ -49,5 +53,23 @@ public class PlayerWeaponController : MonoBehaviour
         IWeapon newWep = weapons[index].GetComponent<IWeapon>();
         if(newWep == null) Debug.LogError("New weapon is not a weapon, does not implement IWeapon");
         wielder.CurrentWeapon = newWep;
+    }
+
+    private void OnWeaponReload()
+    {
+        reloadUI.Fill = wielder.CurrentWeapon.GetReloadProgress();
+        StartCoroutine("ReloadIndicator");
+    }
+
+    IEnumerator ReloadIndicator()
+    {
+        while (wielder.CurrentWeapon.GetReloadProgress() < 1)
+        {
+            reloadUI.Fill = wielder.CurrentWeapon.GetReloadProgress();
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(.2f);
+        reloadUI.Fill = 0;
     }
 }

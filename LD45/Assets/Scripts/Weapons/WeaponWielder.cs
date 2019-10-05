@@ -26,6 +26,8 @@ public class WeaponWielder : MonoBehaviour
 
     public OnWeaponChangeEvent onWeaponChangeEvent;
 
+    public UnityEvent onWeaponReloadEvent;
+
     private string weapon_path = "event:/SFX/Weapons/";
 
     public IWeapon CurrentWeapon
@@ -71,6 +73,7 @@ public class WeaponWielder : MonoBehaviour
                                              this.transform.position);
 
         CurrentWeapon.Reload(this);
+        onWeaponReloadEvent.Invoke();
     }
 
     private void Start()

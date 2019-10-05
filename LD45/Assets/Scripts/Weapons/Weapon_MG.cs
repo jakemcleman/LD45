@@ -52,6 +52,16 @@ public class Weapon_MG : MonoBehaviour, IWeapon
         return maxAmmo;
     }
 
+    public float GetReloadProgress()
+    {
+        if (reloading)
+        {
+            return cooldownClock/reloadTime;
+        }
+        else
+        {
+            return 1;
+        }
     public float GetProjectileSpeed()
     {
         return projectilePrefab.GetComponent<Projectile>().speed;

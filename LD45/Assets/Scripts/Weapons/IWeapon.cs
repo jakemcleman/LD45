@@ -45,6 +45,10 @@ public interface IWeapon
     float GetMaxAmmo();
 
     /*
+     * Reload Progress
+     */
+    float GetReloadProgress();
+
      *  Speed at which projectiles this weapon fires will fly
      *  (for AI to accurately lead targets)
      */
