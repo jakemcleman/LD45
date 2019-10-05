@@ -40,7 +40,14 @@ public class PlayerWeaponController : MonoBehaviour
             curWeaponIndex++;
             if (curWeaponIndex >= weapons.Length) curWeaponIndex = 0;
 
-            wielder.CurrentWeapon = weapons[curWeaponIndex].GetComponent<IWeapon>();
+            ChangeToWeapon(curWeaponIndex);
         }
+    }
+
+    private void ChangeToWeapon(int index)
+    {
+        IWeapon newWep = weapons[index].GetComponent<IWeapon>();
+        if(newWep == null) Debug.LogError("New weapon is not a weapon, does not implement IWeapon");
+        wielder.CurrentWeapon = newWep;
     }
 }
