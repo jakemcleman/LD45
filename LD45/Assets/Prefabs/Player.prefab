@@ -285,22 +285,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a7f51c476fb55499e0d35a166e7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGroundSpeed: 7
-  maxAirSpeed: 7
+  maxGroundSpeed: 14
+  maxAirSpeed: 14
   groundAcceleration: 60
   airAcceleration: 60
   groundDeceleration: 300
   airDeceleration: 300
-  jumpSpeed: 20
+  jumpSpeed: 30
   numJumps: 2
   sprintModifier: 2
-  gravity: 1
-  maxFallSpeed: 30
+  gravity: 2
+  maxFallSpeed: 40
   normalHeight: 2
   crouchHeight: 1
-  wallRunMaxTime: 3
-  wallRunSpeed: 15
-  wallRunRegrabTime: 1.5
+  wallRunMaxTime: 2
+  wallRunSpeed: 20
+  wallRunRegrabTime: 1
   footstepTimeInterval: 0.5
   _currMotionState: 0
   _enableGravity: 1
