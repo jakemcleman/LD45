@@ -21,7 +21,7 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
 
     public string GetInternalName()
     {
-        return "BasicGun";
+        return "Test_Weapon";
     }
 
     public float GetCurrentAmmoRatio()

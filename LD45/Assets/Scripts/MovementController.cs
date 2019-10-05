@@ -249,7 +249,8 @@ public class MovementController : MonoBehaviour
                 ChangeMotionState(MotionState.Falling);
             }
         }
-        else
+        // Don't become grounded when moving upwards
+        else if (!Grounded && _velocity.y <= 0)
         {
             Grounded = true;
         }
