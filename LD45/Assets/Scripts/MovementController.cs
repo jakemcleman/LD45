@@ -7,6 +7,7 @@ public struct MovementInput
 {
     public Vector3 dirInput;
     public bool jumpInput;
+    public bool quickTurnInput;
 }
 
 public class MovementController : MonoBehaviour
@@ -39,27 +40,31 @@ public class MovementController : MonoBehaviour
     #endregion
 
     #region Internals
-    private MovementInput[] inputQueue = new MovementInput[inputQueueSize];
-    private int inputIndex = 0;
+    private List<MovementInput> _inputQueue;
+    private int _inputIndex = 0;
 
     [SerializeField]
-    private MotionState currMotionState;
-    private Vector3 velocity = Vector3.zero;
-    private Vector3 acceleration = Vector3.zero;
-    private int numJumpsRemaining = 2;
-    private bool uncapHorizontalSpeed;
-    private bool transitionBlocked_ = false;
+    private MotionState _currMotionState;
+    private Vector3 _velocity = Vector3.zero;
+    private Vector3 _acceleration = Vector3.zero;
+    private int _numJumpsRemaining = 2;
+    private bool _uncapHorizontalSpeed;
+    private bool _transitionBlocked = false;
     private bool _grounded;
 
     private CharacterController _cc;
-    private Vector3 motion;
+    private PlayerCameraController _camera;
+    private Vector3 _motion;
     private float _speedModifier;
     private float _wallRunTimer;
     private Vector3 _dirToWall;
     private float _wallResetTimer;
+    private float _wallVelInterpTimer;
 
-    private Ray ray;
-    private RaycastHit hitInfo;
+    private float _currHeight;
+
+    private Ray _ray;
+    private RaycastHit _hitInfo;
 
 
     [SerializeField]
@@ -68,7 +73,7 @@ public class MovementController : MonoBehaviour
     #endregion
 
     #region Accessors
-    public MotionState CurrentMotionState { get => currMotionState; }
+    public MotionState CurrentMotionState { get => _currMotionState; }
     public bool Grounded
     {
         get => _grounded;
@@ -76,8 +81,10 @@ public class MovementController : MonoBehaviour
         {
             if (value == true)
             {
-                numJumpsRemaining = numJumps;
-                velocity.y = 0;
+                _numJumpsRemaining = numJumps;
+                _velocity.y = 0;
+                _dirToWall = Vector3.zero;
+                _wallResetTimer = wallRunRegrabTime;
             }
             _grounded = value;
         }
@@ -111,9 +118,10 @@ public class MovementController : MonoBehaviour
             }
         }
 
+        
         if ((_cc.collisionFlags & CollisionFlags.Sides) != 0)
-        {
-            if (CanWallTech())
+        { 
+            if (CanWallTech(hit.normal))
             {
                 _dirToWall = -hit.normal;
                 ChangeMotionState(MotionState.Wallrun);
@@ -127,23 +135,34 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         _cc = GetComponent<CharacterController>();
-        currMotionState = MotionState.Falling;
-        numJumpsRemaining = numJumps;
-        uncapHorizontalSpeed = false;
-        ray = new Ray(transform.position, -Vector3.up);
+        _currMotionState = MotionState.Falling;
+        _numJumpsRemaining = numJumps;
+        _uncapHorizontalSpeed = false;
+        _wallVelInterpTimer = 0.0f;
+
+        _currHeight = normalHeight;
+
+        _ray = new Ray(transform.position, -Vector3.up);
+
+        _inputQueue = new List<MovementInput>(10);
+        for (int i = 0; i < 10; ++i)
+        {
+            _inputQueue.Add(new MovementInput());
+        }
     }
 
     void CheckInput()
     {
-        inputIndex = (inputIndex + 1) % inputQueueSize;
+        _inputIndex = (_inputIndex + 1) % inputQueueSize;
         //Get inputs
         MovementInput inputThisFrame;
         inputThisFrame.dirInput = Vector3.zero;
         inputThisFrame.dirInput.z += Input.GetAxis("Vertical");
         inputThisFrame.dirInput.x += Input.GetAxis("Horizontal");
         inputThisFrame.jumpInput = Input.GetButton("Jump");
+        inputThisFrame.quickTurnInput = Input.GetKeyDown(KeyCode.Q);
 
-        inputQueue[inputIndex] = inputThisFrame;
+        _inputQueue[_inputIndex] = inputThisFrame;
     }
 
     // Update is called once per frame
@@ -152,15 +171,16 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
             Debug.Log("DebugBreakPoint");
         CheckInput();
-        motion = inputQueue[inputIndex].dirInput.z * transform.forward;
-        motion += inputQueue[inputIndex].dirInput.x * transform.right;
-        motion.y = 0;
-        if (motion != Vector3.zero)
+        _motion = _inputQueue[_inputIndex].dirInput.z * transform.forward;
+        _motion += _inputQueue[_inputIndex].dirInput.x * transform.right;
+        _motion.y = 0;
+        if (_motion != Vector3.zero)
         {
-            motion.Normalize();
+            _motion.Normalize();
         }
+        _velocity = _cc.velocity;
 
-        velocity = _cc.velocity;
+        if (_inputQueue[_inputIndex].quickTurnInput) _camera.StartQuickTurn(_dirToWall);
 
         UpdateTimers();
 
@@ -168,7 +188,7 @@ public class MovementController : MonoBehaviour
 
         ApplyGravity();
 
-        if (inputQueue[inputIndex].jumpInput) Jump();
+        if (JumpIsTriggered()) Jump();
         ApplyAcceleration();
 
         StateUpdate();
@@ -176,18 +196,27 @@ public class MovementController : MonoBehaviour
         //Apply Movement Speed Modifiers
 
         //Move. Then check collision flags and do collision resolution.
-        CollisionFlags flags = _cc.Move(velocity * Time.deltaTime);
+        CollisionFlags flags = _cc.Move(_velocity * Time.deltaTime);
     }
 
     void UpdateTimers()
     {
-        
+        if (!Grounded)
+        {
+            _wallResetTimer -= Time.deltaTime;
+            if (_wallResetTimer <= 0)
+            {
+                //Debug.Log("WallResetTimer");
+                _dirToWall = Vector3.zero;
+                _wallResetTimer = wallRunRegrabTime;
+            }
+        }
     }
 
     #region MovementUpdate
     void ApplyMotionStateModifiers()
     {
-        switch(currMotionState)
+        switch(_currMotionState)
         {
             case MotionState.Wallrun:
             {
@@ -201,21 +230,25 @@ public class MovementController : MonoBehaviour
 
     void ApplyGravity()
     {
-        if ((!Grounded || InAirState()) && _enableGravity)
-        {
-            velocity += (-gravity * Vector3.up);
-        }
-
         //If there is nothing below you.
-        ray.origin = transform.position;
-        ray.direction = -Vector3.up;
-        if (!Physics.Raycast(ray, out hitInfo, _cc.height * 0.5f))
+        _ray.origin = transform.position;
+        _ray.direction = -Vector3.up;
+        if (!Physics.Raycast(_ray, out _hitInfo, _cc.height * 0.51f))
         {
             Grounded = false;
-            if (velocity.y < 0)
+            if (_velocity.y < 0)
             {
                 ChangeMotionState(MotionState.Falling);
             }
+        }
+        else
+        {
+            Grounded = true;
+        }
+
+        if ((!Grounded || InAirState()) && _enableGravity)
+        {
+            _velocity += (-gravity * Vector3.up);
         }
     }
 
@@ -224,8 +257,8 @@ public class MovementController : MonoBehaviour
         if (CanJump())
         {
             //Debug.Log("[Jump] Jump Called");
-            velocity.y = jumpSpeed;
-            --numJumpsRemaining;
+            _velocity.y = jumpSpeed;
+            --_numJumpsRemaining;
 
             Grounded = false;
             ChangeMotionState(MotionState.Jump);
@@ -234,43 +267,43 @@ public class MovementController : MonoBehaviour
 
     void ApplyAcceleration()
     {
-        if (Utility.Close(motion, Vector3.zero) && Utility.Close(_cc.velocity, Vector3.zero))
+        if (Utility.Close(_motion, Vector3.zero) && Utility.Close(_cc.velocity, Vector3.zero))
         {
             ChangeMotionState(MotionState.Idle);
         }
 
-        Vector3 horizontalVelocity = RemoveUpDir(velocity);
+        Vector3 horizontalVelocity = RemoveUpDir(_velocity);
 
         //Movement buttons have been rayResults.
-        if (!Utility.Close(motion, Vector3.zero))
+        if (!Utility.Close(_motion, Vector3.zero))
         {
             //Moving on ground.
-            if (_cc.isGrounded)
+            if (Grounded)
             {
                 ChangeMotionState(MotionState.Running);
 
                 //Dot product motion and if it's negative, use ground decel instead.
-                if (Vector3.Dot(horizontalVelocity, motion) > 0)
+                if (Vector3.Dot(horizontalVelocity, _motion) > 0)
                 {
-                    velocity += motion * groundAcceleration * Time.deltaTime;
+                    _velocity += _motion * groundAcceleration * Time.deltaTime;
                     //Debug.Log("[ApplyAcceleration] GroundAcceleration");
                 }
                 else
                 {
-                    velocity += motion * groundDeceleration * Time.deltaTime;
+                    _velocity += _motion * groundDeceleration * Time.deltaTime;
                     //Debug.Log("[ApplyAcceleration] GroundDeceleration");
                 }
             }
             else //In Air
             {
-                if (Vector3.Dot(horizontalVelocity, motion) > 0)
+                if (Vector3.Dot(horizontalVelocity, _motion) > 0)
                 {
-                    velocity += motion * airAcceleration * Time.deltaTime;
+                    _velocity += _motion * airAcceleration * Time.deltaTime;
                     //Debug.Log("[ApplyAcceleration] AirAcceleration");
                 }
                 else
                 {
-                    velocity += motion * airDeceleration * Time.deltaTime;
+                    _velocity += _motion * airDeceleration * Time.deltaTime;
                     //Debug.Log("[ApplyAcceleration] AirDeceleration");
                 }
             }
@@ -280,7 +313,7 @@ public class MovementController : MonoBehaviour
         {
             //Decelerate
             Vector3 velChange;
-            if (_cc.isGrounded)
+            if (Grounded)
             {
                 velChange = -horizontalVelocity.normalized * groundDeceleration * Time.deltaTime;
                 //Debug.Log("[ApplyAcceleration] NoInput Ground Deceleration");
@@ -291,32 +324,32 @@ public class MovementController : MonoBehaviour
                 //Debug.Log("[ApplyAcceleration] NoInput Air Deceleration");
             }
 
-            Vector3 velDir = velocity + velChange;
-            if (Vector3.Dot(velocity, velDir) <= 0)
+            Vector3 velDir = _velocity + velChange;
+            if (Vector3.Dot(_velocity, velDir) <= 0)
             {
-                velocity.x = 0;
-                velocity.z = 0;
+                _velocity.x = 0;
+                _velocity.z = 0;
                 return;
             }
-            velocity = velDir;
+            _velocity = velDir;
         }
         
     }
 
     void StateUpdate()
     {
-        switch (currMotionState)
+        switch (_currMotionState)
         {
             case MotionState.Idle:
-                if (!Utility.Close(motion, Vector3.zero))
+                if (!Utility.Close(_motion, Vector3.zero))
                     ChangeMotionState(MotionState.Running);
                 break;
             case MotionState.Running:
-                if (Utility.Close(motion, Vector3.zero))
+                if (Utility.Close(_motion, Vector3.zero))
                     ChangeMotionState(MotionState.Running);
                 break;
             case MotionState.Jump:
-                if (Vector3.Dot(velocity, Vector3.up) < 0)
+                if (Vector3.Dot(_velocity, Vector3.up) < 0)
                 {
                     ChangeMotionState(MotionState.Falling);
                 }
@@ -328,31 +361,31 @@ public class MovementController : MonoBehaviour
                 //Wallrun Update
                 break;
             default:
-                transitionBlocked_ = false;
+                _transitionBlocked = false;
                 break;
         }
     }
 
     void CapSpeed()
     {
-        Vector3 horizontalVelocity = RemoveUpDir(velocity);
+        Vector3 horizontalVelocity = RemoveUpDir(_velocity);
         float maxSpeed = InAirState() ? maxAirSpeed : maxGroundSpeed;
         float length = horizontalVelocity.magnitude;
-        if (!uncapHorizontalSpeed)
+        if (!_uncapHorizontalSpeed)
         {
             if (length > maxSpeed)
             {
                 horizontalVelocity /= length;
                 horizontalVelocity *= maxSpeed;
 
-                velocity.x = horizontalVelocity.x;
-                velocity.z = horizontalVelocity.z;
+                _velocity.x = horizontalVelocity.x;
+                _velocity.z = horizontalVelocity.z;
             }
         }
 
-        if (Math.Abs(velocity.y) > maxFallSpeed && velocity.y < 0)
+        if (Math.Abs(_velocity.y) > maxFallSpeed && _velocity.y < 0)
         {
-            velocity.y = -maxFallSpeed;
+            _velocity.y = -maxFallSpeed;
         }
     }
     #endregion
@@ -360,12 +393,12 @@ public class MovementController : MonoBehaviour
     #region MotionStates
     void ChangeMotionState(MotionState nextMotionState)
     {
-        if (!transitionBlocked_)
+        if (!_transitionBlocked)
         {
-            if (currMotionState != nextMotionState)
+            if (_currMotionState != nextMotionState)
             {
                 MotionStateEvent motionStateEvent;
-                motionStateEvent.prevState = currMotionState;
+                motionStateEvent.prevState = _currMotionState;
                 motionStateEvent.nextState = nextMotionState;
                 motionStateEvent.dirToWall = InWallTech() ? _dirToWall : Vector3.zero;
 
@@ -374,9 +407,9 @@ public class MovementController : MonoBehaviour
                     onMotionStateEvent.Invoke(motionStateEvent);
                 }
 
-                MotionStateInitialize(currMotionState, nextMotionState);
+                MotionStateInitialize(_currMotionState, nextMotionState);
 
-                currMotionState = nextMotionState;
+                _currMotionState = nextMotionState;
             }
         }
     }
@@ -388,13 +421,15 @@ public class MovementController : MonoBehaviour
         {
             case MotionState.Wallrun:
             {
-                uncapHorizontalSpeed = false;
-                _enableGravity = true;
-                break;
+                    _uncapHorizontalSpeed = false;
+                    _enableGravity = true;
+                    _wallVelInterpTimer = 0;
+                    _wallResetTimer = wallRunRegrabTime;
+                    break;
             }
             default:
             {
-                break;
+                    break;
             }
         }
 
@@ -404,7 +439,7 @@ public class MovementController : MonoBehaviour
             case MotionState.Wallrun:
             {
                 _wallRunTimer = wallRunMaxTime;
-                transitionBlocked_ = true;
+                _transitionBlocked = true;
                 break;
             }
             default:
@@ -418,90 +453,112 @@ public class MovementController : MonoBehaviour
     #region MotionStateQueries
     bool CanJump()
     {
-        return numJumpsRemaining > 0
-            || currMotionState == MotionState.Idle
-            || currMotionState == MotionState.Running;
+        return _numJumpsRemaining > 0
+            || _currMotionState == MotionState.Idle
+            || _currMotionState == MotionState.Running;
     }
     
-    bool CanWallTech()
+    bool CanWallTech(Vector3 normal)
     {
-        return currMotionState == MotionState.Running
-            || InAirState();
+        return InAirState()
+            && Vector3.Angle(normal, Vector3.up) > _cc.slopeLimit
+            && !Utility.Close(_dirToWall, -normal);
     }
 
     bool InAirState()
     {
-        return currMotionState == MotionState.Jump
-            || currMotionState == MotionState.Falling;
+        return _currMotionState == MotionState.Jump
+            || _currMotionState == MotionState.Falling;
     }
 
     bool InGroundState()
     {
-        return currMotionState == MotionState.Idle
-            || currMotionState == MotionState.Running;
+        return _currMotionState == MotionState.Idle
+            || _currMotionState == MotionState.Running;
     }
 
     bool InWallTech()
     {
-        return currMotionState == MotionState.Wallrun
-            || currMotionState == MotionState.WallrunEnd;
+        return _currMotionState == MotionState.Wallrun
+            || _currMotionState == MotionState.WallrunEnd;
     }
     #endregion
 
     #region MotionStateUpdates
     void WallrunUpdate()
     {
-        transitionBlocked_ = true;
+        _transitionBlocked = true;
         _wallRunTimer -= Time.deltaTime;
         if (_wallRunTimer >= 0.0f)
         {
             float raycastLength = 2 * _cc.radius;
-            ray.origin = transform.position;
-            ray.direction = _dirToWall;
-            if (Physics.Raycast(ray, out hitInfo, raycastLength)) //If still there, keep running
+            _ray.origin = transform.position;
+            _ray.direction = _dirToWall;
+            if (Physics.Raycast(_ray, out _hitInfo, raycastLength)) //If still there, keep running
             {
+                //Check for grounded. If grounded, break wallrun.
+                _ray.direction = -Vector3.up;
+                if (Physics.Raycast(_ray, out _hitInfo, _cc.height * 0.51f))
+                {
+                    BreakWallrun();
+                    Debug.Log($"[Wallrun Update] Hit ground. {_dirToWall}");
+                    Grounded = true;
+                    ChangeMotionState(MotionState.Running);
+                    return;
+                }
+
+                //Apply wallrun.
                 Vector3 velChange;
 
                 //If not looking towards the wall
-                if (Vector3.Dot(RemoveUpDir(transform.forward), _dirToWall) < 0)
+                if (Vector3.Dot(RemoveUpDir(transform.forward), _dirToWall) < 0
+                    || Vector3.Angle(RemoveUpDir(transform.forward), _dirToWall) < 30)
                 {
-                    velChange = RemoveProjection(velocity, _dirToWall);
+                    velChange = RemoveProjection(_velocity, _dirToWall);
                 }
                 else
                 {
                     velChange = wallRunSpeed * RemoveProjection(transform.forward, _dirToWall).normalized;
                 }
-                velocity = velChange;
-                uncapHorizontalSpeed = true;
+
+                float magnitude = velChange.magnitude;
+                if (magnitude <= wallRunSpeed)
+                {
+                    velChange.y = wallRunSpeed - magnitude;
+                    velChange.Normalize();
+                    velChange *= wallRunSpeed;
+                }
+                
+                _velocity = velChange;
+                
+                _uncapHorizontalSpeed = true;
             }
             else //Else drop off
             {
-                //BreakWallRun();
-                transitionBlocked_ = false;
-                numJumpsRemaining++;
-                Jump();
-                //ChangeMotionState(MotionState.Falling);
-                //Debug.Log("[Wallrun Update] Fall off");
+                BreakWallrun();
+                //Debug.Log($"[Wallrun Update] Fall off.");
+                ChangeMotionState(MotionState.Falling);
                 return;
             }
 
-            if (inputQueue[inputIndex].jumpInput)
+            if (JumpIsTriggered())
             {
                 //TODO: Make this not all happen at once, delay the triggered input and or other stuff.
                 if (_wallRunTimer < wallRunMaxTime)
                 {
-                    //BreakWallRun();
-                    transitionBlocked_ = false;
+                    BreakWallrun();
                     //Debug.Log("[Wallrun Update] Jump");
-                    numJumpsRemaining++;
+                    _numJumpsRemaining++;
                     Jump();
+
+                    float horizontalLaunch = RemoveUpDir(_velocity).magnitude;
+                    _velocity = RemoveProjection(_velocity, _dirToWall) + (-_dirToWall * horizontalLaunch);
                 }
             }
         }
         else
         {
-            //BreakWallRun();
-            transitionBlocked_ = false;
+            BreakWallrun();
             //Debug.Log("[Wallrun Update] Timeout");
             ChangeMotionState(MotionState.Falling);
         }
@@ -517,6 +574,27 @@ public class MovementController : MonoBehaviour
     Vector3 RemoveProjection(Vector3 vec, Vector3 remove)
     {
         return vec - Vector3.Project(vec, remove);
+    }
+
+    void BreakWallrun()
+    {
+        _transitionBlocked = false;
+        _numJumpsRemaining++;
+    }
+
+    bool JumpIsTriggered()
+    {
+        if (_inputQueue[_inputIndex].jumpInput)
+        {
+            int index = _inputIndex - 1;
+            if (index < 0)
+            {
+                index = inputQueueSize - 1;
+            }
+            index = index % inputQueueSize;
+            return !_inputQueue[index].jumpInput;
+        }
+        return false;
     }
     #endregion
 }
