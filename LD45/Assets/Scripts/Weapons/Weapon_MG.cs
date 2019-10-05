@@ -10,6 +10,8 @@ public class Weapon_MG : MonoBehaviour, IWeapon
     public int curAmmo;
 
     public float shotCooldownTime = 0.1f;
+    private bool reloading;
+    public float reloadTime = 1.0f;
     private float cooldownClock;
 
 
@@ -22,6 +24,7 @@ public class Weapon_MG : MonoBehaviour, IWeapon
     {
         curAmmo = maxAmmo;
         cooldownClock = 0;
+        reloading = false;
     }
 
     public string GetDisplayName()
@@ -51,7 +54,7 @@ public class Weapon_MG : MonoBehaviour, IWeapon
 
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
     {
-        if (tryAuto && cooldownClock >= shotCooldownTime)
+        if (tryAuto && cooldownClock >= shotCooldownTime && !reloading)
         {
             if(curAmmo == 0) 
             {
@@ -84,7 +87,10 @@ public class Weapon_MG : MonoBehaviour, IWeapon
 
     public bool Reload(WeaponWielder firer)
     {
-        if(curAmmo == maxAmmo) return false;
+        if(curAmmo == maxAmmo || reloading) return false;
+
+        reloading = true;
+        cooldownClock = 0;
 
         Debug.Log("Reloading...");
         curAmmo = maxAmmo;
@@ -93,9 +99,13 @@ public class Weapon_MG : MonoBehaviour, IWeapon
 
     private void Update()
     {
-        if(cooldownClock < shotCooldownTime)
+        if(cooldownClock < shotCooldownTime || (reloading && cooldownClock < reloadTime))
         {
             cooldownClock += Time.deltaTime;
+        }
+        else if (reloading && cooldownClock >= reloadTime)
+        {
+            reloading = false;
         }
     }
 }
