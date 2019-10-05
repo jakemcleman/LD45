@@ -9,7 +9,7 @@ public class Weapon_MG : MonoBehaviour, IWeapon
     public int maxAmmo = 60;
     public int curAmmo;
 
-    public float shotCooldownTime;
+    public float shotCooldownTime = 0.1f;
     private float cooldownClock;
 
 
