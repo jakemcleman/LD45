@@ -298,9 +298,9 @@ MonoBehaviour:
   maxFallSpeed: 40
   normalHeight: 2
   crouchHeight: 1
-  wallRunMaxTime: 5
+  wallRunMaxTime: 2
   wallRunSpeed: 20
-  wallRunRegrabTime: 3
+  wallRunRegrabTime: 1
   footstepTimeInterval: 0.5
   _currMotionState: 0
   _enableGravity: 1
