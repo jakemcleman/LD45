@@ -26,6 +26,8 @@ public class WeaponWielder : MonoBehaviour
 
     public OnWeaponChangeEvent onWeaponChangeEvent;
 
+    private string weapon_path = "event:/SFX/Weapons/";
+
     public IWeapon CurrentWeapon
     {
         get { return currWeapon; }
@@ -53,7 +55,7 @@ public class WeaponWielder : MonoBehaviour
     {
         if (CurrentWeapon.PrimaryFire(this, fireAuto))
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Weapons/" + CurrentWeapon.GetInternalName() + "_Fire", 
+            FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Fire", 
                                                  this.transform.position);
 
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(CurrentWeapon.GetInternalName() + "_Ammo", 
@@ -63,6 +65,9 @@ public class WeaponWielder : MonoBehaviour
 
     public void Reload()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Reload",
+                                             this.transform.position);
+
         CurrentWeapon.Reload(this);
     }
 
