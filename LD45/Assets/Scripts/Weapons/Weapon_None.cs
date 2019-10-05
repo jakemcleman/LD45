@@ -19,7 +19,7 @@ public class Weapon_None : MonoBehaviour, IWeapon
 
     public float GetCurrentAmmoRatio()
     {
-        return 0.0f;
+        return 1.0f;
     }
 
     public bool PrimaryFire(WeaponWielder firerer, bool tryAuto)

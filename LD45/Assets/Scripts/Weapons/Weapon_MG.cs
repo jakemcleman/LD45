@@ -2,26 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon_Basic : MonoBehaviour, IWeapon
+public class Weapon_MG : MonoBehaviour, IWeapon
 {
-    public GameObject projectilePrefab;
+        public GameObject projectilePrefab;
 
-    public int maxAmmo = 12;
+    public int maxAmmo = 60;
     public int curAmmo;
+
+    public float shotCooldownTime;
+    private float cooldownClock;
+
+
+    /*
+    * Width in degrees of the cone of bullet spread
+    */
+    public float spreadAngle = 10;
 
     private void Awake() 
     {
         curAmmo = maxAmmo;
+        cooldownClock = 0;
     }
 
     public string GetDisplayName()
     {
-        return "Basic Bitch";
+        return "Machine Gun";
     }
 
     public string GetInternalName()
     {
-        return "Test_Weapon";
+        return "MG";
     }
 
     public float GetCurrentAmmoRatio()
@@ -41,7 +51,7 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
 
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
     {
-        if (!tryAuto)
+        if (tryAuto && cooldownClock >= shotCooldownTime)
         {
             if(curAmmo == 0) 
             {
@@ -49,14 +59,20 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
                 return false;
             }
 
+            float spreadLinearMax = Mathf.Sin(Mathf.Deg2Rad * (spreadAngle / 2));
+
+            float spreadLinear = Random.Range(0, spreadLinearMax);
+            Vector3 fireVec = Quaternion.AngleAxis(Random.Range(0, 360), transform.forward) * (transform.forward + (transform.up * spreadLinear));
+
             GameObject projectile = GameObject.Instantiate(projectilePrefab);
             Projectile proj = projectile.GetComponent<Projectile>();
             if(proj == null) Debug.LogError("Tried to shoot not a projectile");
 
             projectile.transform.position = transform.position + transform.forward;
-            proj.direction = transform.forward;
+            proj.direction = fireVec;
 
             curAmmo--;
+            cooldownClock = 0;
             
             return true;
         }
@@ -73,5 +89,13 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
         Debug.Log("Reloading...");
         curAmmo = maxAmmo;
         return true;
+    }
+
+    private void Update()
+    {
+        if(cooldownClock < shotCooldownTime)
+        {
+            cooldownClock += Time.deltaTime;
+        }
     }
 }
