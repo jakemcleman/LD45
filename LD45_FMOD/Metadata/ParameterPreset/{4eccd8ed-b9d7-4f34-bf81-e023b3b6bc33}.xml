@@ -16,7 +16,7 @@
 			<value>2</value>
 		</property>
 		<property name="maximum">
-			<value>5</value>
+			<value>6</value>
 		</property>
 		<property name="enumerationLabels">
 			<value>Wood</value>
@@ -24,6 +24,7 @@
 			<value>Dirt</value>
 			<value>Metal</value>
 			<value>Sandbag</value>
+			<value>None</value>
 		</property>
 		<property name="initialValue">
 			<value>0</value>
