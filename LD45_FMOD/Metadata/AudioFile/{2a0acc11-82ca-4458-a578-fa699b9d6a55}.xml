@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{2a0acc11-82ca-4458-a578-fa699b9d6a55}">
+		<property name="assetPath">
+			<value>GunFoleyAssaultRifle_BW.55111.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.85866666666666669</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1332f68-7a87-4263-8b46-37cf30ad35cd}</destination>
+		</relationship>
+	</object>
+</objects>
