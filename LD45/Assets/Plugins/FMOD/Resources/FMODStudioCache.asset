@@ -43,7 +43,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 57459
 --- !u!114 &-5627060715781492462
 MonoBehaviour:
@@ -59,12 +59,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/UnityProjects/LD45/LD45_FMOD/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637058151388678987
+  lastModified: 637058224821762970
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 779552
+    Value: 821504
   Exists: 1
+--- !u!114 &-5533728651103687249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Run
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Run
+  guid: 84836241cf6f5f4b9e88c017854aee2e
+  Banks:
+  - {fileID: -5627060715781492462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 900
 --- !u!114 &-4805136585327696936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,12 +148,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/UnityProjects/LD45/LD45_FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637058151388728950
+  lastModified: 637058224821822925
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 944
+    Value: 1054
   Exists: 1
+--- !u!114 &-1152850106042929364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Jump
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Jump
+  guid: 9d6544c343b41a45a684c3b9444dcd5a
+  Banks:
+  - {fileID: -5627060715781492462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 360
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,10 +195,12 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -6161976778196060347}
   - {fileID: -4221515930825154180}
+  - {fileID: -5533728651103687249}
+  - {fileID: -1152850106042929364}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5627060715781492462}
   StringsBanks:
   - {fileID: -2924473470788476563}
-  stringsBankWriteTime: 637058151388728950
+  stringsBankWriteTime: 637058224821822925
   cacheVersion: 3
