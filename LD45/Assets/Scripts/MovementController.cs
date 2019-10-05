@@ -256,7 +256,7 @@ public class MovementController : MonoBehaviour
 
         if ((!Grounded || InAirState()) && _enableGravity)
         {
-            _velocity += (-gravity * Vector3.up);
+            _velocity += (-gravity * Vector3.up) * Time.deltaTime;
         }
     }
 
