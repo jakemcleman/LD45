@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8764108580166377682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/Test_Weapon_Fire
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/Test_Weapon_Fire
+  guid: f08ac4c517b72d4da0b4b7cf5ab93a35
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2167
 --- !u!114 &-7996316042471380210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +68,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 57459
+--- !u!114 &-6159451782956031363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Jump
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Jump
+  guid: 9d6544c343b41a45a684c3b9444dcd5a
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 360
 --- !u!114 &-5627060715781492462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +180,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 600
+--- !u!114 &-3580927685974585337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/Hayden/Documents/Unity Projects/LD45/LD45_FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637058240727467687
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 843232
+  Exists: 1
 --- !u!114 &-2924473470788476563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +220,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1054
   Exists: 1
+--- !u!114 &-2827933313348443107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/None_Fire
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/None_Fire
+  guid: 73d7c88af4bc0547a6c29202f2742ac7
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-1152850106042929364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,17 +279,108 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -2924473470788476563}
-  - {fileID: -5627060715781492462}
+  - {fileID: 6769066617908979996}
+  - {fileID: -3580927685974585337}
   EditorEvents:
-  - {fileID: -6161976778196060347}
-  - {fileID: -4221515930825154180}
-  - {fileID: -5533728651103687249}
-  - {fileID: -1152850106042929364}
+  - {fileID: 1362565888068322887}
+  - {fileID: 7216066669942813173}
+  - {fileID: -6159451782956031363}
+  - {fileID: 5025313700848774596}
+  - {fileID: -2827933313348443107}
+  - {fileID: -8764108580166377682}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5627060715781492462}
+  - {fileID: -3580927685974585337}
   StringsBanks:
-  - {fileID: -2924473470788476563}
-  stringsBankWriteTime: 637058224821822925
+  - {fileID: 6769066617908979996}
+  stringsBankWriteTime: 637058240727487695
   cacheVersion: 3
+--- !u!114 &1362565888068322887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Run
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Run
+  guid: 84836241cf6f5f4b9e88c017854aee2e
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 900
+--- !u!114 &5025313700848774596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestEvent
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestEvent
+  guid: efd6b27f1a0c9348a10f58f165f6d63b
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 600
+--- !u!114 &6769066617908979996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/Hayden/Documents/Unity Projects/LD45/LD45_FMOD/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637058240727487695
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1174
+  Exists: 1
+--- !u!114 &7216066669942813173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestRain
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestRain
+  guid: 9b8aa14d76a3ba4689772a7cc684914c
+  Banks:
+  - {fileID: -3580927685974585337}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 57459
