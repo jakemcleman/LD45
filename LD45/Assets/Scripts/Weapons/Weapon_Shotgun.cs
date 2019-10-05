@@ -11,6 +11,11 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
 
     public int projectilesPerShot = 12;
 
+    public float shotCooldownTime = 0.2f;
+    private bool reloading;
+    public float reloadTime = 2.0f;
+    private float cooldownClock;
+
     /*
     * Width in degrees of the cone of bullet spread
     */
@@ -19,6 +24,9 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
     private void Awake() 
     {
         curAmmo = maxAmmo;
+
+        cooldownClock = 0;
+        reloading = false;
     }
 
     public string GetDisplayName()
@@ -48,7 +56,7 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
 
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
     {
-        if (!tryAuto)
+        if (!tryAuto && cooldownClock >= shotCooldownTime && !reloading)
         {
             if(curAmmo == 0) 
             {
@@ -72,6 +80,8 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
             }
 
             curAmmo--;
+
+            cooldownClock = 0;
             
             return true;
         }
@@ -83,10 +93,25 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
 
     public bool Reload(WeaponWielder firer)
     {
-        if(curAmmo == maxAmmo) return false;
+        if(curAmmo == maxAmmo || reloading) return false;
+
+        reloading = true;
+        cooldownClock = 0;
 
         Debug.Log("Reloading...");
         curAmmo = maxAmmo;
         return true;
+    }
+
+    private void Update()
+    {
+        if(cooldownClock < shotCooldownTime || (reloading && cooldownClock < reloadTime))
+        {
+            cooldownClock += Time.deltaTime;
+        }
+        else if (reloading && cooldownClock >= reloadTime)
+        {
+            reloading = false;
+        }
     }
 }

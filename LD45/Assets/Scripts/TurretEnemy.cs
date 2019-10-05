@@ -7,6 +7,7 @@ public class TurretEnemy : MonoBehaviour
     public WeaponWielder[] weapons;
 
     public float maxSightRange = 100;
+    public float maxEngagementRange = 100;
 
     public float yawRate = 45;
     public float barrelRate = 90;
@@ -16,7 +17,16 @@ public class TurretEnemy : MonoBehaviour
 
     public float accuracy = 0.95f;
 
+    public bool autoFire = true;
+    public float nonAutoFireRate = 1.0f;
+    private float fireTimer;
+
     private GameObject lastTarget = null;
+
+    private void Start()
+    {
+        fireTimer = 0;
+    }
 
     private void Update()
     {
@@ -25,17 +35,37 @@ public class TurretEnemy : MonoBehaviour
         GameObject target = PickTarget(potentialTargets);
         lastTarget = target;
 
+        if(fireTimer < nonAutoFireRate) fireTimer += Time.deltaTime;
+
         if(target != null) 
         {
-            
             RotateBaseTowardsTarget(target.transform.position);
             RotateArmsToTarget(target.transform.position);
 
-            if(IsAimingAtTarget(target.transform.position))
+            if(IsAimingAtTarget(target.transform.position) 
+                && Vector3.Distance(transform.position, target.transform.position) < maxEngagementRange)
             {
-                foreach(WeaponWielder weapon in weapons)
+                FireWeapons();
+            }
+        }
+    }
+    
+    private void FireWeapons()
+    {
+        if(autoFire)
+        {
+            foreach(WeaponWielder weapon in weapons)
+            {
+                weapon.FirePrimary(true);
+            }
+        }
+        else
+        {
+            for(int i = 0; i < weapons.Length; ++i)
+            {
+                if(fireTimer > nonAutoFireRate / weapons.Length)
                 {
-                    weapon.FirePrimary(true);
+                    weapons[i].FirePrimary(false);
                 }
             }
         }

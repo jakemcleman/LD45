@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon_MG : MonoBehaviour, IWeapon
 {
-        public GameObject projectilePrefab;
+    public GameObject projectilePrefab;
 
     public int maxAmmo = 60;
     public int curAmmo;
