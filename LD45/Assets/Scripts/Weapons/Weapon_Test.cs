@@ -19,6 +19,11 @@ public class Weapon_Test : MonoBehaviour, IWeapon
         return 0.0f;
     }
 
+    public bool Reload(WeaponWielder firerer)
+    {
+        return false;
+    }
+
     public bool PrimaryFire(WeaponWielder firerer, bool tryAuto)
     {
         if (!tryAuto)
@@ -33,5 +38,15 @@ public class Weapon_Test : MonoBehaviour, IWeapon
         {
             return false;
         }
+    }
+
+    public float GetCurrentAmmo()
+    {
+        return 0;
+    }
+
+    public float GetMaxAmmo()
+    {
+        return 0;
     }
 }

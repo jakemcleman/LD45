@@ -26,4 +26,19 @@ public class Weapon_None : MonoBehaviour, IWeapon
     {
         return false;
     }
+
+    public bool Reload(WeaponWielder firerer)
+    {
+        return false;
+    }
+
+    public float GetCurrentAmmo()
+    {
+        return 0;
+    }
+
+    public float GetMaxAmmo()
+    {
+        return 0;
+    }
 }

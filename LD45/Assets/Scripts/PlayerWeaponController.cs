@@ -29,6 +29,11 @@ public class PlayerWeaponController : MonoBehaviour
             wielder.FirePrimary(true);
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            wielder.Reload();
+        }
+
         // Test weapon switching code - if this is a real thing we want do this better with a real input button
         if (Input.GetKeyDown(KeyCode.Q))
         {
