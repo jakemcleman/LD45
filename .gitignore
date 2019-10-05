@@ -43,3 +43,4 @@ sysinfo.txt
 *.log
 # This file contains a path that cannot use relative paths, so is almost always conflicted. Ignored so people can just keep their own version
 LD45/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset
+LD45/Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
