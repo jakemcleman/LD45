@@ -20,4 +20,9 @@ public class Utility
     {
         return t * B + (1 - t) * A;
     }
+
+    static public float EaseOutCubic(float t)
+    {
+        return (--t) * t * t + 1;
+    }
 }
