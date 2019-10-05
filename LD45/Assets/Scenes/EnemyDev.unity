@@ -4280,14 +4280,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1621496581, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
-      propertyPath: reloadTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1621496581, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
-      propertyPath: shotCooldownTime
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: groundAcceleration.m_Curve.Array.size
@@ -4461,17 +4453,30 @@ PrefabInstance:
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: wallRunSpeed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: jumpSpeed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: gravity
-      value: 30
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: maxFallSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621496581, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
+      propertyPath: reloadTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621496581, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
+      propertyPath: shotCooldownTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
