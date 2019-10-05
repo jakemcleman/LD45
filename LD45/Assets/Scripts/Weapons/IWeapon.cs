@@ -6,7 +6,7 @@ public interface IWeapon
 {
     /*
      * Implement to give the weapon primary fire behavior (Left click/right trigger)
-     * returns the projectiles/effects it created in case the firer cares about them
+     * returns if the weapon was able to fire or not (cool downs, ammo limits, etc may cause this to be false)
      * firer - The weapon weilder who caused the projectile to be fired
      * tryAuto - Wether the weilder is holding down the fire command, false if the input was just triggered
      */
@@ -18,7 +18,7 @@ public interface IWeapon
     string GetDisplayName();
 
     /*
-     *  Weapon name for programming purposes
+     *  Weapon name for programming purposes (should be stable and not change unless 100% necessary)
      */
     string GetInternalName();
 
