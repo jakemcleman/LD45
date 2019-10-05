@@ -12,8 +12,18 @@ public class Weapon_None : MonoBehaviour, IWeapon
         return "None";
     }
 
-    public GameObject[] PrimaryFire(WeaponWielder firerer, bool tryAuto)
+    public string GetInternalName()
     {
-        return new GameObject[0];
+        return "None";
+    }
+
+    public float GetCurrentAmmoRatio()
+    {
+        return 0.0f;
+    }
+
+    public bool PrimaryFire(WeaponWielder firerer, bool tryAuto)
+    {
+        return false;
     }
 }
