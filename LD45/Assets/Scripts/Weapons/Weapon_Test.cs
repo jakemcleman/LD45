@@ -19,14 +19,17 @@ public class Weapon_Test : MonoBehaviour, IWeapon
         return 0.0f;
     }
 
+    public bool Reload(WeaponWielder firerer)
+    {
+        return false;
+    }
+
     public bool PrimaryFire(WeaponWielder firerer, bool tryAuto)
     {
         if (!tryAuto)
         {
             Debug.Log("Bang!");
             GameObject ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            GameObject[] spawned = new GameObject[1];
-            spawned[0] = ball;
             ball.transform.position = transform.position;
             Destroy(ball, 4);
             return true;
@@ -35,5 +38,15 @@ public class Weapon_Test : MonoBehaviour, IWeapon
         {
             return false;
         }
+    }
+
+    public float GetCurrentAmmo()
+    {
+        return 0;
+    }
+
+    public float GetMaxAmmo()
+    {
+        return 0;
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7985845481410956724}
   - component: {fileID: 5823870473371389895}
   - component: {fileID: 5824065154907529506}
+  - component: {fileID: 3141760875906133873}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -60,6 +61,19 @@ MonoBehaviour:
   TestEventName: event:/Test/TestEvent
   VCA_SFX_Path: vca:/SFX
   VCA_Music_Path: vca:/Music
+--- !u!114 &3141760875906133873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860684581077918427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10e7293964a0914599cb8ac94f2c791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music_event: event:/Music/Test_Music
 --- !u!1 &7007395564452839055
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,11 +298,11 @@ MonoBehaviour:
   maxFallSpeed: 40
   normalHeight: 2
   crouchHeight: 1
-  wallRunMaxTime: 5
+  wallRunMaxTime: 2
   wallRunSpeed: 20
-  wallRunRegrabTime: 3
+  wallRunRegrabTime: 1
   footstepTimeInterval: 0.5
-  currMotionState: 0
+  _currMotionState: 0
   _enableGravity: 1
   onMotionStateEvent:
     m_PersistentCalls:
@@ -333,3 +347,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   rotationLerpTime: 0.01
   invertY: 0
+  quickTurnTime: 0.25
