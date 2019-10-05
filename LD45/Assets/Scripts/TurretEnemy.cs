@@ -16,16 +16,31 @@ public class TurretEnemy : MonoBehaviour
     public float minBarrelDepression = 20;
 
     public float accuracy = 0.95f;
+    public float maxMissAmount = 20;
+    public float aimAdjustSpeed = 2.0f;
+    public float closeEnoughToShoot = 0.99f;
 
     public bool autoFire = true;
     public float nonAutoFireRate = 1.0f;
     private float fireTimer;
 
+
     private GameObject lastTarget = null;
+    private Vector3 aimPoint;
 
     private void Start()
     {
         fireTimer = 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(aimPoint != transform.position)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawSphere(aimPoint, 0.5f);
+            Gizmos.DrawLine(transform.position, aimPoint);
+        }
     }
 
     private void Update()
@@ -33,20 +48,45 @@ public class TurretEnemy : MonoBehaviour
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject target = PickTarget(potentialTargets);
-        lastTarget = target;
-
-        if(fireTimer < nonAutoFireRate) fireTimer += Time.deltaTime;
-
-        if(target != null) 
+        if(target != null)
         {
-            RotateBaseTowardsTarget(target.transform.position);
-            RotateArmsToTarget(target.transform.position);
+            Vector3 realTargetPosition = target.transform.position;
 
-            if(IsAimingAtTarget(target.transform.position) 
-                && Vector3.Distance(transform.position, target.transform.position) < maxEngagementRange)
+            CharacterController targetController = target.GetComponent<CharacterController>();
+            Rigidbody targetRB = target.GetComponent<Rigidbody>();
+
+            float distanceToTarget = Vector3.Distance(transform.position, aimPoint);
+            Vector3 leadAim = target.transform.position;
+
+
+            if(targetController != null)
+            {
+                float projectileTravelTime = distanceToTarget / weapons[0].CurrentWeapon.GetProjectileSpeed();
+                leadAim += (targetController.velocity * projectileTravelTime);
+            }
+            else if(targetRB != null)
+            {
+                float projectileTravelTime = distanceToTarget / weapons[0].CurrentWeapon.GetProjectileSpeed();
+                leadAim += (targetRB.velocity * projectileTravelTime);
+            }
+
+            aimPoint = leadAim;
+            lastTarget = target;
+
+            if(fireTimer < nonAutoFireRate) fireTimer += Time.deltaTime;
+
+            RotateBaseTowardsTarget(aimPoint);
+            RotateArmsToTarget(aimPoint);
+
+            if(IsAimingAtTarget(aimPoint) 
+                && distanceToTarget < maxEngagementRange)
             {
                 FireWeapons();
             }
+        }
+        else
+        {
+            aimPoint = transform.position;
         }
     }
     
@@ -109,7 +149,7 @@ public class TurretEnemy : MonoBehaviour
     
         foreach(WeaponWielder weapon in weapons)
         {
-            if(Vector3.Dot(weapon.transform.forward, towardsTarget) > accuracy) 
+            if(Vector3.Dot(weapon.transform.forward, towardsTarget) > closeEnoughToShoot) 
             {
                 return true;
             }
@@ -125,7 +165,7 @@ public class TurretEnemy : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 directionTowards = target.transform.position - transform.position;
-            if(Physics.Raycast(transform.position, directionTowards, out hit, dist))
+            if(Physics.Raycast(transform.position, directionTowards, out hit, dist, ~(1 << 8)))
             {
                 if(hit.transform.gameObject == target)
                 {

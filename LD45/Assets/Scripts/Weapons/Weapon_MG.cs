@@ -52,6 +52,11 @@ public class Weapon_MG : MonoBehaviour, IWeapon
         return maxAmmo;
     }
 
+    public float GetProjectileSpeed()
+    {
+        return projectilePrefab.GetComponent<Projectile>().speed;
+    }
+
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
     {
         if (tryAuto && cooldownClock >= shotCooldownTime && !reloading)

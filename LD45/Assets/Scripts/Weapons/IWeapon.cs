@@ -43,4 +43,10 @@ public interface IWeapon
      *  Maximum ammunition this weapon can hold in # of shots
      */
     float GetMaxAmmo();
+
+    /*
+     *  Speed at which projectiles this weapon fires will fly
+     *  (for AI to accurately lead targets)
+     */
+    float GetProjectileSpeed();
 }
