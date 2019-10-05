@@ -32,8 +32,14 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# FMOD Studio
+\Assets\Plugins\FMOD\Resources\FMODStudioCache.asset
+\Assets\Plugins\FMOD\Resources\FMODStudioCache.asset.meta
+
 # Builds
 *.apk
 *.unitypackage
 
 *.log
+# This file contains a path that cannot use relative paths, so is almost always conflicted. Ignored so people can just keep their own version
+LD45/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset

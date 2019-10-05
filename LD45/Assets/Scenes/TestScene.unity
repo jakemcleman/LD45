@@ -711,5 +711,10 @@ PrefabInstance:
       propertyPath: wallRunSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: footstepTimeInterval
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
