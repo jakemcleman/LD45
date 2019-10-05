@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:/UnityProjects/LD45/LD45_FMOD/LD45_FMOD.fspro
-  SourceBankPathUnformatted: C:/UnityProjects/LD45/LD45_FMOD/Build
+  sourceProjectPath: G:/LD45/LD45_FMOD/LD45_FMOD.fspro
+  SourceBankPathUnformatted: G:/LD45/LD45_FMOD/Build
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
