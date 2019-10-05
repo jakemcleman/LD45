@@ -460,7 +460,17 @@ public class MovementController : MonoBehaviour
             ray.direction = _dirToWall;
             if (Physics.Raycast(ray, out hitInfo, raycastLength)) //If still there, keep running
             {
-                Vector3 velChange = wallRunSpeed * RemoveProjection(transform.forward, _dirToWall).normalized;
+                Vector3 velChange;
+
+                //If not looking towards the wall
+                if (Vector3.Dot(RemoveUpDir(transform.forward), _dirToWall) < 0)
+                {
+                    velChange = RemoveProjection(velocity, _dirToWall);
+                }
+                else
+                {
+                    velChange = wallRunSpeed * RemoveProjection(transform.forward, _dirToWall).normalized;
+                }
                 velocity = velChange;
                 uncapHorizontalSpeed = true;
             }
