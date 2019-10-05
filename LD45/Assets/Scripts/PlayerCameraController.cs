@@ -121,6 +121,10 @@ public class PlayerCameraController : MonoBehaviour
         float t = 1 - (quickTurnTimer / quickTurnTime);
         Vector3 interpLookTo = Utility.Interpolate(originalForward, lookTo, Utility.EaseOutCubic(t));
         transform.LookAt(transform.position + interpLookTo);
+
+        //If ended
+        m_TargetCameraState.SetFromTransform(transform);
+        m_InterpolatingCameraState.SetFromTransform(transform);
     }
 
     public bool InQuickTurn()
