@@ -89,7 +89,6 @@ public class Health : MonoBehaviour
         // Check if healing is possible to avoid wasting health packs
         if(amount == 0 || curHealth >= maxHealth)
         {
-            Debug.Log("No Heal :(");
             return false;
         }
             
@@ -99,12 +98,11 @@ public class Health : MonoBehaviour
             if(amount < 0) Debug.LogWarningFormat("Requested negative healing {0} to be done to {1}}", amount, gameObject.name);
         }
 
+        curHealth += amount;
+
         HealthChangeEvent healthChange;
         healthChange.amount = amount;
         onHealthChange.Invoke(healthChange);
-        Debug.Log("Heal"+healthChange);
-
-        curHealth += amount;
 
         if (curHealth > maxHealth) curHealth = maxHealth;
 
