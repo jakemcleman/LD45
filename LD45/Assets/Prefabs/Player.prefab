@@ -441,6 +441,8 @@ GameObject:
   - component: {fileID: 7007395565380830700}
   - component: {fileID: 671589661}
   - component: {fileID: 671589662}
+  - component: {fileID: 1799625301}
+  - component: {fileID: 1799625302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -651,3 +653,36 @@ MonoBehaviour:
   onWeaponChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1799625301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007395565380830703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e247ef1cf56bdb4d8970b1a910848ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health_event: event:/States/State_LowHealth
+--- !u!114 &1799625302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007395565380830703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d62e311b9e07e43b1c90892680f71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: 100
+  damageMultiplier: 1
