@@ -31,12 +31,18 @@ public class WeaponWielder : MonoBehaviour
         get { return currWeapon; }
         set
         {
-            WeaponChangeEvent weaponEvent;
-            weaponEvent.prevWeapon = currWeapon;
-            weaponEvent.nextWeapon = value;
-            if (onWeaponChangeEvent != null)
+            // Don't send an event unless the thing is actually changing
+            if (currWeapon != value)
             {
-                onWeaponChangeEvent.Invoke(weaponEvent);
+                WeaponChangeEvent weaponEvent;
+                weaponEvent.prevWeapon = currWeapon;
+                weaponEvent.nextWeapon = value;
+                if (onWeaponChangeEvent != null)
+                {
+                    onWeaponChangeEvent.Invoke(weaponEvent);
+                }
+
+                Debug.Log("Weapon changed to " + value.GetDisplayName());
             }
 
             currWeapon = value;

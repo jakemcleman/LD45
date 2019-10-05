@@ -17,6 +17,7 @@ public class Weapon_Test : MonoBehaviour, IWeapon
             GameObject ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject[] spawned = new GameObject[1];
             spawned[0] = ball;
+            ball.transform.position = transform.position;
             Destroy(ball, 4);
             return spawned;
         }

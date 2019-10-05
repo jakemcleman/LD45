@@ -22,6 +22,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-6369050700083574419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TestEvent
+  m_EditorClassIdentifier: 
+  Path: event:/TestEvent
+  guid: efd6b27f1a0c9348a10f58f165f6d63b
+  Banks:
+  - {fileID: 8272940660007582070}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 600
 --- !u!114 &-5627060715781492462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +108,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 734
   Exists: 1
+--- !u!114 &-1439465714924131861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: G:/LD45/LD45_FMOD/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637058158616730891
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 892
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,14 +141,34 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -2924473470788476563}
-  - {fileID: -5627060715781492462}
+  - {fileID: -1439465714924131861}
+  - {fileID: 8272940660007582070}
   EditorEvents:
-  - {fileID: -4805136585327696936}
+  - {fileID: -6369050700083574419}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5627060715781492462}
+  - {fileID: 8272940660007582070}
   StringsBanks:
-  - {fileID: -2924473470788476563}
-  stringsBankWriteTime: 637058112227265126
+  - {fileID: -1439465714924131861}
+  stringsBankWriteTime: 637058158616730891
   cacheVersion: 3
+--- !u!114 &8272940660007582070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: G:/LD45/LD45_FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637058158616710938
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 4512
+  Exists: 1
