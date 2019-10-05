@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd3767024aeaa34d8a6444bed23e9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestEventName: TestEvent
+  TestEventName: event:/TestEvent
 --- !u!20 &362774178
 Camera:
   m_ObjectHideFlags: 0
