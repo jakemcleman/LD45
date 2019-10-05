@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6946091418818712711}
   - component: {fileID: 5519194772340801695}
   - component: {fileID: 33046351537896414}
-  - component: {fileID: 4642858332770060900}
   - component: {fileID: 2944575460132614665}
   m_Layer: 0
   m_Name: Basic_Projectile
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &4642858332770060900
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708820672937298290}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2944575460132614665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
-  speed: 2
+  speed: 200
   direction: {x: 0, y: 0, z: 0}
   Timeout: 30

@@ -28,12 +28,31 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         transform.forward = direction;
-        transform.position += (speed * Time.deltaTime) * direction;
+        Vector3 nextPosition = transform.position + (speed * Time.deltaTime) * direction;
+
+        if(!DoCollisionSweep(nextPosition))
+        {
+            transform.position = nextPosition;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private bool DoCollisionSweep(Vector3 nextPosition) 
     {
-        Health otherHealth = other.gameObject.GetComponent<Health>();
+        float distance = (speed * Time.deltaTime) * 1.5f; // Add a little wiggle room
+        Vector3 direction = (nextPosition - transform.position).normalized;
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, direction, out hit, distance, ~0)) 
+        {
+            OnHitSomething(hit.transform.gameObject);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnHitSomething(GameObject other)
+    {
+        Health otherHealth = other.GetComponent<Health>();
 
         Debug.Log("Collided");
 
