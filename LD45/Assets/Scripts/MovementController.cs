@@ -375,7 +375,6 @@ public class MovementController : MonoBehaviour
                     footstepTime -= Time.deltaTime;
                 else
                 {
-                    Debug.Log("Step");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Run", this.transform.position);
                     footstepTime = footstepTimeInterval;
                 }
