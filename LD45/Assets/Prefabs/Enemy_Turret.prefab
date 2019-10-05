@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8639986346459596226}
   - component: {fileID: 8639986346459596229}
   - component: {fileID: 8639986346459596230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 8639986346506090040}
   - component: {fileID: 8639986346506090050}
   - component: {fileID: 8639986346506090051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,6 +188,9 @@ MonoBehaviour:
   maxBarrelElevation: 60
   minBarrelDepression: 20
   accuracy: 0.95
+  maxMissAmount: 20
+  aimAdjustSpeed: 2
+  closeEnoughToShoot: 0.99
   autoFire: 1
   nonAutoFireRate: 1
 --- !u!114 &8639986346506090050
@@ -234,7 +237,7 @@ GameObject:
   - component: {fileID: 8639986346863827269}
   - component: {fileID: 8639986346863827274}
   - component: {fileID: 8639986346863827275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +315,7 @@ GameObject:
   - component: {fileID: 8639986346899252116}
   - component: {fileID: 8639986346899252127}
   - component: {fileID: 8639986346899252120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,6 +383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
@@ -455,6 +463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}

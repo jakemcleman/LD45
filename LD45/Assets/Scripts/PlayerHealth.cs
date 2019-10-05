@@ -58,6 +58,7 @@ public class PlayerHealth : MonoBehaviour
     private void Respawn()
     {
         health.Heal(health.maxHealth);
+        health_state.setParameterByName("Player_Health", 1.0f);
         transform.position = respawnPosition;
         transform.forward = respawnFacing;
     }

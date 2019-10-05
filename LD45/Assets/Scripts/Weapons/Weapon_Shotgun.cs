@@ -39,6 +39,11 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
         return "Shotgun";
     }
 
+    public float GetProjectileSpeed()
+    {
+        return projectilePrefab.GetComponent<Projectile>().speed;
+    }
+
     public float GetCurrentAmmoRatio()
     {
         return (float)curAmmo / maxAmmo;

@@ -62,6 +62,9 @@ public class Weapon_MG : MonoBehaviour, IWeapon
         {
             return 1;
         }
+    public float GetProjectileSpeed()
+    {
+        return projectilePrefab.GetComponent<Projectile>().speed;
     }
 
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)

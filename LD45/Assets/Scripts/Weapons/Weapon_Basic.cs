@@ -21,6 +21,11 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
         return "Basic Bitch";
     }
 
+    public float GetProjectileSpeed()
+    {
+        return projectilePrefab.GetComponent<Projectile>().speed;
+    }
+
     public string GetInternalName()
     {
         return "BasicGun";

@@ -22,6 +22,11 @@ public class Weapon_None : MonoBehaviour, IWeapon
         return 1.0f;
     }
 
+    public float GetProjectileSpeed()
+    {
+        return 0;
+    }
+
     public bool PrimaryFire(WeaponWielder firerer, bool tryAuto)
     {
         return false;
