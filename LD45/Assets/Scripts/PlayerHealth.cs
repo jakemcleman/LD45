@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnHealthChange(HealthChangeEvent e)
     {
-        Debug.Log("Health Ration: " + health.HealthRatio);
+        Debug.Log("Health Ratio: " + health.HealthRatio);
         health_state.setParameterByName("Player_Health", health.HealthRatio);
     }
 }
