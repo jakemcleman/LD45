@@ -22,6 +22,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-6161976778196060347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestRain
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestRain
+  guid: 9b8aa14d76a3ba4689772a7cc684914c
+  Banks:
+  - {fileID: -5627060715781492462}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 57459
 --- !u!114 &-5627060715781492462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,11 +59,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/UnityProjects/LD45/LD45_FMOD/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637058112227215165
+  lastModified: 637058151388678987
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 4000
+    Value: 779552
   Exists: 1
 --- !u!114 &-4805136585327696936
 MonoBehaviour:
@@ -65,6 +88,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 600
+--- !u!114 &-4221515930825154180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestEvent
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestEvent
+  guid: efd6b27f1a0c9348a10f58f165f6d63b
+  Banks:
+  - {fileID: -5627060715781492462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 600
 --- !u!114 &-2924473470788476563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,11 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/UnityProjects/LD45/LD45_FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637058112227265126
+  lastModified: 637058151388728950
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 734
+    Value: 944
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -101,11 +147,12 @@ MonoBehaviour:
   - {fileID: -2924473470788476563}
   - {fileID: -5627060715781492462}
   EditorEvents:
-  - {fileID: -4805136585327696936}
+  - {fileID: -6161976778196060347}
+  - {fileID: -4221515930825154180}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5627060715781492462}
   StringsBanks:
   - {fileID: -2924473470788476563}
-  stringsBankWriteTime: 637058112227265126
+  stringsBankWriteTime: 637058151388728950
   cacheVersion: 3
