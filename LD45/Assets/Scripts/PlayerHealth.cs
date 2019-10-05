@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = GetComponent<Health>();
+        health_state = FMODUnity.RuntimeManager.CreateInstance(health_event);
+        health_state.start();
     }
 
     // Update is called once per frame

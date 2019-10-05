@@ -11,7 +11,8 @@ public class MusicController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(music_event, this.transform.position);
+        music = FMODUnity.RuntimeManager.CreateInstance(music_event);
+        music.start();
     }
 
     // Update is called once per frame
