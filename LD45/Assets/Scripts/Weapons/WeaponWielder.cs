@@ -55,6 +55,8 @@ public class WeaponWielder : MonoBehaviour
     {
         if (CurrentWeapon.PrimaryFire(this, fireAuto))
         {
+            // Cannot set local parameters without an event instance, so we make one here instead of using PlayOneShot
+            // This is probably not the most efficient way to do this, but welcome to game jams
             FMOD.Studio.EventInstance fire = FMODUnity.RuntimeManager.CreateInstance(weapon_path + CurrentWeapon.GetInternalName() + "_Fire");
             fire.setParameterByName(CurrentWeapon.GetInternalName() + "_Ammo", CurrentWeapon.GetCurrentAmmoRatio());
             fire.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
