@@ -844,6 +844,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1708820672937298290, guid: 2bdca240191f2fc40bc84ab56576fa08,
     type: 3}
+  maxAmmo: 12
+  curAmmo: 0
 --- !u!1001 &7007395564698573030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -940,6 +942,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AllowMSAA
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: groundAcceleration
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: groundDeceleration
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: gravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: maxGroundSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: maxAirSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}

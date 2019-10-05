@@ -35,7 +35,7 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         // Test weapon switching code - if this is a real thing we want do this better with a real input button
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             curWeaponIndex++;
             if (curWeaponIndex >= weapons.Length) curWeaponIndex = 0;
