@@ -26,6 +26,7 @@
 			<destination>{7e08d960-6b08-49c8-b1df-9b08a833ef04}</destination>
 			<destination>{eb9e147e-4a0a-4cbb-9d17-ab73f3683fa1}</destination>
 			<destination>{d5f4a8e6-2b38-4090-91aa-2c0cec7485ce}</destination>
+			<destination>{6860670a-1044-4852-8219-ee43362a27cf}</destination>
 		</relationship>
 		<relationship name="snapshotTracks">
 			<destination>{cc6cb805-9ee7-427d-ac2a-7c2a41f8847a}</destination>
@@ -41,7 +42,7 @@
 			<value>midGain</value>
 		</property>
 		<property name="value">
-			<value>-19</value>
+			<value>-34</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{62f65147-da76-42bb-b4df-bb5fe2d2cfc1}</destination>
@@ -52,7 +53,7 @@
 			<value>highGain</value>
 		</property>
 		<property name="value">
-			<value>-34</value>
+			<value>-56</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{62f65147-da76-42bb-b4df-bb5fe2d2cfc1}</destination>
@@ -74,7 +75,7 @@
 			<value>highGain</value>
 		</property>
 		<property name="value">
-			<value>-26.5</value>
+			<value>-45</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{cb516133-160e-4da6-b886-c9801888f7a5}</destination>
@@ -85,7 +86,7 @@
 			<value>midGain</value>
 		</property>
 		<property name="value">
-			<value>-14.5</value>
+			<value>-23</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{cb516133-160e-4da6-b886-c9801888f7a5}</destination>
@@ -100,6 +101,17 @@
 		</property>
 		<relationship name="automatableObject">
 			<destination>{76b566cc-c0f2-4d99-a546-d394823035d3}</destination>
+		</relationship>
+	</object>
+	<object class="SnapshotProperty" id="{6860670a-1044-4852-8219-ee43362a27cf}">
+		<property name="propertyName">
+			<value>level</value>
+		</property>
+		<property name="value">
+			<value>-6</value>
+		</property>
+		<relationship name="automatableObject">
+			<destination>{fcb07a33-52bc-4bdd-a3aa-1243bdf798d4}</destination>
 		</relationship>
 	</object>
 	<object class="SnapshotTrack" id="{cc6cb805-9ee7-427d-ac2a-7c2a41f8847a}">

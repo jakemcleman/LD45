@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
         health = GetComponent<Health>();
         health.onHealthChange.AddListener(OnHealthChange);
         health_state = FMODUnity.RuntimeManager.CreateInstance(health_event);
+        health_state.setParameterByName("Player_Health", health.HealthRatio);
         health_state.start();
     }
 
@@ -27,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
 
     void OnHealthChange(HealthChangeEvent e)
     {
-        Debug.Log("Health Ratio: " + health.HealthRatio);
         health_state.setParameterByName("Player_Health", health.HealthRatio);
     }
 }
