@@ -85,6 +85,7 @@ public class PlayerCameraController : MonoBehaviour
         if (InQuickTurn())
         {
             QuickTurnUpdate();
+            m_InterpolatingCameraState.UpdateTransform(transform);
         }
         else
         {
@@ -107,14 +108,11 @@ public class PlayerCameraController : MonoBehaviour
 
     public void StartQuickTurn(Vector3 dirToWall)
     {
-        if (!InQuickTurn())
-        {
-            quickTurnTimer = quickTurnTime;
-            float y = transform.forward.y;
-            originalForward = transform.forward;
-            lookTo = -dirToWall;
-            lookTo.y = y;
-        }
+        quickTurnTimer = quickTurnTime;
+        float y = transform.forward.y;
+        originalForward = transform.forward;
+        lookTo = -dirToWall;
+        lookTo.y = y;
     }
 
     private void QuickTurnUpdate()
@@ -122,10 +120,11 @@ public class PlayerCameraController : MonoBehaviour
         quickTurnTimer -= Time.deltaTime;
         float t = 1 - (quickTurnTimer / quickTurnTime);
         Vector3 interpLookTo = Utility.Interpolate(originalForward, lookTo, Utility.EaseOutCubic(t));
+        transform.LookAt(transform.position + interpLookTo);
     }
 
     public bool InQuickTurn()
     {
-        return quickTurnTimer <= 0;
+        return quickTurnTimer > 0;
     }
 }

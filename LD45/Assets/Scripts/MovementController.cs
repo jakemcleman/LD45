@@ -135,6 +135,7 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         _cc = GetComponent<CharacterController>();
+        _camera = GetComponent<PlayerCameraController>();
         _currMotionState = MotionState.Falling;
         _numJumpsRemaining = numJumps;
         _uncapHorizontalSpeed = false;
@@ -180,7 +181,8 @@ public class MovementController : MonoBehaviour
         }
         _velocity = _cc.velocity;
 
-        if (_inputQueue[_inputIndex].quickTurnInput) _camera.StartQuickTurn(_dirToWall);
+        if (_inputQueue[_inputIndex].quickTurnInput)
+            _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? transform.forward : _dirToWall);
 
         UpdateTimers();
 
