@@ -36,6 +36,8 @@ public class MovementController : MonoBehaviour
     public float wallRunSpeed;
     public float wallRunRegrabTime;
 
+    public float footstepTimeInterval = 0.5f;
+
     #endregion
 
     #region Internals
@@ -60,6 +62,8 @@ public class MovementController : MonoBehaviour
 
     private Ray ray;
     private RaycastHit hitInfo;
+
+    private float footstepTime;
 
 
     [SerializeField]
@@ -131,6 +135,7 @@ public class MovementController : MonoBehaviour
         numJumpsRemaining = numJumps;
         uncapHorizontalSpeed = false;
         ray = new Ray(transform.position, -Vector3.up);
+        footstepTime = footstepTimeInterval;
     }
 
     void CheckInput()
@@ -174,6 +179,8 @@ public class MovementController : MonoBehaviour
         StateUpdate();
         CapSpeed();
         //Apply Movement Speed Modifiers
+
+        MovementAudio();
 
         //Move. Then check collision flags and do collision resolution.
         CollisionFlags flags = _cc.Move(velocity * Time.deltaTime);
@@ -353,6 +360,26 @@ public class MovementController : MonoBehaviour
         if (Math.Abs(velocity.y) > maxFallSpeed && velocity.y < 0)
         {
             velocity.y = -maxFallSpeed;
+        }
+    }
+    #endregion
+
+    #region Audio
+    private void MovementAudio()
+    {
+        switch (CurrentMotionState)
+        {
+            case MotionState.Running:
+                float time = footstepTimeInterval;
+                if (footstepTime > 0)
+                    footstepTime -= Time.deltaTime;
+                else
+                {
+                    Debug.Log("Step");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Run", this.transform.position);
+                    footstepTime = footstepTimeInterval;
+                }
+                break;
         }
     }
     #endregion
