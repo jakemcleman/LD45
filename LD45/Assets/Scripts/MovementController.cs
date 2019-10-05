@@ -271,6 +271,8 @@ public class MovementController : MonoBehaviour
 
             Grounded = false;
             ChangeMotionState(MotionState.Jump);
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Jump", this.transform.position);
         }
     }
 
@@ -405,7 +407,6 @@ public class MovementController : MonoBehaviour
         switch (CurrentMotionState)
         {
             case MotionState.Running:
-                float time = footstepTimeInterval;
                 if (footstepTime > 0)
                     footstepTime -= Time.deltaTime;
                 else
