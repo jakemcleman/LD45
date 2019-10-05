@@ -62,6 +62,8 @@ public class Health : MonoBehaviour
 
         curHealth -= amount * damageMultiplier;
 
+        Debug.Log(HealthRatio);
+
         if(curHealth <= 0)
         {
             // TODO: die

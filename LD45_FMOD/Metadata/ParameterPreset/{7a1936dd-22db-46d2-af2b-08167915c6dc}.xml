@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.00.00">
-	<object class="ParameterPreset" id="{e4c4fac4-f036-45b1-adb8-df2f28a862fe}">
+	<object class="ParameterPreset" id="{7a1936dd-22db-46d2-af2b-08167915c6dc}">
 		<property name="name">
-			<value>Test_Weapon_Ammo</value>
+			<value>MG_Ammo</value>
 		</property>
 		<relationship name="folder">
 			<destination>{32a205ae-9ed5-4d80-9b20-b23097f2950f}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{e84c7d78-54a7-48ef-9940-905e5e3c89f8}</destination>
+			<destination>{165f9813-ab3f-4bce-a4c2-11e37cfacab2}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{e84c7d78-54a7-48ef-9940-905e5e3c89f8}">
+	<object class="GameParameter" id="{165f9813-ab3f-4bce-a4c2-11e37cfacab2}">
 		<property name="initialValue">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<property name="isExposedRecursively">
 			<value>false</value>

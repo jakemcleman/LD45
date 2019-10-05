@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_event: event:/States/State_LowHealth
+  health_param: Player_Health
 --- !u!114 &1799625302
 MonoBehaviour:
   m_ObjectHideFlags: 0
