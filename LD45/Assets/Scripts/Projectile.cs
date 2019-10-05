@@ -59,8 +59,6 @@ public class Projectile : MonoBehaviour
         if(otherHealth)
         {
             bool killed = otherHealth.TakeDamage(damageAmount);
-            if(killed) Debug.Log("Target destroyed");
-            else Debug.Log("Did damage");
         }
 
         Destroy(gameObject);
