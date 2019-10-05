@@ -956,17 +956,37 @@ PrefabInstance:
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: gravity
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: maxGroundSpeed
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: maxAirSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: airDeceleration
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: airAcceleration
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: jumpSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007395565380830701, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: wallRunSpeed
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
