@@ -565,7 +565,7 @@ public class MovementController : MonoBehaviour
                 else
                 {
                     _wallRunDir = wallRunSpeed * RemoveProjection(forward, _dirToWall).normalized;
-                    Debug.Log($"[Wallrun Update] Wallrun across. {_wallRunDir}");
+                    //Debug.Log($"[Wallrun Update] Wallrun across. {_wallRunDir}");
                 }
                 
 
