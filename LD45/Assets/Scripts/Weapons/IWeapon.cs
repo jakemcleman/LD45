@@ -43,4 +43,9 @@ public interface IWeapon
      *  Maximum ammunition this weapon can hold in # of shots
      */
     float GetMaxAmmo();
+
+    /*
+     * Reload Progress
+     */
+    float GetReloadProgress();
 }

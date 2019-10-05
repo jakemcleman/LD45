@@ -54,6 +54,18 @@ public class Weapon_Shotgun : MonoBehaviour, IWeapon
         return maxAmmo;
     }
 
+    public float GetReloadProgress()
+    {
+        if (reloading)
+        {
+            return cooldownClock/reloadTime;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
     {
         if (!tryAuto && cooldownClock >= shotCooldownTime && !reloading)

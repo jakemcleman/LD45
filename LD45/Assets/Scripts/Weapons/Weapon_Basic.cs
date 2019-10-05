@@ -39,6 +39,11 @@ public class Weapon_Basic : MonoBehaviour, IWeapon
     public float GetMaxAmmo()
     {
         return maxAmmo;
+    } 
+
+    public float GetReloadProgress()
+    {
+        return 1;
     }
 
     public bool PrimaryFire(WeaponWielder firer, bool tryAuto)
