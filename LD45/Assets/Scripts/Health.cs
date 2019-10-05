@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float maxHealth;
-    public float damageMultiplier;
+    public float maxHealth = 100;
+    public float damageMultiplier = 1;
 
     private float curHealth;
 
@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
 
         curHealth -= amount * damageMultiplier;
 
-        if(curHealth < 0)
+        if(curHealth <= 0)
         {
             // TODO: die
             return true;

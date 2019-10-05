@@ -16,6 +16,14 @@ public class Projectile : MonoBehaviour
 
     // Normalized direction this projectile should move in
     public Vector3 direction;
+    
+    public float Timeout = 30;
+
+    private void Start()
+    {
+        // Projectile should only live for <timeout> seconds
+        Destroy(gameObject, Timeout);
+    }
 
     private void Update()
     {
@@ -23,13 +31,17 @@ public class Projectile : MonoBehaviour
         transform.position += (speed * Time.deltaTime) * direction;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Health otherHealth = collision.gameObject.GetComponent<Health>();
+        Health otherHealth = other.gameObject.GetComponent<Health>();
+
+        Debug.Log("Collided");
 
         if(otherHealth)
         {
-            otherHealth.TakeDamage(damageAmount);
+            bool killed = otherHealth.TakeDamage(damageAmount);
+            if(killed) Debug.Log("Target destroyed");
+            else Debug.Log("Did damage");
         }
 
         Destroy(gameObject);
