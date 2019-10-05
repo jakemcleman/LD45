@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8439595526407936029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Jump
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Jump
+  guid: 9d6544c343b41a45a684c3b9444dcd5a
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 360
 --- !u!114 &-7996316042471380210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22,6 +45,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-7601636515150073959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestEvent
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestEvent
+  guid: efd6b27f1a0c9348a10f58f165f6d63b
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 600
 --- !u!114 &-6161976778196060347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +157,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 600
+--- !u!114 &-4762644968445298051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/None_Fire
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/None_Fire
+  guid: 73d7c88af4bc0547a6c29202f2742ac7
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4104411685009487930}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-4221515930825154180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +204,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 600
+--- !u!114 &-3331746304966818946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Test_Weapon_Fire/Test_Weapon_Ammo
+  m_EditorClassIdentifier: 
+  Name: Test_Weapon_Ammo
+  Min: 0
+  Max: 1
+  Default: 1
+  Exists: 1
 --- !u!114 &-2924473470788476563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +240,46 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1054
+  Exists: 1
+--- !u!114 &-2325664251800984107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Run
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Run
+  guid: 84836241cf6f5f4b9e88c017854aee2e
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 900
+--- !u!114 &-1803654245265112432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/State_LowHealth/Player_Health
+  m_EditorClassIdentifier: 
+  Name: Player_Health
+  Min: 0
+  Max: 1
+  Default: 1
   Exists: 1
 --- !u!114 &-1152850106042929364
 MonoBehaviour:
@@ -190,17 +317,196 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -2924473470788476563}
-  - {fileID: -5627060715781492462}
+  - {fileID: 2501295624435244481}
+  - {fileID: 3498093029976344971}
   EditorEvents:
-  - {fileID: -6161976778196060347}
-  - {fileID: -4221515930825154180}
-  - {fileID: -5533728651103687249}
-  - {fileID: -1152850106042929364}
+  - {fileID: -2325664251800984107}
+  - {fileID: 5042340002383062160}
+  - {fileID: -8439595526407936029}
+  - {fileID: -7601636515150073959}
+  - {fileID: 3067519354318343156}
+  - {fileID: -4762644968445298051}
+  - {fileID: 6510625210542118806}
+  - {fileID: 383980525568383721}
+  - {fileID: 5425607545223030304}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5627060715781492462}
+  - {fileID: 3498093029976344971}
   StringsBanks:
-  - {fileID: -2924473470788476563}
-  stringsBankWriteTime: 637058224821822925
+  - {fileID: 2501295624435244481}
+  stringsBankWriteTime: 637058286116427681
   cacheVersion: 3
+--- !u!114 &383980525568383721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Test_Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Test_Music
+  guid: b8e6adc5e535074a9e570a2804d128f2
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 192052
+--- !u!114 &2501295624435244481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/woope/Documents/Repositories/LD45/LD45_FMOD/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637058286116427681
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1490
+  Exists: 1
+--- !u!114 &3067519354318343156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/States/State_LowHealth
+  m_EditorClassIdentifier: 
+  Path: event:/States/State_LowHealth
+  guid: 46d39ca514bd684f8047410dbce32844
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1803654245265112432}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 10000
+--- !u!114 &3498093029976344971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/woope/Documents/Repositories/LD45/LD45_FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637058286116417684
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 3505152
+  Exists: 1
+--- !u!114 &4104411685009487930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/None_Fire/None_Ammo
+  m_EditorClassIdentifier: 
+  Name: None_Ammo
+  Min: 0
+  Max: 1
+  Default: 1
+  Exists: 1
+--- !u!114 &5042340002383062160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test/TestRain
+  m_EditorClassIdentifier: 
+  Path: event:/Test/TestRain
+  guid: 9b8aa14d76a3ba4689772a7cc684914c
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 57459
+--- !u!114 &5425607545223030304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/Test_Weapon_Fire
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/Test_Weapon_Fire
+  guid: f08ac4c517b72d4da0b4b7cf5ab93a35
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3331746304966818946}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2167
+--- !u!114 &6510625210542118806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Low_Health
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Low_Health
+  guid: a054de5554f4fd4c972147f3dd43a985
+  Banks:
+  - {fileID: 3498093029976344971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
