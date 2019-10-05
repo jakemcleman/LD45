@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1864453267272116104}
   - component: {fileID: 6858616819669124418}
   - component: {fileID: 6174382785220346676}
-  - component: {fileID: 8924937419040931488}
+  - component: {fileID: 33203095}
+  - component: {fileID: 518376489411258067}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -106,9 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d62e311b9e07e43b1c90892680f71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 10
   damageMultiplier: 1
---- !u!54 &8924937419040931488
+--- !u!54 &33203095
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +126,21 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &518376489411258067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304458281569771077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48e8939b4baa794ba4814ad4ce80a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOnDeath: []
