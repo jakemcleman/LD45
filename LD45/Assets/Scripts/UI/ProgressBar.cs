@@ -27,7 +27,7 @@ public class ProgressBar : MonoBehaviour
     {
         float curT_ = 0.0f;
 
-        progressBarUI_ = GetComponentInChildren<Image>();
+        progressBarUI_ = GetComponent<Image>();
 
         progressBarUI_.fillAmount = curT_;
     }

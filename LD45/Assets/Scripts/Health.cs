@@ -36,6 +36,10 @@ public class Health : MonoBehaviour
     private void Start()
     {
         curHealth = maxHealth;
+
+        HealthChangeEvent healthChange;
+        healthChange.amount = 0;
+        onHealthChange.Invoke(healthChange);
     }
 
     private void Update()
@@ -83,7 +87,12 @@ public class Health : MonoBehaviour
     public bool Heal(float amount) 
     {
         // Check if healing is possible to avoid wasting health packs
-        if(amount == 0 || curHealth >= maxHealth) return false;
+        if(amount == 0 || curHealth >= maxHealth)
+        {
+            Debug.Log("No Heal :(");
+            return false;
+        }
+            
 
         if (Debug.isDebugBuild) 
         {
@@ -93,6 +102,7 @@ public class Health : MonoBehaviour
         HealthChangeEvent healthChange;
         healthChange.amount = amount;
         onHealthChange.Invoke(healthChange);
+        Debug.Log("Heal"+healthChange);
 
         curHealth += amount;
 
