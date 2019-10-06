@@ -98,6 +98,8 @@ MonoBehaviour:
   speed: 100
   direction: {x: 0, y: 0, z: 0}
   Timeout: 5
+  persistAfterHitTime: 1
+  hasHit: 0
 --- !u!135 &1441780373982579452
 SphereCollider:
   m_ObjectHideFlags: 0
