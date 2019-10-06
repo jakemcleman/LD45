@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         Respawn();
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         health.Heal(health.maxHealth);
         health_state.setParameterByName("Player_Health", 1.0f);
