@@ -624,7 +624,7 @@ MonoBehaviour:
   wallRunMaxTime: 2
   wallRunSpeed: 30
   wallRunRegrabTime: 1
-  footstepTimeInterval: 0.5
+  footstepTimeInterval: 0.4
   _currMotionState: 0
   _enableGravity: 1
   onMotionStateEvent:
