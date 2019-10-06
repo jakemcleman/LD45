@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3859790203982412636}
   - component: {fileID: 3859790203982412634}
   - component: {fileID: 3859790203982412637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +183,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3852117493834189646, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 815707119955003751, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317070013962735063, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795264434285969598, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: maxSightRange
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: maxBarrelElevation
+      value: 18.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: minBarrelDepression
+      value: 18.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
         type: 3}
       propertyPath: limitYaw
@@ -197,21 +232,6 @@ PrefabInstance:
         type: 3}
       propertyPath: rightYawLimit
       value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
-        type: 3}
-      propertyPath: maxBarrelElevation
-      value: 18.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
-        type: 3}
-      propertyPath: minBarrelDepression
-      value: 18.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
-        type: 3}
-      propertyPath: maxSightRange
-      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d0e8f4e499810c499bb4904a8d8d5ab, type: 3}
@@ -232,6 +252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_Blimp_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8c637bd6f0bb40b48a77cbf147156381,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8c637bd6f0bb40b48a77cbf147156381,
         type: 3}
@@ -363,6 +388,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 469828518833057261, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
       propertyPath: maxBarrelElevation
@@ -447,6 +477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 641708103304221266, guid: 4599352ffdaeda14aa49458a0b8412ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4221791196435824409, guid: 4599352ffdaeda14aa49458a0b8412ad,
         type: 3}
@@ -552,6 +587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 469828518833057261, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
