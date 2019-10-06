@@ -5,7 +5,7 @@
 			<value>Bullet_Passby</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>5</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b628c438-85e4-4370-a440-7c0d153032d2}</destination>
@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>0.28999999999999998</value>
 		</property>
+		<property name="startOffset">
+			<value>5.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{ce543706-6648-4ca4-a356-c51fb1306c7b}</destination>
 			<destination>{a071c5f7-c7ff-49a9-9d52-e21fed5ae1cd}</destination>
@@ -135,7 +138,17 @@
 			<destination>{87ae3bf2-5049-4a76-8ff8-494b82c0c03c}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{ed33af52-ed16-4a1a-80e2-d56e37bfb374}" />
+	<object class="MixerBusPanner" id="{ed33af52-ed16-4a1a-80e2-d56e37bfb374}">
+		<property name="surroundPanDirection">
+			<value>-172.059937</value>
+		</property>
+		<property name="overridingOutputFormat">
+			<value>5</value>
+		</property>
+		<property name="outputFormatOverridden">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{450f0ed0-6612-49d2-b665-7cd78ae2beba}" />
 	<object class="RandomizerModulator" id="{ce543706-6648-4ca4-a356-c51fb1306c7b}">
 		<property name="nameOfPropertyBeingModulated">
@@ -218,7 +231,7 @@
 			<value>6.14999962</value>
 		</property>
 		<property name="maximumDistance">
-			<value>75</value>
+			<value>25</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{b05fd568-f70a-4a34-a4fb-9148ca2c532b}">
@@ -234,7 +247,7 @@
 	</object>
 	<object class="AutomationPoint" id="{1e2ae7a1-188d-4438-8a60-0e5dbfa8a86b}">
 		<property name="position">
-			<value>0.044999999999999978</value>
+			<value>0.025000000000000001</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -253,7 +266,7 @@
 	</object>
 	<object class="AutomationPoint" id="{6fe576a5-c767-48df-af6f-333d08b4abeb}">
 		<property name="position">
-			<value>0.28999999999999992</value>
+			<value>0.28999999999999981</value>
 		</property>
 		<property name="value">
 			<value>0</value>
