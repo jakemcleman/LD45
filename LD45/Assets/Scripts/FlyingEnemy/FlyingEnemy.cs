@@ -67,8 +67,6 @@ public class FlyingEnemy: MonoBehaviour
         {
             if (retreatCounter >= retreatTime)
             {
-                Debug.Log("retreatCounter " + retreatCounter);
-                Debug.Log("retreatTime " + retreatTime);
                 ChangeFlyingEnemyState(FlyingEnemyState.Attacking);
                 retreatCounter = 0;
             }
@@ -144,7 +142,6 @@ public class FlyingEnemy: MonoBehaviour
     #region FlyingEnemyStates
     void ChangeFlyingEnemyState(FlyingEnemyState nextState)
     {
-        Debug.Log("Changing to " + nextState);
         if (!_transitionBlocked)
         {
             if (_curState != nextState)
