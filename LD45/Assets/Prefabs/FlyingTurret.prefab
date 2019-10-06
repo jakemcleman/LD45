@@ -120,6 +120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+--- !u!114 &1099153482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978769582285801503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccff3d71de285af469094272a3c83840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinRate: 720
 --- !u!1001 &2439040409549213974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +202,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4cffe5dd2ea38d40aa88792e53f9898, type: 3}
+--- !u!1 &5978769582285801503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+    type: 3}
+  m_PrefabInstance: {fileID: 2439040409549213974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7251783427053632012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
