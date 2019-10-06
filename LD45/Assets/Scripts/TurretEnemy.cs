@@ -48,6 +48,12 @@ public class TurretEnemy : MonoBehaviour
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject target = PickTarget(potentialTargets);
+        
+        AimAndShoot(target);
+    }
+
+    protected void AimAndShoot(GameObject target)
+    {
         float distanceToTarget = Vector3.Distance(transform.position, aimPoint);
         if(target != null)
         {
@@ -93,7 +99,7 @@ public class TurretEnemy : MonoBehaviour
         }
     }
     
-    private void FireWeapons()
+    protected void FireWeapons()
     {
         if(autoFire)
         {
@@ -114,16 +120,16 @@ public class TurretEnemy : MonoBehaviour
         }
     }
 
-    private void RotateBaseTowardsTarget(Vector3 targetPos)
+    protected void RotateBaseTowardsTarget(Vector3 targetPos)
     {
         Vector3 towardsTarget = targetPos - transform.position;
         towardsTarget.y = 0;
         
         Quaternion lookRotation = Quaternion.LookRotation(towardsTarget.normalized);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, yawRate * Time.deltaTime);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, yawRate * Time.deltaTime);
     }
 
-    private void RotateArmsToTarget(Vector3 targetPos)
+    protected void RotateArmsToTarget(Vector3 targetPos)
     {
         Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
         localTargetPos.x = 0.0f;
@@ -146,7 +152,7 @@ public class TurretEnemy : MonoBehaviour
         }
     }
 
-    private bool IsAimingAtTarget(Vector3 targetPos)
+    protected bool IsAimingAtTarget(Vector3 targetPos)
     {
         Vector3 towardsTarget = (targetPos - transform.position).normalized;
     
@@ -180,7 +186,7 @@ public class TurretEnemy : MonoBehaviour
         return false;
     }
 
-    private GameObject PickTarget(GameObject[] Targets) 
+    protected GameObject PickTarget(GameObject[] Targets) 
     {
         float bestDist = maxSightRange;
         GameObject best = null;

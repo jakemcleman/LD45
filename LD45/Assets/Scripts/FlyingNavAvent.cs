@@ -101,10 +101,13 @@ public class FlyingNavAvent : MonoBehaviour
             TestSolution(Vector3.Cross(velocity.normalized, Vector3.up), ref possibleAdjustments);
             // Try going left
             TestSolution(-Vector3.Cross(velocity.normalized, Vector3.up), ref possibleAdjustments);
-            // Try going up
+            // Try all 6 basic directions
             TestSolution(Vector3.up, ref possibleAdjustments);
-            // Try going down
             TestSolution(Vector3.down, ref possibleAdjustments);
+            TestSolution(Vector3.left, ref possibleAdjustments);
+            TestSolution(Vector3.right, ref possibleAdjustments);
+            TestSolution(Vector3.forward, ref possibleAdjustments);
+            TestSolution(Vector3.back, ref possibleAdjustments);
 
             if(possibleAdjustments.Count == 0) 
             {
@@ -127,7 +130,7 @@ public class FlyingNavAvent : MonoBehaviour
                 }
 
 
-                Debug.Log("Best avoidance solution is " + bestSolution);
+                //Debug.Log("Best avoidance solution is " + bestSolution);
                 Accelerate(bestSolution);
             }
         }
