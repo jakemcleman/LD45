@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour
         float distance = (speed * Time.deltaTime) * 1.5f; // Add a little wiggle room
         Vector3 direction = (nextPosition - transform.position).normalized;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, direction, out hit, distance, ~0)) 
+        if(Physics.Raycast(transform.position, direction, out hit, distance, ~0, QueryTriggerInteraction.Ignore)) 
         {
             OnHitSomething(hit.transform.gameObject);
             return true;

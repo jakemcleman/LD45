@@ -108,12 +108,11 @@ public class MovementController : MonoBehaviour
 
     public void ResetState()
     {
-        _cc = GetComponent<CharacterController>();
-        _camera = GetComponent<PlayerCameraController>();
         _currMotionState = MotionState.Falling;
         _numJumpsRemaining = numJumps;
         _uncapHorizontalSpeed = false;
         _wallResetTimer = wallRunRegrabTime;
+        _velocity = Vector3.zero;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -156,6 +155,9 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _cc = GetComponent<CharacterController>();
+        _camera = GetComponent<PlayerCameraController>();
+
         ResetState();
 
         _currHeight = normalHeight;
