@@ -18,6 +18,8 @@ public class ObjectPoofer : MonoBehaviour
     {
         endPosition = this.transform.position;
         this.transform.position = poofFromVector;
+
+        this.gameObject.SetActive(false);
     }
 
     public void StartPoofIn()
