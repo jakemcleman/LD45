@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4221791196435824409}
   - component: {fileID: 7652952687628688267}
   - component: {fileID: 1217541683608974279}
+  - component: {fileID: 5170650681693587872}
   m_Layer: 8
   m_Name: TurretBase
   m_TagString: Untagged
@@ -151,6 +152,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+--- !u!114 &5170650681693587872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453908759513769434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf5be19f62782a48b009c521e747b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashDuration: 0.2
+  toFlash:
+  - {fileID: 319704018608481111}
+  - {fileID: 1214590990353049230}
+  ShakeMagnitude: 0.1
+  flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
 --- !u!1 &4437752948997840870
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +321,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8030738400098193026}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &319704018608481111 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 053cd77dd3356404ebb2f8cf9a371dbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8030738400098193026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8918854632894057307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,6 +414,12 @@ PrefabInstance:
 --- !u!4 &4520655004065259585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 93350ab4e78563941a22a74fb8e50f64,
+    type: 3}
+  m_PrefabInstance: {fileID: 8918854632894057307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1214590990353049230 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 93350ab4e78563941a22a74fb8e50f64,
     type: 3}
   m_PrefabInstance: {fileID: 8918854632894057307}
   m_PrefabAsset: {fileID: 0}
