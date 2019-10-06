@@ -48,6 +48,32 @@ public class TurretEnemy : MonoBehaviour
         Gizmos.DrawLine(transform.position, aimPoint);
     }
 
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+
+        foreach(WeaponWielder weapon in weapons)
+        {
+            if(limitYaw)
+            {
+                Gizmos.color = Color.green;
+                Vector3 leftExtent = 10.0f * (Quaternion.AngleAxis(-leftYawLimit, transform.up) * transform.forward);
+                Vector3 rightExtent = 10.0f * (Quaternion.AngleAxis(rightYawLimit, transform.up) * transform.forward);
+                Gizmos.DrawRay(transform.position, leftExtent);
+                Gizmos.DrawRay(transform.position, rightExtent);
+            }
+
+            Gizmos.color = Color.red;
+            Vector3 upExtent = 10.0f * (Quaternion.AngleAxis(-maxBarrelElevation, transform.right) * transform.forward);
+            Vector3 downExtent = 10.0f * (Quaternion.AngleAxis(minBarrelDepression, transform.right) * transform.forward);
+            Gizmos.DrawRay(weapon.transform.position, upExtent);
+            Gizmos.DrawRay(weapon.transform.position, downExtent);
+        }
+
+        
+    }
+
     private void Update()
     {
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
@@ -103,6 +129,7 @@ public class TurretEnemy : MonoBehaviour
             FireWeapons();
         }
     }
+
     
     protected void FireWeapons()
     {
