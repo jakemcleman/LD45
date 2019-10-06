@@ -63,6 +63,9 @@ public class PlayerCameraController : MonoBehaviour
     private Vector3 lookTo;
     private Vector3 originalForward;
 
+    public float maxPitchDegrees = 80;
+    public float minPitchDegrees = -80;
+
     void OnEnable()
     {
         // Hide and lock cursor
@@ -95,6 +98,9 @@ public class PlayerCameraController : MonoBehaviour
 
             m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
             m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+            m_TargetCameraState.pitch = Mathf.Clamp(m_TargetCameraState.pitch, minPitchDegrees, maxPitchDegrees);
+
+            Debug.Log("Ptich " + m_TargetCameraState.pitch);
 
             // Framerate-independent interpolation
             // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time

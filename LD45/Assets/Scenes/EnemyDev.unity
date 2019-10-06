@@ -3595,6 +3595,8 @@ MonoBehaviour:
   rotationLerpTime: 0.01
   invertY: 0
   quickTurnTime: 0.25
+  maxPitchDegrees: 80
+  minPitchDegrees: -80
 --- !u!114 &2041421067
 MonoBehaviour:
   m_ObjectHideFlags: 0
