@@ -126,7 +126,7 @@ public class TurretEnemy : MonoBehaviour
         towardsTarget.y = 0;
         
         Quaternion lookRotation = Quaternion.LookRotation(towardsTarget.normalized);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, yawRate * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, yawRate * Time.deltaTime);
     }
 
     protected void RotateArmsToTarget(Vector3 targetPos)
