@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1269634801341684084}
   - component: {fileID: 6187114744155617741}
   - component: {fileID: 2041328224310960924}
+  - component: {fileID: 8062882907415282290}
   m_Layer: 8
   m_Name: TurretBody
   m_TagString: Untagged
@@ -112,7 +113,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48e8939b4baa794ba4814ad4ce80a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnDeath: []
+  spawnOnDeath:
+  - {fileID: 5047595622370274054, guid: 58e3882ba7d6e784c83589ae96d110dd, type: 3}
+--- !u!114 &8062882907415282290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201950692396505241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf5be19f62782a48b009c521e747b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashDuration: 0.2
+  toFlash:
+  - {fileID: 5760547521047601557}
+  - {fileID: 5488850222776265770}
+  - {fileID: 5700102939269068800}
+  ShakeMagnitude: 0.1
+  flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
 --- !u!1 &8639986346459596227
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +314,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8639986346459596226}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -348,21 +379,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911015f0480dbe8489faae71e0eb1c73, type: 3}
 --- !u!4 &7024870741771173583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
+    type: 3}
+  m_PrefabInstance: {fileID: 2596305904632042965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5700102939269068800 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 911015f0480dbe8489faae71e0eb1c73,
     type: 3}
   m_PrefabInstance: {fileID: 2596305904632042965}
   m_PrefabAsset: {fileID: 0}
@@ -441,6 +468,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2660686652087848000}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5760547521047601557 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 489d6a7a9c3a2e64582010db8a38a482,
+    type: 3}
+  m_PrefabInstance: {fileID: 2660686652087848000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2824156263338361343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,6 +481,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8639986346899252116}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,21 +546,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911015f0480dbe8489faae71e0eb1c73, type: 3}
 --- !u!4 &7083001018239412965 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
+    type: 3}
+  m_PrefabInstance: {fileID: 2824156263338361343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5488850222776265770 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 911015f0480dbe8489faae71e0eb1c73,
     type: 3}
   m_PrefabInstance: {fileID: 2824156263338361343}
   m_PrefabAsset: {fileID: 0}
