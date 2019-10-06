@@ -622,8 +622,43 @@ MonoBehaviour:
   normalHeight: 2
   crouchHeight: 1
   wallRunMaxTime: 2
-  wallRunSpeed: 30
+  wallRunBaseSpeed: 30
   wallRunRegrabTime: 1
+  wallRunVerticalDrift:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: 0.08665421
+      outSlope: 0.08665421
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14322579
+      outWeight: 0.19523638
+    - serializedVersion: 3
+      time: 1
+      value: -0.5
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  wallClimbMaxTime: 2
+  wallClimbSpeed: 10
   footstepTimeInterval: 0.4
   _currMotionState: 0
   _enableGravity: 1

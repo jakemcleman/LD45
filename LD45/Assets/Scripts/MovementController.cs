@@ -40,9 +40,13 @@ public class MovementController : MonoBehaviour
     public float normalHeight;
     public float crouchHeight;
 
-    public float wallRunMaxTime;
-    public float wallRunSpeed;
-    public float wallRunRegrabTime;
+    public float wallRunMaxTime = 2.0f;
+    public float wallRunBaseSpeed = 30.0f;
+    public float wallRunRegrabTime = 2.0f;
+    public AnimationCurve wallRunVerticalDrift;
+
+    public float wallClimbMaxTime = 2.0f;
+    public float wallClimbSpeed = 10.0f;
 
     public float footstepTimeInterval = 0.5f;
 
@@ -65,9 +69,12 @@ public class MovementController : MonoBehaviour
 
     private CharacterController _cc;
     private PlayerCameraController _camera;
+
     private Vector3 _motion;
     private float _speedModifier;
     private float _wallRunTimer;
+    private float _wallRunSpeed;
+    private float _wallClimbTimer;
     private Vector3 _dirToWall;
     private Vector3 _wallRunDir;
     private float _wallResetTimer;
@@ -149,7 +156,16 @@ public class MovementController : MonoBehaviour
             if (CanWallTech(hit.normal))
             {
                 Vector3 horizontalForward = RemoveUpDir(transform.forward);
-                StartWallrun(horizontalForward, hit.normal);
+                //Angle between normal and forward
+                float angle = Vector3.Angle(-hit.normal, horizontalForward);
+                if (angle < 30.0f)
+                {
+                    StartWallclimb(horizontalForward, hit.normal);
+                }
+                else
+                {
+                    StartWallrun(horizontalForward, hit.normal);
+                }
             }
         }
     }
@@ -247,6 +263,11 @@ public class MovementController : MonoBehaviour
         switch(_currMotionState)
         {
             case MotionState.Wallrun:
+            {
+                _enableGravity = false;
+                break;
+            }
+            case MotionState.Wallclimb:
             {
                 _enableGravity = false;
                 break;
@@ -398,6 +419,9 @@ public class MovementController : MonoBehaviour
                 WallrunUpdate();
                 //Wallrun Update
                 break;
+            case MotionState.Wallclimb:
+                WallclimbUpdate();
+                break;
             default:
                 _transitionBlocked = false;
                 break;
@@ -494,6 +518,12 @@ public class MovementController : MonoBehaviour
                     _wallResetTimer = wallRunRegrabTime;
                     break;
             }
+            case MotionState.Wallclimb:
+            {
+                    _enableGravity = true;
+                    _wallResetTimer = wallRunRegrabTime;
+                    break;
+            }
             default:
             {
                     break;
@@ -507,7 +537,12 @@ public class MovementController : MonoBehaviour
             {
                     _wallRunTimer = wallRunMaxTime;
                     _transitionBlocked = true;
-                    _wallRunDir = Vector3.zero;
+                    break;
+            }
+            case MotionState.Wallclimb:
+            {
+                    _wallClimbTimer = wallClimbMaxTime;
+                    _transitionBlocked = true;
                     break;
             }
             default:
@@ -553,7 +588,7 @@ public class MovementController : MonoBehaviour
     bool InWallTech()
     {
         return _currMotionState == MotionState.Wallrun
-            || _currMotionState == MotionState.WallrunEnd;
+            || _currMotionState == MotionState.Wallclimb;
     }
     #endregion
 
@@ -582,34 +617,14 @@ public class MovementController : MonoBehaviour
 
                 //Apply wallrun.
                 Vector3 horizontalVelocity = RemoveUpDir(_velocity);
-                
-                Vector3 forward = RemoveUpDir(transform.forward);
-                //For not looking towards wall.
-                if (Vector3.Dot(forward, _dirToWall) < 0)
-                {
-                    //Wall run dir not set, move up.
-                    if (Utility.Close(_wallRunDir, Vector3.zero))
-                    {
-                        _wallRunDir = new Vector3(0, wallRunSpeed);
-                    }
-
-                }
-                //If looking within 30 degrees of wall
-                else if (Vector3.Angle(forward, _dirToWall) < 30)
-                {
-                    //Debug.Log($"[Wallrun Update] Should move straight up.");
-                    _wallRunDir = new Vector3(0, wallRunSpeed);
-                }
-                else
-                {
-                    _wallRunDir = wallRunSpeed * RemoveProjection(forward, _dirToWall).normalized;
-                    //Debug.Log($"[Wallrun Update] Wallrun across. {_wallRunDir}");
-                }
-                
-
-                _velocity = _wallRunDir;
-                
+                _velocity = _wallRunDir * _wallRunSpeed;
                 _uncapHorizontalSpeed = true;
+
+                float t = 1 - (_wallRunTimer / wallRunMaxTime);
+                float verticalSpeed = _velocity.magnitude * 0.1f;
+                _velocity.y = verticalSpeed * wallRunVerticalDrift.Evaluate(t);
+                Debug.Log($"t:{t}. Curve eval:{wallRunVerticalDrift.Evaluate(t)} vertVel:{_velocity.y}");
+
             }
             else //Else drop off
             {
@@ -637,6 +652,60 @@ public class MovementController : MonoBehaviour
         else
         {
             //Debug.Log("[Wallrun Update] Timeout");
+            _transitionBlocked = false;
+            ChangeMotionState(MotionState.Falling);
+        }
+    }
+    
+    void WallclimbUpdate()
+    {
+        _transitionBlocked = true;
+        _wallClimbTimer -= Time.deltaTime;
+        if (_wallClimbTimer >= 0.0f)
+        {
+            float raycastLength = 2 * _cc.radius;
+            _ray.origin = transform.position;
+            _ray.direction = _dirToWall;
+            if (Physics.Raycast(_ray, out _hitInfo, raycastLength)) //If still there, keep climbing
+            {
+                if (_wallClimbTimer <= 1.0f)
+                {
+                    _velocity = Vector3.up * (wallClimbSpeed * _wallClimbTimer);
+                }
+                else
+                {
+                    _velocity = Vector3.up * wallClimbSpeed;
+                }
+
+                //Ledgegrab here?
+            }
+            else //Else drop off
+            {
+                //Debug.Log($"[Wallclimb Update] Fall off.");
+                _dirToWall = Vector3.zero;
+                _transitionBlocked = false;
+                ChangeMotionState(MotionState.Falling);
+                return;
+            }
+
+            if (JumpIsTriggered())
+            {
+                //TODO: Make this not all happen at once, delay the triggered input and or other stuff.
+                if (_wallClimbTimer < wallClimbMaxTime - 0.25f)
+                {
+                    //Debug.Log("[Wallclimb Update] Jump");
+                    _transitionBlocked = false;
+                    _numJumpsRemaining++;
+                    Jump();
+
+                    Vector3 horizontalLaunch = -_dirToWall * maxAirSpeed;
+                    _velocity += horizontalLaunch;
+                }
+            }
+        }
+        else
+        {
+            //Debug.Log("[Wallclimb Update] Timeout");
             _transitionBlocked = false;
             ChangeMotionState(MotionState.Falling);
         }
@@ -676,15 +745,26 @@ public class MovementController : MonoBehaviour
         if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
         {
             _dirToWall = -surfaceNormal;
-            Vector3 horizontalVelocity = RemoveUpDir(_velocity).normalized;
-            Vector3 wallRunDir = (horizontalVelocity - Vector3.Project(horizontalVelocity, -surfaceNormal)).normalized;
+            Vector3 horizontalVelocity = RemoveUpDir(_velocity);
+            _wallRunDir = (horizontalVelocity - Vector3.Project(horizontalVelocity, -surfaceNormal)).normalized;
 
-            float wallRunSpeed = horizontalVelocity.magnitude;
-            if (wallRunSpeed < maxGroundSpeed)
+            _wallRunSpeed = horizontalVelocity.magnitude;
+            if (_wallRunSpeed < wallRunBaseSpeed)
             {
-                wallRunSpeed = maxGroundSpeed;
+                _wallRunSpeed = wallRunBaseSpeed;
             }
             ChangeMotionState(MotionState.Wallrun);
+        }
+    }
+
+    void StartWallclimb(Vector3 horizontalForward, Vector3 surfaceNormal)
+    {
+        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(horizontalForward, surfaceNormal).normalized);
+        if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
+        {
+            _dirToWall = -surfaceNormal;
+
+            ChangeMotionState(MotionState.Wallclimb);
         }
     }
     #endregion
