@@ -623,7 +623,7 @@ MonoBehaviour:
   crouchHeight: 1
   wallRunMaxTime: 2
   wallRunBaseSpeed: 30
-  wallRunRegrabTime: 1
+  wallRunRegrabTime: 2
   wallRunVerticalDrift:
     serializedVersion: 2
     m_Curve:
@@ -657,6 +657,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  wallRunVerticalDriftIntensity: 0.5
   wallClimbMaxTime: 2
   wallClimbSpeed: 10
   footstepTimeInterval: 0.4
