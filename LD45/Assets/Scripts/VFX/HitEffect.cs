@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class HitEffect : MonoBehaviour
 {
-    public float FlashDuration = 0.3f;
+    public float FlashDuration = 0.2f;
     private bool isFlashing;
     private Health health;
 
@@ -19,9 +19,9 @@ public class HitEffect : MonoBehaviour
     private Vector3 shakeBasePos;
     private Vector3 shakeDir;
 
-    public float ShakeMagnitude;
+    public float ShakeMagnitude = 0.1f;
 
-    public Color flashColor;
+    public Color flashColor = new Color(1.0f, 0.25f, 0.25f, 0.5f);
 
     private void Start()
     {

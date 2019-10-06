@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5435196925608711088}
   - component: {fileID: 5435196925608711054}
   - component: {fileID: 5435196925608711055}
+  - component: {fileID: 1864174870}
   m_Layer: 0
   m_Name: FlyingTurret
   m_TagString: Untagged
@@ -120,6 +121,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+--- !u!114 &1864174870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435196925608711050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf5be19f62782a48b009c521e747b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashDuration: 0.2
+  toFlash:
+  - {fileID: 1321927222229354001}
+  - {fileID: 5387445685846834371}
+  ShakeMagnitude: 0.1
+  flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
 --- !u!114 &1099153482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +233,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2439040409549213974}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5387445685846834371 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+    type: 3}
+  m_PrefabInstance: {fileID: 2439040409549213974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8738486124147321796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,6 +311,12 @@ PrefabInstance:
 --- !u!4 &4341437168613490910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0aa3b2a8ff856a1479662d882664d350,
+    type: 3}
+  m_PrefabInstance: {fileID: 8738486124147321796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1321927222229354001 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 0aa3b2a8ff856a1479662d882664d350,
     type: 3}
   m_PrefabInstance: {fileID: 8738486124147321796}
   m_PrefabAsset: {fileID: 0}
