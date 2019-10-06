@@ -76,6 +76,8 @@ public class MovementController : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hitInfo;
 
+    private Vector3 externalVelocity;
+
     private float footstepTime;
 
 
@@ -200,6 +202,8 @@ public class MovementController : MonoBehaviour
             _motion.Normalize();
         }
         _velocity = _cc.velocity;
+        _velocity -= externalVelocity;
+        externalVelocity = Vector3.zero;
 
         if (_inputQueue[_inputIndex].quickTurnInput)
             _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? transform.forward : _dirToWall);
@@ -220,7 +224,7 @@ public class MovementController : MonoBehaviour
         MovementAudio();
 
         //Move. Then check collision flags and do collision resolution.
-        CollisionFlags flags = _cc.Move(_velocity * Time.deltaTime);
+        CollisionFlags flags = _cc.Move((_velocity + externalVelocity)* Time.deltaTime);
     }
 
     void UpdateTimers()
@@ -265,10 +269,14 @@ public class MovementController : MonoBehaviour
             }
         }
         // Don't become grounded when moving upwards
-        else if (!Grounded && _velocity.y <= 0)
+        else 
         {
-            Grounded = true;
+            if (!Grounded && _velocity.y <= 0)
+                Grounded = true;
+            externalVelocity = _hitInfo.collider.GetComponent<MovingPlatform>() ?
+                _hitInfo.collider.GetComponent<MovingPlatform>().velocity : Vector3.zero;
         }
+        
 
         if ((!Grounded || InAirState()) && _enableGravity)
         {
