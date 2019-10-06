@@ -69,11 +69,13 @@ public class WeaponWielder : MonoBehaviour
 
     public void Reload()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Reload",
-                                             this.transform.position);
+        if(CurrentWeapon.Reload(this))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Reload",
+                                                 this.transform.position);
 
-        CurrentWeapon.Reload(this);
-        onWeaponReloadEvent.Invoke();
+            onWeaponReloadEvent.Invoke();
+        } 
     }
 
     private void Start()
