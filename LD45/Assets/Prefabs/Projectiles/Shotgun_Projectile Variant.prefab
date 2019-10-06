@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 1708820672937298290, guid: 2bdca240191f2fc40bc84ab56576fa08,
         type: 3}
       propertyPath: m_Name
-      value: Shotgun_Projectile
+      value: Shotgun_Projectile Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708820672937298290, guid: 2bdca240191f2fc40bc84ab56576fa08,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 6946091418818712711, guid: 2bdca240191f2fc40bc84ab56576fa08,
         type: 3}
