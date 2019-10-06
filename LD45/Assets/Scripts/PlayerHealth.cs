@@ -59,7 +59,12 @@ public class PlayerHealth : MonoBehaviour
     {
         health.Heal(health.maxHealth);
         health_state.setParameterByName("Player_Health", 1.0f);
+
+        
+        CharacterController cc = GetComponent<CharacterController>();
+        cc.enabled = false;
         transform.position = respawnPosition;
         transform.forward = respawnFacing;
+        cc.enabled = true;
     }
 }
