@@ -60,11 +60,11 @@ public class PlayerCameraController : MonoBehaviour
         
     public float quickTurnTime = 0.25f;
     private float quickTurnTimer;
-    private Vector3 lookTo;
-    private Vector3 originalForward;
+    private float targetYaw, originalYaw;
 
     public float maxPitchDegrees = 80;
     public float minPitchDegrees = -80;
+
 
     void OnEnable()
     {
@@ -104,32 +104,26 @@ public class PlayerCameraController : MonoBehaviour
             var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
             var rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
             m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
-
-            m_InterpolatingCameraState.UpdateTransform(transform);
         }
+
+        m_InterpolatingCameraState.UpdateTransform(transform);
     }
 
     public void StartQuickTurn(Vector3 dirToWall)
     {
         quickTurnTimer = quickTurnTime;
         float y = transform.forward.y;
-        originalForward = transform.forward;
-        lookTo = -dirToWall;
-        lookTo.y = y;
+        originalYaw = m_TargetCameraState.yaw;
+        targetYaw = originalYaw + 180;
     }
 
     private void QuickTurnUpdate()
     {
         quickTurnTimer -= Time.deltaTime;
         float t = 1 - (quickTurnTimer / quickTurnTime);
-        transform.rotation = Quaternion.Slerp(
-            Quaternion.LookRotation(originalForward, Vector3.up), 
-            Quaternion.LookRotation(lookTo, Vector3.up), 
-            t);
-
-        //If ended
-        m_TargetCameraState.SetFromTransform(transform);
-        m_InterpolatingCameraState.SetFromTransform(transform);
+    
+        m_TargetCameraState.yaw = Mathf.Lerp(originalYaw, targetYaw, t);
+        m_InterpolatingCameraState.yaw = Mathf.Lerp(originalYaw, targetYaw, t);
     }
 
     public bool InQuickTurn()
