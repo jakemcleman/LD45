@@ -59,6 +59,7 @@ public class MovementController : MonoBehaviour
     private Vector3 _acceleration = Vector3.zero;
     private int _numJumpsRemaining = 2;
     private bool _uncapHorizontalSpeed;
+    private float _speedSoftCap;
     private bool _transitionBlocked = false;
     private bool _grounded;
 
@@ -99,6 +100,7 @@ public class MovementController : MonoBehaviour
                 _velocity.y = 0;
                 _dirToWall = Vector3.zero;
                 _wallResetTimer = wallRunRegrabTime;
+                _speedSoftCap = 0;
             }
             _grounded = value;
         }
@@ -203,7 +205,6 @@ public class MovementController : MonoBehaviour
         }
         _velocity = _cc.velocity;
         _velocity -= externalVelocity;
-        externalVelocity = Vector3.zero;
 
         if (_inputQueue[_inputIndex].quickTurnInput)
             _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? transform.forward : _dirToWall);
@@ -290,6 +291,14 @@ public class MovementController : MonoBehaviour
         {
             //Debug.Log("[Jump] Jump Called");
             _velocity.y = jumpSpeed;
+
+            if (!Utility.Close(externalVelocity, Vector3.zero))
+            {
+                _velocity += externalVelocity;
+                externalVelocity = Vector3.zero;
+                _speedSoftCap = _velocity.magnitude;
+            }
+
             --_numJumpsRemaining;
 
             Grounded = false;
@@ -400,7 +409,19 @@ public class MovementController : MonoBehaviour
         Vector3 horizontalVelocity = RemoveUpDir(_velocity);
         float maxSpeed = InAirState() ? maxAirSpeed : maxGroundSpeed;
         float length = horizontalVelocity.magnitude;
-        if (!_uncapHorizontalSpeed)
+
+        if (_speedSoftCap > 0)
+        {
+            if (length > _speedSoftCap)
+            {
+                horizontalVelocity /= length;
+                horizontalVelocity *= _speedSoftCap;
+
+                _velocity.x = horizontalVelocity.x;
+                _velocity.z = horizontalVelocity.z;
+            }
+        }
+        else if (!_uncapHorizontalSpeed)
         {
             if (length > maxSpeed)
             {
