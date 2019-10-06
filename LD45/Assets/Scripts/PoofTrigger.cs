@@ -24,6 +24,7 @@ public class PoofTrigger : MonoBehaviour
                 {
                     foreach (GameObject poof in poofs)
                     {
+                        poof.SetActive(true);
                         poof.GetComponent<ObjectPoofer>().StartPoofIn();
                     }
 
