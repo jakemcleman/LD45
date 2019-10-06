@@ -290,6 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOnDeath:
   - {fileID: 5047595622370274054, guid: 58e3882ba7d6e784c83589ae96d110dd, type: 3}
+  death_event: event:/SFX/Enemies/Turret_Death
 --- !u!114 &309911349917033968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,11 +317,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 728548294531839083}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 16790602ccbcb77458ff670de660bbc1,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel_Var3
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 16790602ccbcb77458ff670de660bbc1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,6 +371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 16790602ccbcb77458ff670de660bbc1,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel_Var3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16790602ccbcb77458ff670de660bbc1, type: 3}
@@ -397,11 +398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 728548293513910983}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 16790602ccbcb77458ff670de660bbc1,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel_Var3
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 16790602ccbcb77458ff670de660bbc1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -457,6 +453,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 16790602ccbcb77458ff670de660bbc1,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel_Var3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16790602ccbcb77458ff670de660bbc1, type: 3}
 --- !u!4 &709274101179685484 stripped
@@ -478,11 +479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 29811353895314063}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 489d6a7a9c3a2e64582010db8a38a482,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBody
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 489d6a7a9c3a2e64582010db8a38a482,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 489d6a7a9c3a2e64582010db8a38a482,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBody
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489d6a7a9c3a2e64582010db8a38a482, type: 3}

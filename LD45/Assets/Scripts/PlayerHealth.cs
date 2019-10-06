@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health.Heal(health.maxHealth);
         health_state.setParameterByName("Player_Health", 1.0f);
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Env/Checkpoint_Respawn", transform.position);
         
         CharacterController cc = GetComponent<CharacterController>();
         cc.enabled = false;
