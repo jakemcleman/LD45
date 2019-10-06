@@ -19,14 +19,22 @@ public class Projectile : MonoBehaviour
     
     public float Timeout = 30;
 
+    public float persistAfterHitTime = 1.0f;
+
+    public bool hasHit;
+
     private void Start()
     {
         // Projectile should only live for <timeout> seconds
         Destroy(gameObject, Timeout);
+
+        hasHit = false;
     }
 
     private void Update()
     {
+        if(hasHit) return;
+
         transform.forward = direction;
         Vector3 nextPosition = transform.position + (speed * Time.deltaTime) * direction;
 
@@ -41,16 +49,16 @@ public class Projectile : MonoBehaviour
         float distance = (speed * Time.deltaTime) * 1.5f; // Add a little wiggle room
         Vector3 direction = (nextPosition - transform.position).normalized;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, direction, out hit, distance, ~0)) 
+        if(Physics.Raycast(transform.position, direction, out hit, distance, ~0, QueryTriggerInteraction.Ignore)) 
         {
-            OnHitSomething(hit.transform.gameObject);
+            OnHitSomething(hit.transform.gameObject, hit.point);
             return true;
         }
 
         return false;
     }
 
-    private void OnHitSomething(GameObject other)
+    private void OnHitSomething(GameObject other, Vector3 hitPoint)
     {
         AudioDefs.Surface surface_type;
 
@@ -99,6 +107,7 @@ public class Projectile : MonoBehaviour
         if(otherHealth)
         {
             bool killed = otherHealth.TakeDamage(damageAmount);
+
             if(killed)
             {
                 // Death audio event here
@@ -108,6 +117,10 @@ public class Projectile : MonoBehaviour
                 Debug.Log("Did damage");
         }
 
-        Destroy(gameObject);
+        speed = 0;
+        hasHit = true;
+        transform.position = hitPoint;
+        GetComponent<MeshRenderer>().enabled = false;
+        Destroy(gameObject, persistAfterHitTime);
     }
 }

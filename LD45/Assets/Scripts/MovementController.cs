@@ -17,8 +17,15 @@ public class MovementController : MonoBehaviour
 
     public float maxGroundSpeed;      //Horizontal
     public float maxAirSpeed;         //Horizontal
-    public float groundAcceleration;
-    public float airAcceleration;
+
+    public float maxGroundAcceleration = 250;
+
+    [Tooltip("X = Speed initial speed (1 is maxGroundSpeed).\nY = Acceleration amount (1 = maxGroundAcceleration).")]
+    public AnimationCurve groundAcceleration;
+    public float maxAirAcceleration;
+
+    [Tooltip("X = Speed initial speed  (1 is maxAirSpeed).\nY = Acceleration amount (1 = maxAirAcceleration).")]
+    public AnimationCurve airAcceleration;
     public float groundDeceleration;
     public float airDeceleration;
 
@@ -101,12 +108,11 @@ public class MovementController : MonoBehaviour
 
     public void ResetState()
     {
-        _cc = GetComponent<CharacterController>();
-        _camera = GetComponent<PlayerCameraController>();
         _currMotionState = MotionState.Falling;
         _numJumpsRemaining = numJumps;
         _uncapHorizontalSpeed = false;
         _wallResetTimer = wallRunRegrabTime;
+        _velocity = Vector3.zero;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -149,6 +155,9 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _cc = GetComponent<CharacterController>();
+        _camera = GetComponent<PlayerCameraController>();
+
         ResetState();
 
         _currHeight = normalHeight;
@@ -294,35 +303,30 @@ public class MovementController : MonoBehaviour
         //Movement buttons have been rayResults.
         if (!Utility.Close(_motion, Vector3.zero))
         {
+            Vector3 forwardVelProjection = Vector3.Project(_velocity, transform.forward);
+            Vector3 rest = horizontalVelocity - forwardVelProjection;
+
             //Moving on ground.
             if (Grounded)
             {
                 ChangeMotionState(MotionState.Running);
 
-                //Dot product motion and if it's negative, use ground decel instead.
-                if (Vector3.Dot(horizontalVelocity, _motion) > 0)
-                {
-                    _velocity += _motion * groundAcceleration * Time.deltaTime;
-                    //Debug.Log("[ApplyAcceleration] GroundAcceleration");
-                }
-                else
-                {
-                    _velocity += _motion * groundDeceleration * Time.deltaTime;
-                    //Debug.Log("[ApplyAcceleration] GroundDeceleration");
-                }
+                float speedRatio = _velocity.magnitude / maxGroundSpeed;
+                float accelAmount = maxGroundAcceleration * groundAcceleration.Evaluate(speedRatio);
+                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
+                Vector3 decelComponent = _motion * groundDeceleration * Time.deltaTime;
+
+                _velocity += accelComponent + decelComponent;
+                //Debug.Log("[ApplyAcceleration] GroundDeceleration");
             }
             else //In Air
             {
-                if (Vector3.Dot(horizontalVelocity, _motion) > 0)
-                {
-                    _velocity += _motion * airAcceleration * Time.deltaTime;
-                    //Debug.Log("[ApplyAcceleration] AirAcceleration");
-                }
-                else
-                {
-                    _velocity += _motion * airDeceleration * Time.deltaTime;
-                    //Debug.Log("[ApplyAcceleration] AirDeceleration");
-                }
+                float speedRatio = _velocity.magnitude / maxAirSpeed;
+                float accelAmount = maxAirAcceleration * airAcceleration.Evaluate(speedRatio);
+                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
+                Vector3 decelComponent = _motion * airDeceleration * Time.deltaTime;
+
+                _velocity += accelComponent + decelComponent;
             }
         }
         //Directional input is 0
