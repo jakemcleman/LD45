@@ -168,7 +168,7 @@ public class TurretEnemy : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 directionTowards = target.transform.position - transform.position;
-            if(Physics.Raycast(transform.position, directionTowards, out hit, dist, ~(1 << 8)))
+            if(Physics.Raycast(transform.position, directionTowards, out hit, dist, ~(1 << 8), QueryTriggerInteraction.Ignore))
             {
                 if(hit.transform.gameObject == target)
                 {
