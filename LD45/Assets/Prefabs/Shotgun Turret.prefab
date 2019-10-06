@@ -240,8 +240,8 @@ MonoBehaviour:
   weapons:
   - {fileID: 728548294531839081}
   - {fileID: 728548293513910981}
-  maxSightRange: 100
-  maxEngagementRange: 30
+  maxSightRange: 150
+  maxEngagementRange: 50
   yawRate: 45
   barrelRate: 90
   maxBarrelElevation: 60
