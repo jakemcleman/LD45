@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 671589662}
   - component: {fileID: 1799625301}
   - component: {fileID: 1799625302}
+  - component: {fileID: 3320331747740356115}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -707,6 +708,8 @@ MonoBehaviour:
   rotationLerpTime: 0.01
   invertY: 0
   quickTurnTime: 0.25
+  maxPitchDegrees: 80
+  minPitchDegrees: -80
 --- !u!114 &671589661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,6 +780,18 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 100
   damageMultiplier: 1
+--- !u!114 &3320331747740356115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007395565380830703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5e0e441375c834ba6565965603bd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8520650120478169638
 GameObject:
   m_ObjectHideFlags: 0

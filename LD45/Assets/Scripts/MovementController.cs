@@ -49,8 +49,6 @@ public class MovementController : MonoBehaviour
     public float wallClimbMaxTime = 2.0f;
     public float wallClimbSpeed = 10.0f;
 
-    public float footstepTimeInterval = 0.5f;
-
     #endregion
 
     #region Internals
@@ -86,8 +84,6 @@ public class MovementController : MonoBehaviour
     private RaycastHit _hitInfo;
 
     private Vector3 externalVelocity;
-
-    private float footstepTime;
 
 
     [SerializeField]
@@ -184,7 +180,6 @@ public class MovementController : MonoBehaviour
         _currHeight = normalHeight;
 
         _ray = new Ray(transform.position, -Vector3.up);
-        footstepTime = footstepTimeInterval;
 
         _inputQueue = new List<MovementInput>(10);
         for (int i = 0; i < inputQueueSize; ++i)
@@ -238,8 +233,6 @@ public class MovementController : MonoBehaviour
         StateUpdate();
         CapSpeed();
         //Apply Movement Speed Modifiers
-
-        MovementAudio();
 
         //Move. Then check collision flags and do collision resolution.
         CollisionFlags flags = _cc.Move((_velocity + externalVelocity)* Time.deltaTime);
@@ -325,8 +318,6 @@ public class MovementController : MonoBehaviour
 
             Grounded = false;
             ChangeMotionState(MotionState.Jump);
-
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Jump", this.transform.position);
         }
     }
 
@@ -461,24 +452,6 @@ public class MovementController : MonoBehaviour
         if (Math.Abs(_velocity.y) > maxFallSpeed && _velocity.y < 0)
         {
             _velocity.y = -maxFallSpeed;
-        }
-    }
-    #endregion
-
-    #region Audio
-    private void MovementAudio()
-    {
-        switch (CurrentMotionState)
-        {
-            case MotionState.Running:
-                if (footstepTime > 0)
-                    footstepTime -= Time.deltaTime;
-                else
-                {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Run", this.transform.position);
-                    footstepTime = footstepTimeInterval;
-                }
-                break;
         }
     }
     #endregion
