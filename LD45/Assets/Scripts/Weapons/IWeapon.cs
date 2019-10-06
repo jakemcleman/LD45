@@ -49,7 +49,7 @@ public interface IWeapon
      */
     float GetReloadProgress();
 
-    /*  Speed at which projectiles this weapon fires will fly
+    /* Speed at which projectiles this weapon fires will fly
      *  (for AI to accurately lead targets)
      */
     float GetProjectileSpeed();

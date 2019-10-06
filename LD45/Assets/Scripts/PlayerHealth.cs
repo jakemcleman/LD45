@@ -55,11 +55,16 @@ public class PlayerHealth : MonoBehaviour
         Respawn();
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         health.Heal(health.maxHealth);
         health_state.setParameterByName("Player_Health", 1.0f);
+
+        
+        CharacterController cc = GetComponent<CharacterController>();
+        cc.enabled = false;
         transform.position = respawnPosition;
         transform.forward = respawnFacing;
+        cc.enabled = true;
     }
 }
