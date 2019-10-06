@@ -314,6 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 122749018}
+  - component: {fileID: 122749019}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -341,6 +342,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &122749019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122749017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a88b6f87a15a440b11705502c65eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: TestLevel2
 --- !u!1001 &283542810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1484,6 +1498,64 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5679007409996884967}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1537009203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537009206}
+  - component: {fileID: 1537009205}
+  - component: {fileID: 1537009204}
+  m_Layer: 0
+  m_Name: SceneLoadTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1537009204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537009203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30970ec33585244fa4e15dbcd5cbf8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 2
+--- !u!65 &1537009205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537009203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1537009206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537009203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.81, y: 37.2, z: 270.33}
+  m_LocalScale: {x: 25.06767, y: 8.5491, z: 19.52871}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1557696179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1683,11 +1755,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
-    - target: {fileID: 5823644521522630327, guid: 44133b1ab6d3d1e45b42504467e54820,
-        type: 3}
-      propertyPath: m_Name
-      value: CouchObject
-      objectReference: {fileID: 0}
     - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
       propertyPath: poofFromVector.y
@@ -1707,6 +1774,11 @@ PrefabInstance:
         type: 3}
       propertyPath: delay
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823644521522630327, guid: 44133b1ab6d3d1e45b42504467e54820,
+        type: 3}
+      propertyPath: m_Name
+      value: CouchObject
       objectReference: {fileID: 0}
     - target: {fileID: 602517326072630164, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
@@ -1969,11 +2041,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
-    - target: {fileID: 8088189690733992619, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
-        type: 3}
-      propertyPath: m_Name
-      value: KnightObject
-      objectReference: {fileID: 0}
     - target: {fileID: 2572703883547734023, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
         type: 3}
       propertyPath: poofFromVector.y
@@ -1988,6 +2055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: poofFromVector.x
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088189690733992619, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
+        type: 3}
+      propertyPath: m_Name
+      value: KnightObject
       objectReference: {fileID: 0}
     - target: {fileID: 6677635755637710999, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
         type: 3}
@@ -2069,11 +2141,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
-    - target: {fileID: 5185066397412336879, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorObject
-      objectReference: {fileID: 0}
     - target: {fileID: 7243967394374862048, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
         type: 3}
       propertyPath: poofFromVector.z
@@ -2088,6 +2155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: delay
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185066397412336879, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorObject
       objectReference: {fileID: 0}
     - target: {fileID: 6187266609568752477, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
         type: 3}
@@ -2174,11 +2246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
-    - target: {fileID: 3593172109139714047, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: m_Name
-      value: CrateObject
-      objectReference: {fileID: 0}
     - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: poofFromVector.y
@@ -2198,6 +2265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: delay
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593172109139714047, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: m_Name
+      value: CrateObject
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
