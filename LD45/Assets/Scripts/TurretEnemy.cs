@@ -15,6 +15,10 @@ public class TurretEnemy : MonoBehaviour
     public float maxBarrelElevation = 60;
     public float minBarrelDepression = 20;
 
+    public bool limitYaw = false;
+    public float leftYawLimit = 90;
+    public float rightYawLimit = 90;
+
     public float accuracy = 0.95f;
     public float maxMissAmount = 20;
     public float aimAdjustSpeed = 2.0f;
@@ -23,6 +27,7 @@ public class TurretEnemy : MonoBehaviour
     public bool autoFire = true;
     public float nonAutoFireRate = 1.0f;
     private float fireTimer;
+
 
 
     private GameObject lastTarget = null;
@@ -48,6 +53,12 @@ public class TurretEnemy : MonoBehaviour
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject target = PickTarget(potentialTargets);
+        
+        AimAndShoot(target);
+    }
+
+    protected void AimAndShoot(GameObject target)
+    {
         float distanceToTarget = Vector3.Distance(transform.position, aimPoint);
         if(target != null)
         {
@@ -93,7 +104,7 @@ public class TurretEnemy : MonoBehaviour
         }
     }
     
-    private void FireWeapons()
+    protected void FireWeapons()
     {
         if(autoFire)
         {
@@ -114,16 +125,27 @@ public class TurretEnemy : MonoBehaviour
         }
     }
 
-    private void RotateBaseTowardsTarget(Vector3 targetPos)
+    protected void RotateBaseTowardsTarget(Vector3 targetPos)
     {
-        Vector3 towardsTarget = targetPos - transform.position;
-        towardsTarget.y = 0;
-        
-        Quaternion lookRotation = Quaternion.LookRotation(towardsTarget.normalized);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, yawRate * Time.deltaTime);
+        Vector3 localTargetPos = transform.parent != null ? transform.parent.InverseTransformPoint(targetPos) : targetPos;
+        localTargetPos.y = 0.0f;
+
+        Vector3 clampedLocalVec2Target = localTargetPos;
+        if (limitYaw)
+        {
+            if (localTargetPos.x >= 0.0f)
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * rightYawLimit, float.MaxValue);
+            else
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * leftYawLimit, float.MaxValue);
+        }
+
+        Quaternion rotationGoal = Quaternion.LookRotation(clampedLocalVec2Target);
+        Quaternion newRotation = Quaternion.RotateTowards(transform.localRotation, rotationGoal, yawRate * Time.deltaTime);
+
+        transform.localRotation = newRotation;
     }
 
-    private void RotateArmsToTarget(Vector3 targetPos)
+    protected void RotateArmsToTarget(Vector3 targetPos)
     {
         Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
         localTargetPos.x = 0.0f;
@@ -146,7 +168,7 @@ public class TurretEnemy : MonoBehaviour
         }
     }
 
-    private bool IsAimingAtTarget(Vector3 targetPos)
+    protected bool IsAimingAtTarget(Vector3 targetPos)
     {
         Vector3 towardsTarget = (targetPos - transform.position).normalized;
     
@@ -180,7 +202,7 @@ public class TurretEnemy : MonoBehaviour
         return false;
     }
 
-    private GameObject PickTarget(GameObject[] Targets) 
+    protected GameObject PickTarget(GameObject[] Targets) 
     {
         float bestDist = maxSightRange;
         GameObject best = null;
@@ -200,12 +222,6 @@ public class TurretEnemy : MonoBehaviour
                 }
             }
         }
-
-        if(best == null)
-        {
-            Debug.Log("No target found");
-        }
-
         return best;
     }
 }

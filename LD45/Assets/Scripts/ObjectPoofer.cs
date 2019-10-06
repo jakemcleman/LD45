@@ -9,10 +9,8 @@ public class ObjectPoofer : MonoBehaviour
 
     public AnimationCurve moveCurve;
 
-    public float poofDuration;
-
-    private bool isPoofing;
-    private float poofLength;
+    public float poofDuration = 1;
+    public float delay = 0;
     private float animationTime;
 
     // Start is called before the first frame update
@@ -21,18 +19,19 @@ public class ObjectPoofer : MonoBehaviour
         endPosition = this.transform.position;
         this.transform.position = poofFromVector;
 
-        StartCoroutine("PoofIn");
+        this.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartPoofIn()
     {
-
+        StartCoroutine("PoofIn");
     }
 
     IEnumerator PoofIn()
     {
         animationTime = 0f;
+
+        yield return new WaitForSeconds(delay);
 
         while (animationTime <= poofDuration)
         {
