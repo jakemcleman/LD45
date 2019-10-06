@@ -9,6 +9,8 @@ public class FlyingNavAvent : MonoBehaviour
     public float acceleration = 1.0f;
     public float yAccelerationModifier = 0.5f;
     public float agentRadius = 1.0f;
+    
+    public bool decelerateEarly = false;
 
     public float arrivalRange = 1.0f;
     public Vector3 targetPosition;
@@ -27,19 +29,54 @@ public class FlyingNavAvent : MonoBehaviour
         Gizmos.DrawSphere(targetPosition, 0.25f);
     }
 
-    private void Accelerate(Vector3 direction)
+    private Vector3 GetVelResultFromAccel(Vector3 direction)
     {
         Vector3 accel = direction * acceleration;
         accel.y += yAccelerationModifier;
-
-        velocity += accel;
-
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        return Vector3.ClampMagnitude(velocity + accel, maxSpeed);
+    }
+    private void Accelerate(Vector3 direction)
+    {
+        velocity = GetVelResultFromAccel(direction);
     }
 
     private void ApplyVelocity()
     {
         transform.position += velocity * Time.deltaTime;
+    }
+
+    private bool TestPotentialPath(Vector3 testVel)
+    {
+        Vector3 toTarget = targetPosition - transform.position;
+
+        float distanceToTarget = toTarget.magnitude;
+        float curSpeed = testVel.magnitude;
+        float timeToTarget = distanceToTarget / curSpeed;
+        float stopTime = curSpeed / acceleration;
+
+        float castLength = Mathf.Min(distanceToTarget, stopTime * curSpeed);
+
+        //Debug.DrawLine(transform.position, transform.position + (testVel.normalized * castLength), Color.grey, 0.5f);
+
+        RaycastHit hit; 
+        return Physics.SphereCast(transform.position, agentRadius, testVel.normalized, out hit, castLength);
+    }
+
+    private void TestSolution(Vector3 adjustmentAcc, ref List<Vector3> optionsList)
+    {
+        Vector3 resultVel = GetVelResultFromAccel(adjustmentAcc);
+        
+        if(!TestPotentialPath(resultVel)) optionsList.Add(adjustmentAcc);
+    }
+
+    private float ScoreSolution(Vector3 adjustmentAcc)
+    {
+        Vector3 toTarget = targetPosition - transform.position;
+
+        float closenessToDesiredDirection = Vector3.Dot(GetVelResultFromAccel(adjustmentAcc).normalized, toTarget.normalized);
+        float verticalMovementCost = adjustmentAcc.y;
+
+        return (closenessToDesiredDirection * 3) + (verticalMovementCost * -1);
     }
 
     private void Update()
@@ -51,15 +88,63 @@ public class FlyingNavAvent : MonoBehaviour
         float timeToTarget = distanceToTarget / curSpeed;
         float stopTime = curSpeed / acceleration;
 
-        if(distanceToTarget > arrivalRange)
+        RaycastHit hit;
+        if(TestPotentialPath(velocity))
         {
-            if(stopTime <= timeToTarget) Accelerate(toTarget.normalized);
-            else Accelerate(-toTarget.normalized);
+            // There is a potential collision ahead
+            // Check up/down/left/right for best adjustment to path to avoid collision
+            List<Vector3> possibleAdjustments = new List<Vector3>();
+
+            // Try slowing down (give more time to manuever for next frame)
+            TestSolution(-toTarget.normalized, ref possibleAdjustments);
+            // Try going right
+            TestSolution(Vector3.Cross(velocity.normalized, Vector3.up), ref possibleAdjustments);
+            // Try going left
+            TestSolution(-Vector3.Cross(velocity.normalized, Vector3.up), ref possibleAdjustments);
+            // Try going up
+            TestSolution(Vector3.up, ref possibleAdjustments);
+            // Try going down
+            TestSolution(Vector3.down, ref possibleAdjustments);
+
+            if(possibleAdjustments.Count == 0) 
+            {
+                Debug.Log("NO WAY TO AVOID COLLISION WAS FOUND PANIC");
+                Accelerate(-velocity.normalized);
+            }
+            else
+            {
+                Vector3 bestSolution = Vector3.zero;
+                float bestScore = float.MinValue;
+
+                foreach(Vector3 solution in possibleAdjustments)
+                {
+                    float score = ScoreSolution(solution);
+                    if(score > bestScore)
+                    {
+                        bestSolution = solution;
+                        bestScore = score;
+                    }
+                }
+
+
+                Debug.Log("Best avoidance solution is " + bestSolution);
+                Accelerate(bestSolution);
+            }
         }
         else
         {
-            Accelerate(-velocity.normalized);
+            if(distanceToTarget > arrivalRange)
+            {
+                // Tuned to deliberately overshoot a little
+                if(!decelerateEarly || stopTime <= timeToTarget) Accelerate(toTarget.normalized);
+                else Accelerate(-toTarget.normalized);
+            }
+            else
+            {
+                Accelerate(-velocity.normalized);
+            }
         }
+        
 
         ApplyVelocity();
     }
