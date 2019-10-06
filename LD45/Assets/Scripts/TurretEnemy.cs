@@ -152,9 +152,9 @@ public class TurretEnemy : MonoBehaviour
         }
     }
 
-    protected void RotateBaseTowardsTarget(Vector3 targetPos)
+    protected virtual void RotateBaseTowardsTarget(Vector3 targetPos)
     {
-        Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
+        Vector3 localTargetPos = transform.parent.InverseTransformPoint(targetPos);
         localTargetPos.y = 0.0f;
 
         Vector3 clampedLocalVec2Target = localTargetPos;
@@ -165,9 +165,7 @@ public class TurretEnemy : MonoBehaviour
             else
                 clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * minBarrelDepression, float.MaxValue);
         }
-
-        Debug.DrawLine(transform.position, transform.TransformPoint(localTargetPos));
-
+        
         Quaternion rotationGoal = Quaternion.LookRotation(clampedLocalVec2Target);
         Quaternion newRotation = Quaternion.RotateTowards(transform.localRotation, rotationGoal, yawRate * Time.deltaTime);
         transform.localRotation = newRotation;

@@ -17,6 +17,11 @@ public class FlyingNavAvent : MonoBehaviour
 
     private Vector3 velocity;
 
+    public Vector3 Velocity 
+    {
+        get { return velocity; }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
