@@ -18,6 +18,16 @@ public class DeathComponent : MonoBehaviour
 
     private void OnDeath() 
     {
+        // Kill all the children
+        foreach(Health childHealth in GetComponentsInChildren<Health>())
+        {
+            // Apparently I need this because objects count as their own fucking child?
+            if(GetComponent<Health>() != childHealth)
+            {
+                childHealth.TakeDamage(float.MaxValue);
+            }
+        }
+
         foreach(GameObject toSpawn in spawnOnDeath) 
         {
             GameObject spawned = GameObject.Instantiate(toSpawn);

@@ -23,6 +23,8 @@ public class Health : MonoBehaviour
 
     private float curHealth;
 
+    private bool isDead;
+
     public float CurrentHealth 
     {
         get { return curHealth; }
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         curHealth = maxHealth;
+        isDead = false;
 
         HealthChangeEvent healthChange;
         healthChange.amount = 0;
@@ -55,6 +58,8 @@ public class Health : MonoBehaviour
      */
     public bool TakeDamage(float amount) 
     {
+        if(isDead) return false;
+
         if (Debug.isDebugBuild) 
         {
             if(amount < 0) Debug.LogWarningFormat("Requested negative damage {0} to be dealt to {1}}", amount, gameObject.name);
@@ -70,6 +75,7 @@ public class Health : MonoBehaviour
         {
             // TODO: die
             onDeath.Invoke();
+            isDead = true;
             return true;
         }
         else 
