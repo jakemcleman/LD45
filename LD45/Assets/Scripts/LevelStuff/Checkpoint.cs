@@ -16,6 +16,11 @@ public class Checkpoint : MonoBehaviour
         activeCheckpoint = null;
     }
 
+    public bool getActive()
+    {
+        return active;
+    }
+
     private void Start()
     {
         active = false;

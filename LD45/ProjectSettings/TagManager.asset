@@ -12,6 +12,8 @@ TagManager:
   - BulletProx
   - Projectile
   - UI
+  - Map
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -6,20 +6,22 @@ public class SceneLoadTrigger : MonoBehaviour
 {
     private SceneLoader sceneLoader;
 
-    public enum Action
+    public string sceneName = null;
+
+    public enum STAction
     {
         Load,
         Unload,
         Both
     }
 
-    public Action action;
+    public STAction action;
 
     // Start is called before the first frame update
     void Start()
     {
         sceneLoader = GameObject.Find("Map").GetComponent<SceneLoader>();
-        if (sceneLoader = null)
+        if (sceneLoader == null)
         {
             Debug.LogError("No Map in Scene, please add a map with a scene loader");
         }
@@ -35,15 +37,15 @@ public class SceneLoadTrigger : MonoBehaviour
         {
             switch (action)
             {
-                case Action.Load:
+                case STAction.Load:
                     sceneLoader.StartLoad(false);
                     break;
 
-                case Action.Unload:
+                case STAction.Unload:
                     sceneLoader.UnLoadScene();
                     break;
 
-                case Action.Both:
+                case STAction.Both:
                     sceneLoader.StartLoad(true);
                     break;
             }
