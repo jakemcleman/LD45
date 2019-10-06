@@ -210,6 +210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
         type: 3}
+      propertyPath: maxEngagementRange
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167563963636290878, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
       propertyPath: maxBarrelElevation
       value: 18.08
       objectReference: {fileID: 0}
@@ -392,6 +397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: maxEngagementRange
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
@@ -592,6 +602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: maxEngagementRange
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
