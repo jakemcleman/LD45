@@ -154,21 +154,22 @@ public class TurretEnemy : MonoBehaviour
 
     protected void RotateBaseTowardsTarget(Vector3 targetPos)
     {
-        Vector3 localTargetPos = transform.parent != null ? transform.parent.InverseTransformPoint(targetPos) : targetPos;
+        Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
         localTargetPos.y = 0.0f;
 
         Vector3 clampedLocalVec2Target = localTargetPos;
-        if (limitYaw)
+        if(limitYaw)
         {
-            if (localTargetPos.x >= 0.0f)
-                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * rightYawLimit, float.MaxValue);
+            if (localTargetPos.y >= 0.0f)
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * maxBarrelElevation, float.MaxValue);
             else
-                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * leftYawLimit, float.MaxValue);
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * minBarrelDepression, float.MaxValue);
         }
+
+        Debug.DrawLine(transform.position, transform.TransformPoint(localTargetPos));
 
         Quaternion rotationGoal = Quaternion.LookRotation(clampedLocalVec2Target);
         Quaternion newRotation = Quaternion.RotateTowards(transform.localRotation, rotationGoal, yawRate * Time.deltaTime);
-
         transform.localRotation = newRotation;
     }
 
@@ -177,8 +178,6 @@ public class TurretEnemy : MonoBehaviour
         Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
         localTargetPos.x = 0.0f;
 
-        // Clamp target rotation by creating a limited rotation to the target.
-        // Use different clamps depending if the target is above or below the turret.
         Vector3 clampedLocalVec2Target = localTargetPos;
         if (localTargetPos.y >= 0.0f)
             clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * maxBarrelElevation, float.MaxValue);
@@ -190,7 +189,7 @@ public class TurretEnemy : MonoBehaviour
 
         foreach(WeaponWielder weapon in weapons)
         {
-            Quaternion newRotation = Quaternion.RotateTowards(weapon.transform.localRotation, rotationGoal, 2.0f * barrelRate * Time.deltaTime);
+            Quaternion newRotation = Quaternion.RotateTowards(weapon.transform.localRotation, rotationGoal, barrelRate * Time.deltaTime);
             weapon.transform.localRotation = newRotation;
         }
     }
