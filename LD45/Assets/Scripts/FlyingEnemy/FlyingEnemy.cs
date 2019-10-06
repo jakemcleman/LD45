@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(FlyingNavAvent))]
 public class FlyingEnemy: MonoBehaviour
 {    
@@ -17,18 +19,66 @@ public class FlyingEnemy: MonoBehaviour
 
     private FlyingNavAvent agent;
 
+    private FlyingEnemyState _curState = FlyingEnemyState.Idle;
+    private bool _transitionBlocked = false;
+    public float retreatTime = 15.5f;
+    private float retreatCounter = 0.0f;
+    private Health health;
+    bool healthChanged = false;
+
     private void Start()
     {
         agent = GetComponent<FlyingNavAvent>();
+        health = GetComponent<Health>();
+        health.onHealthChange.AddListener(OnHealthChange);
+        GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
+        GameObject tempTarget = PickTarget(potentialTargets);
+    }
+
+    private void OnHealthChange(HealthChangeEvent e)
+    {
+        healthChanged = true;
     }
 
     private void Update()
     {
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
+        GameObject tempTarget = PickTarget(potentialTargets);
+        // state adjustment
+        if(tempTarget == null)
+        {
+            ChangeFlyingEnemyState(FlyingEnemyState.Idle);
+            target = null;
+        }
+        else if(tempTarget != target)
+        {
+            if (target == null)
+            {
+                ChangeFlyingEnemyState(FlyingEnemyState.Attacking);
+            }
+            target = tempTarget;
+        }
 
-        target = PickTarget(potentialTargets);
+        if (_curState == FlyingEnemyState.Attacking && healthChanged) {
+            healthChanged = false;
+            ChangeFlyingEnemyState(FlyingEnemyState.Retreating);
+        }
+        if (_curState == FlyingEnemyState.Retreating) 
+        {
+            if (retreatCounter >= retreatTime)
+            {
+                Debug.Log("retreatCounter " + retreatCounter);
+                Debug.Log("retreatTime " + retreatTime);
+                ChangeFlyingEnemyState(FlyingEnemyState.Attacking);
+                retreatCounter = 0;
+            }
+            else 
+            {
+                retreatCounter += Time.deltaTime;
+            }
+        }
 
-        if (target != null)
+        if (_curState != FlyingEnemyState.Idle)
         {
             Vector3 orbitPos = new Vector3(
                 targetOrbitRadius * Mathf.Sin(Time.time * orbitRate), 
@@ -94,6 +144,7 @@ public class FlyingEnemy: MonoBehaviour
     #region FlyingEnemyStates
     void ChangeFlyingEnemyState(FlyingEnemyState nextState)
     {
+        Debug.Log("Changing to " + nextState);
         if (!_transitionBlocked)
         {
             if (_curState != nextState)
@@ -101,25 +152,27 @@ public class FlyingEnemy: MonoBehaviour
                 FlyingEnemyStateEvent flyingEnemyStateEvent;
                 flyingEnemyStateEvent.prevState = _curState;
                 flyingEnemyStateEvent.nextState = nextState;
-                FlyingEnemyStateInitialize(flyingEnemlyStateEvent);
+                if (FlyingEnemyStateInitialize(flyingEnemyStateEvent)) {
+                   _curState = nextState; 
+                }
             }
         }
     }
-    void FlyingEnemyStateInitialize(FlyingEnemyStateEvent flyingEnemyStatEvent) {
+    bool FlyingEnemyStateInitialize(FlyingEnemyStateEvent flyingEnemyStateEvent) {
         // Leaving
         switch(flyingEnemyStateEvent.prevState)
         {
             case FlyingEnemyState.Idle:
             {
-                
+                break;
             }
             case FlyingEnemyState.Attacking:
             {
-                
+                break;
             }
             case FlyingEnemyState.Retreating:
             {
-                
+                break;
             }
             default:
             {
@@ -130,7 +183,8 @@ public class FlyingEnemy: MonoBehaviour
         {
             case FlyingEnemyState.Idle:
             {
-
+                target = null;
+                break;
             }
             case FlyingEnemyState.Attacking:
             {
@@ -147,6 +201,7 @@ public class FlyingEnemy: MonoBehaviour
                 break;
             }
         }
+        return true;
     }
     #endregion
 }

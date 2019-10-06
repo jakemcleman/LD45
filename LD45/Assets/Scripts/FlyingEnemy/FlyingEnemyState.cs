@@ -7,7 +7,7 @@ public enum FlyingEnemyState
     Attacking,
     Retreating
 }
-public struct flyingEnemlyStateEvent
+public struct FlyingEnemyStateEvent
 {
     public FlyingEnemyState nextState;
     public FlyingEnemyState prevState;
