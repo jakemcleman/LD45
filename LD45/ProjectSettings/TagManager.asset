@@ -9,6 +9,7 @@ TagManager:
   - Wood
   - Metal
   - Sandbag
+  - BulletProx
   layers:
   - Default
   - TransparentFX
