@@ -200,12 +200,6 @@ public class TurretEnemy : MonoBehaviour
                 }
             }
         }
-
-        if(best == null)
-        {
-            Debug.Log("No target found");
-        }
-
         return best;
     }
 }
