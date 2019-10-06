@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField]
     Transform initialLocation;
     Vector3 initialPos;
@@ -20,6 +21,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     float oneWayTime;
     float timer;
+
+#pragma warning restore 0649
 
     private Vector3 vel;
     public Vector3 velocity
