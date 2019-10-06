@@ -36,7 +36,6 @@ public class Health : MonoBehaviour
     private void Start()
     {
         curHealth = maxHealth;
-
         HealthChangeEvent healthChange;
         healthChange.amount = 0;
         onHealthChange.Invoke(healthChange);

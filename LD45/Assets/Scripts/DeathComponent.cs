@@ -9,6 +9,10 @@ public class DeathComponent : MonoBehaviour
      *  Set of game objects that should all be spawned when this entity dies
      */
     public GameObject[] spawnOnDeath;
+
+    [FMODUnity.EventRef]
+    public string death_event;
+
     void Start()
     {
         Health healthComp = GetComponent<Health>();
@@ -18,6 +22,19 @@ public class DeathComponent : MonoBehaviour
 
     private void OnDeath() 
     {
+        // Kill all the children
+        foreach(Health childHealth in GetComponentsInChildren<Health>())
+        {
+            // Apparently I need this because objects count as their own fucking child?
+            if(GetComponent<Health>() != childHealth)
+            {
+                childHealth.TakeDamage(float.MaxValue);
+            }
+        }
+
+        // Play death sound
+        FMODUnity.RuntimeManager.PlayOneShot(death_event, transform.position);
+
         foreach(GameObject toSpawn in spawnOnDeath) 
         {
             GameObject spawned = GameObject.Instantiate(toSpawn);

@@ -88,7 +88,6 @@ public class PlayerCameraController : MonoBehaviour
         if (InQuickTurn())
         {
             QuickTurnUpdate();
-            m_InterpolatingCameraState.UpdateTransform(transform);
         }
         else
         {
@@ -123,8 +122,10 @@ public class PlayerCameraController : MonoBehaviour
     {
         quickTurnTimer -= Time.deltaTime;
         float t = 1 - (quickTurnTimer / quickTurnTime);
-        Vector3 interpLookTo = Utility.Interpolate(originalForward, lookTo, Utility.EaseOutCubic(t));
-        transform.LookAt(transform.position + interpLookTo);
+        transform.rotation = Quaternion.Slerp(
+            Quaternion.LookRotation(originalForward, Vector3.up), 
+            Quaternion.LookRotation(lookTo, Vector3.up), 
+            t);
 
         //If ended
         m_TargetCameraState.SetFromTransform(transform);

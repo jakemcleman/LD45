@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingNavAvent : MonoBehaviour
+public class FlyingNavAvent : MonoBehaviour, IRidable
 {
-
     public float maxSpeed = 10;
     public float acceleration = 1.0f;
     public float yAccelerationModifier = 0.5f;
@@ -19,7 +18,12 @@ public class FlyingNavAvent : MonoBehaviour
 
     public Vector3 Velocity 
     {
-        get { return velocity; }
+        get => velocity;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return Velocity;
     }
 
     private void OnDrawGizmosSelected()

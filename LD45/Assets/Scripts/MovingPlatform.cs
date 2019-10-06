@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : MonoBehaviour, IRidable
 {
 #pragma warning disable 0649
     [SerializeField]
@@ -32,6 +32,11 @@ public class MovingPlatform : MonoBehaviour
     public Vector3 velocity
     {
         get => vel;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return velocity;
     }
 
     // Start is called before the first frame update
