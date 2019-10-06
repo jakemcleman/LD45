@@ -296,8 +296,8 @@ public class MovementController : MonoBehaviour
         {
             if (!Grounded && _velocity.y <= 0)
                 Grounded = true;
-            externalVelocity = _hitInfo.collider.GetComponent<MovingPlatform>() ?
-                _hitInfo.collider.GetComponent<MovingPlatform>().velocity : Vector3.zero;
+            externalVelocity = _hitInfo.collider.GetComponent<IRidable>() != null ?
+                _hitInfo.collider.GetComponent<IRidable>().GetVelocity() : Vector3.zero;
         }
         
 

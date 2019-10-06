@@ -27,6 +27,11 @@ public class ObjectPoofer : MonoBehaviour
         StartCoroutine("PoofIn");
     }
 
+    public void StartPoofOut()
+    {
+        StartCoroutine("PoofOut");
+    }
+
     IEnumerator PoofIn()
     {
         animationTime = 0f;
@@ -42,5 +47,32 @@ public class ObjectPoofer : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    IEnumerator PoofOut()
+    {
+        animationTime = 0f;
+
+        while (this.gameObject.GetComponentInChildren<Checkpoint>() != null && this.gameObject.GetComponentInChildren<Checkpoint>().getActive() == true)
+        {
+            Debug.Log("Can't poof out yet, there's an active checkpoint");
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(delay);
+
+        Debug.Log("Starting actual depoof");
+
+        while (animationTime <= poofDuration)
+        {
+            animationTime += Time.deltaTime;
+            float percent = 1 - Mathf.Clamp01(animationTime / poofDuration);
+
+            transform.position = Vector3.LerpUnclamped(poofFromVector, endPosition, moveCurve.Evaluate(percent));
+
+            yield return null;
+        }
+
+        this.gameObject.SetActive(false);
     }
 }

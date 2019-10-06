@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2280347791336827589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 540204640778638742}
+  - component: {fileID: 194091187558071529}
+  m_Layer: 0
+  m_Name: AudioEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &540204640778638742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280347791336827589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5435196925608711089}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194091187558071529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280347791336827589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Enemies/Helicopter_Hover
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 56.37
 --- !u!1 &5435196925608711050
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +68,7 @@ GameObject:
   - component: {fileID: 5435196925608711088}
   - component: {fileID: 5435196925608711054}
   - component: {fileID: 5435196925608711055}
+  - component: {fileID: 1864174870}
   m_Layer: 0
   m_Name: FlyingTurret
   m_TagString: Untagged
@@ -35,6 +90,7 @@ Transform:
   - {fileID: 4341437168613490910}
   - {fileID: 7251783427053632012}
   - {fileID: 7071225397075718376}
+  - {fileID: 540204640778638742}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,6 +176,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+  death_event: event:/SFX/Enemies/Helicopter_Death
+--- !u!114 &1864174870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435196925608711050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf5be19f62782a48b009c521e747b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashDuration: 0.2
+  toFlash:
+  - {fileID: 1321927222229354001}
+  - {fileID: 5387445685846834371}
+  ShakeMagnitude: 0.1
+  flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
 --- !u!114 &1099153482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +289,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2439040409549213974}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5387445685846834371 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+    type: 3}
+  m_PrefabInstance: {fileID: 2439040409549213974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8738486124147321796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +370,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8738486124147321796}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1321927222229354001 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 0aa3b2a8ff856a1479662d882664d350,
+    type: 3}
+  m_PrefabInstance: {fileID: 8738486124147321796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9003114615664648759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,11 +383,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5435196925608711089}
     m_Modifications:
-    - target: {fileID: 2221249892867281626, guid: 4599352ffdaeda14aa49458a0b8412ad,
-        type: 3}
-      propertyPath: m_Name
-      value: Single_Turret
-      objectReference: {fileID: 0}
     - target: {fileID: 2221249892867281631, guid: 4599352ffdaeda14aa49458a0b8412ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -355,6 +437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221249892867281626, guid: 4599352ffdaeda14aa49458a0b8412ad,
+        type: 3}
+      propertyPath: m_Name
+      value: Single_Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4599352ffdaeda14aa49458a0b8412ad, type: 3}

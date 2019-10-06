@@ -63,6 +63,9 @@ public class PlayerCameraController : MonoBehaviour
     private Vector3 lookTo;
     private Vector3 originalForward;
 
+    public float maxPitchDegrees = 80;
+    public float minPitchDegrees = -80;
+
     void OnEnable()
     {
         // Hide and lock cursor
@@ -85,7 +88,6 @@ public class PlayerCameraController : MonoBehaviour
         if (InQuickTurn())
         {
             QuickTurnUpdate();
-            m_InterpolatingCameraState.UpdateTransform(transform);
         }
         else
         {
@@ -95,6 +97,7 @@ public class PlayerCameraController : MonoBehaviour
 
             m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
             m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+            m_TargetCameraState.pitch = Mathf.Clamp(m_TargetCameraState.pitch, minPitchDegrees, maxPitchDegrees);
 
             // Framerate-independent interpolation
             // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
@@ -119,8 +122,10 @@ public class PlayerCameraController : MonoBehaviour
     {
         quickTurnTimer -= Time.deltaTime;
         float t = 1 - (quickTurnTimer / quickTurnTime);
-        Vector3 interpLookTo = Utility.Interpolate(originalForward, lookTo, Utility.EaseOutCubic(t));
-        transform.LookAt(transform.position + interpLookTo);
+        transform.rotation = Quaternion.Slerp(
+            Quaternion.LookRotation(originalForward, Vector3.up), 
+            Quaternion.LookRotation(lookTo, Vector3.up), 
+            t);
 
         //If ended
         m_TargetCameraState.SetFromTransform(transform);

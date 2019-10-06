@@ -16,6 +16,11 @@ public class Checkpoint : MonoBehaviour
         activeCheckpoint = null;
     }
 
+    public bool getActive()
+    {
+        return active;
+    }
+
     private void Start()
     {
         active = false;
@@ -34,7 +39,7 @@ public class Checkpoint : MonoBehaviour
         {
             if(col.tag == "Player")
             {
-                
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Env/Checkpoint_Activate", col.transform.position);
                 ActivateCheckpoint(col.gameObject);
             }
         }

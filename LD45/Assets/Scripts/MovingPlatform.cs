@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : MonoBehaviour, IRidable
 {
 #pragma warning disable 0649
     [SerializeField]
@@ -22,12 +22,21 @@ public class MovingPlatform : MonoBehaviour
     float oneWayTime;
     float timer;
 
+    [SerializeField]
+    bool isTrigger;
+    bool launch = false;
+
 #pragma warning restore 0649
 
     private Vector3 vel;
     public Vector3 velocity
     {
         get => vel;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return velocity;
     }
 
     // Start is called before the first frame update
@@ -53,14 +62,40 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isTrigger && other.gameObject.tag == "Player")
+        {
+            launch = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
+    {
+        if (isTrigger && launch)
+        {
+            MoveUpdate();
+        }
+        else if (!isTrigger)
+        {
+            MoveUpdate();
+        }
+    }
+
+    void MoveUpdate()
     {
         timer += Time.deltaTime;
         if (timer > oneWayTime)
         {
             timer = 0;
             returning = !returning;
+
+            //If returned.
+            if (returning == false)
+            {
+                launch = false;
+            }
         }
         float t = timer / oneWayTime;
         t = t_curve.Evaluate(t);
