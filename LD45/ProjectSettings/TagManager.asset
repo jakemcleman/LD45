@@ -10,6 +10,7 @@ TagManager:
   - Metal
   - Sandbag
   - BulletProx
+  - Projectile
   layers:
   - Default
   - TransparentFX
