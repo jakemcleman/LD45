@@ -1488,6 +1488,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
+    - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
+        type: 3}
+      propertyPath: poofFromVector.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
+        type: 3}
+      propertyPath: poofFromVector.z
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5823644521522630327, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
       propertyPath: m_Name
@@ -1633,6 +1648,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30.874
       objectReference: {fileID: 0}
+    - target: {fileID: 1400748600, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
+      propertyPath: poofDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400748600, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
+      propertyPath: poofFromVector.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400748600, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
+      propertyPath: poofFromVector.z
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
 --- !u!4 &5679007409996884968 stripped
@@ -1648,6 +1675,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
+    - target: {fileID: 2572703883547734023, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572703883547734023, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
+        type: 3}
+      propertyPath: poofFromVector.z
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8088189690733992619, guid: 6f0c2e3c3a77b8045b6f2b377512c614,
         type: 3}
       propertyPath: m_Name
@@ -1733,6 +1770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
+    - target: {fileID: 7243967394374862048, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
+        type: 3}
+      propertyPath: poofFromVector.z
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5185066397412336879, guid: a8757439d5c5cd0419c8fb64cc8f47fc,
         type: 3}
       propertyPath: m_Name
@@ -1823,6 +1865,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122749018}
     m_Modifications:
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.z
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3593172109139714047, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_Name
