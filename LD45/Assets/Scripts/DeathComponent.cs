@@ -9,6 +9,10 @@ public class DeathComponent : MonoBehaviour
      *  Set of game objects that should all be spawned when this entity dies
      */
     public GameObject[] spawnOnDeath;
+
+    [FMODUnity.EventRef]
+    public string death_event;
+
     void Start()
     {
         Health healthComp = GetComponent<Health>();
@@ -27,6 +31,9 @@ public class DeathComponent : MonoBehaviour
                 childHealth.TakeDamage(float.MaxValue);
             }
         }
+
+        // Play death sound
+        FMODUnity.RuntimeManager.PlayOneShot(death_event, transform.position);
 
         foreach(GameObject toSpawn in spawnOnDeath) 
         {

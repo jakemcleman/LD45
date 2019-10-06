@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+  death_event: event:/SFX/Enemies/Helicopter_Death
 --- !u!114 &1864174870
 MonoBehaviour:
   m_ObjectHideFlags: 0
