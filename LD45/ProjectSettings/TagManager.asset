@@ -11,6 +11,7 @@ TagManager:
   - Sandbag
   - BulletProx
   - Projectile
+  - UI
   layers:
   - Default
   - TransparentFX

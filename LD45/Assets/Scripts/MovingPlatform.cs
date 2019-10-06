@@ -37,6 +37,22 @@ public class MovingPlatform : MonoBehaviour
         endPos = endLocation.position;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        if (!Application.isPlaying)
+        {
+            Gizmos.DrawCube(endLocation.position, transform.localScale);
+            Gizmos.DrawLine(initialLocation.position, endLocation.position);
+        }
+        else
+        {
+            Gizmos.DrawCube(initialPos, transform.localScale);
+            Gizmos.DrawCube(endPos, transform.localScale);
+            Gizmos.DrawLine(initialPos, endPos);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
