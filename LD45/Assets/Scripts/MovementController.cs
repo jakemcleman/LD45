@@ -44,6 +44,7 @@ public class MovementController : MonoBehaviour
     public float wallRunBaseSpeed = 30.0f;
     public float wallRunRegrabTime = 2.0f;
     public AnimationCurve wallRunVerticalDrift;
+    public float wallRunVerticalDriftIntensity = 0.5f;
 
     public float wallClimbMaxTime = 2.0f;
     public float wallClimbSpeed = 10.0f;
@@ -621,10 +622,8 @@ public class MovementController : MonoBehaviour
                 _uncapHorizontalSpeed = true;
 
                 float t = 1 - (_wallRunTimer / wallRunMaxTime);
-                float verticalSpeed = _velocity.magnitude * 0.1f;
+                float verticalSpeed = _velocity.magnitude * wallRunVerticalDriftIntensity;
                 _velocity.y = verticalSpeed * wallRunVerticalDrift.Evaluate(t);
-                Debug.Log($"t:{t}. Curve eval:{wallRunVerticalDrift.Evaluate(t)} vertVel:{_velocity.y}");
-
             }
             else //Else drop off
             {
