@@ -361,7 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48e8939b4baa794ba4814ad4ce80a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnDeath: []
+  spawnOnDeath:
+  - {fileID: 6531788735122552154, guid: 20a180b7fbe41ad41a6330de5b216827, type: 3}
 --- !u!114 &9134147487672642786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +705,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5766395795762491005}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretQuad_Body
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -758,16 +769,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretQuad_Body
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e8fd2d3039db2a488621e3f1fcfe6cb, type: 3}

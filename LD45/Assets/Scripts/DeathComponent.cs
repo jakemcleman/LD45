@@ -22,6 +22,7 @@ public class DeathComponent : MonoBehaviour
         {
             GameObject spawned = GameObject.Instantiate(toSpawn);
             spawned.transform.position = transform.position;
+            spawned.transform.rotation = transform.rotation;
         }
 
         Destroy(gameObject);

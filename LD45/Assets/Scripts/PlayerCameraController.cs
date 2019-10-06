@@ -100,8 +100,6 @@ public class PlayerCameraController : MonoBehaviour
             m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
             m_TargetCameraState.pitch = Mathf.Clamp(m_TargetCameraState.pitch, minPitchDegrees, maxPitchDegrees);
 
-            Debug.Log("Ptich " + m_TargetCameraState.pitch);
-
             // Framerate-independent interpolation
             // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
             var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
