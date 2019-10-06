@@ -125,11 +125,10 @@ public class SceneLoader : MonoBehaviour
         if (newStart == null) Debug.LogError("Could not find the new level's startpoint");
 
         Quaternion rotateVector = Quaternion.FromToRotation(curEnd.GetComponent<LevelStartEndPoint>().direction, newStart.GetComponent<LevelStartEndPoint>().direction);
-        Vector3 moveVector = newStart.transform.position - curEnd.transform.position;
-
-        Debug.Log("Start point: " + newStart.transform.position + " End point: " + curEnd.transform.position + " Move vector: " + moveVector);
-
         newMap.transform.rotation = rotateVector;
+        
+        Vector3 moveVector = newStart.transform.position - curEnd.transform.position;
+        Debug.Log("Start point: " + newStart.transform.position + " End point: " + curEnd.transform.position + " Move vector: " + moveVector);
         newMap.transform.position -= moveVector;
     }
 
