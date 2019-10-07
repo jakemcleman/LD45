@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chess_Pawn
       objectReference: {fileID: 0}
+    - target: {fileID: 8088189690733992619, guid: b110fbcac98594e439f491cc703fa33d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 6677635755637710999, guid: b110fbcac98594e439f491cc703fa33d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -86,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pawn
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 39ec9a2778d43ab4689ea1ba8007f9a2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39ec9a2778d43ab4689ea1ba8007f9a2,
         type: 3}

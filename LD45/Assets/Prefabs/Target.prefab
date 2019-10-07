@@ -115,6 +115,8 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 10
   damageMultiplier: 1
+  damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
+    type: 3}
 --- !u!54 &33203095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +146,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDeath: []
+  death_event: 

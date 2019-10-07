@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8858161312241224300}
   m_Layer: 0
   m_Name: CouchObject
-  m_TagString: Untagged
+  m_TagString: Sandbag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   poofDuration: 1
+  delay: 0
 --- !u!1001 &616900925192049177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,10 +110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couch
       objectReference: {fileID: 0}
-    - target: {fileID: -6860895033569716450, guid: 055238e910677d14e9363b9a8d8afaab,
+    - target: {fileID: -927199367670048503, guid: 055238e910677d14e9363b9a8d8afaab,
         type: 3}
-      propertyPath: m_Convex
-      value: 0
+      propertyPath: m_TagString
+      value: Sandbag
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 055238e910677d14e9363b9a8d8afaab,
         type: 3}
@@ -183,6 +184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6860895033569716450, guid: 055238e910677d14e9363b9a8d8afaab,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 055238e910677d14e9363b9a8d8afaab, type: 3}

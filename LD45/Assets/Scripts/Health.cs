@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 
 public struct HealthChangeEvent
 {
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     public float damageMultiplier = 1;
 
     private float curHealth;
+    public GameObject damageIndicatorPrefab;
 
     public float CurrentHealth 
     {
@@ -64,6 +66,10 @@ public class Health : MonoBehaviour
         onHealthChange.Invoke(healthChange);
 
         curHealth -= amount * damageMultiplier;
+        GameObject indicator = Instantiate(damageIndicatorPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
+        float damage = amount * damageMultiplier;
+        indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Random.insideUnitSphere;
+        indicator.GetComponent<TextMesh>().text = damage.ToString();
 
         if(curHealth <= 0)
         {
@@ -83,7 +89,6 @@ public class Health : MonoBehaviour
      */
     public bool Heal(float amount) 
     {
-        Debug.Log("HEAL " + amount);
         // Check if healing is possible to avoid wasting health packs
         if(amount == 0 || curHealth >= maxHealth)
         {
