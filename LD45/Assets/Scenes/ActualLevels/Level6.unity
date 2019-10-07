@@ -2014,6 +2014,31 @@ PrefabInstance:
       propertyPath: delay
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7616562923845818265, guid: 735b2d2c40d2f63418d1070277b94218,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.013209758
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616562923845818265, guid: 735b2d2c40d2f63418d1070277b94218,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616562923845818265, guid: 735b2d2c40d2f63418d1070277b94218,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1.514
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616562923845818265, guid: 735b2d2c40d2f63418d1070277b94218,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616562923845818265, guid: 735b2d2c40d2f63418d1070277b94218,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.071
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 735b2d2c40d2f63418d1070277b94218, type: 3}
 --- !u!1001 &1688588786
