@@ -1246,6 +1246,26 @@ PrefabInstance:
       propertyPath: weaponUnlocked.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 482499552629898298, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503824936802306401, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140566884038174275, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083860587403541052, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
 --- !u!1001 &388682872
@@ -4718,7 +4738,7 @@ PrefabInstance:
     - target: {fileID: 1816221608147786359, guid: e300f9ed9acad34469c2182802ecd6e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e300f9ed9acad34469c2182802ecd6e8, type: 3}
