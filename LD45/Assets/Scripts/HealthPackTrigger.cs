@@ -9,6 +9,7 @@ public class HealthPackTrigger : MonoBehaviour {
             if (col.gameObject.GetComponent<PlayerHealth>()){
                 if(col.gameObject.GetComponent<PlayerHealth>().Heal(healAmount)) 
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Pickup_Health", transform.position);
                     Destroy(gameObject);
                 }
             }
