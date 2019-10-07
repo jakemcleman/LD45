@@ -7,9 +7,12 @@ public enum MotionState
 {
     Idle,
     Running,
+    JumpStart,
     Jump,
     Falling,
+    WallrunStart,
     Wallrun,
+    WallclimbStart,
     Wallclimb,
     SlideStart,
     Slide,
