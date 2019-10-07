@@ -80,6 +80,11 @@ public class TextTransitionIn : MonoBehaviour
             stateTimer = 0;
             curState = AnimState.Complete;
             shouldBlink = false;
+
+            foreach(GameObject go in activateOnCompletion)
+            {
+                go.SetActive(true);
+            }
         }
 
         float speedFactor = Input.GetButton("Jump") ? spaceAccelFactor : 1;

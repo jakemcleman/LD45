@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 1799625301}
   - component: {fileID: 1799625302}
   - component: {fileID: 3320331747740356115}
+  - component: {fileID: 599135114}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -735,11 +736,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
+  - {fileID: 576623331137521695}
   - {fileID: 2051519429}
   - {fileID: 1621496579}
   - {fileID: 788583558}
   - {fileID: 2128392623443550988}
-  weaponUnlocked: 
+  weaponUnlocked: 0100000000
 --- !u!114 &671589662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d60f50765dea64fac3cd2e27191600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 2051519429}
   onWeaponChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -803,6 +805,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df5e0e441375c834ba6565965603bd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &599135114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007395565380830703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986bd1c6637b9ed4787b68cf029527d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8520650120478169638

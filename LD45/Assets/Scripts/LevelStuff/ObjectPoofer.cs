@@ -43,7 +43,7 @@ public class ObjectPoofer : MonoBehaviour
             animationTime += Time.deltaTime;
             float percent = Mathf.Clamp01(animationTime / poofDuration);
 
-            transform.localPosition = Vector3.LerpUnclamped(poofFromVector, endPosition, moveCurve.Evaluate(percent));
+            transform.localPosition = Vector3.LerpUnclamped(endPosition + poofFromVector, endPosition, moveCurve.Evaluate(percent));
 
             yield return null;
         }
@@ -68,7 +68,7 @@ public class ObjectPoofer : MonoBehaviour
             animationTime += Time.deltaTime;
             float percent = 1 - Mathf.Clamp01(animationTime / poofDuration);
 
-            transform.localPosition = Vector3.LerpUnclamped(poofFromVector, endPosition, moveCurve.Evaluate(percent));
+            transform.localPosition = Vector3.LerpUnclamped(endPosition + poofFromVector, endPosition, moveCurve.Evaluate(percent));
 
             yield return null;
         }

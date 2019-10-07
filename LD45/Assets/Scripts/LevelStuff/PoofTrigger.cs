@@ -22,11 +22,23 @@ public class PoofTrigger : MonoBehaviour
         active = false;
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnDrawGizmosSelected()
     {
-        if (col.tag == "Player")
+        Gizmos.color = Color.white;
+
+        foreach(GameObject poof in poofs)
         {
-            switch (Action)
+            if(poof != null)
+            {
+                Gizmos.DrawSphere(poof.transform.position, 10.0f);
+                Gizmos.DrawLine(poof.transform.position, poof.transform.position + poof.GetComponent<ObjectPoofer>().poofFromVector);
+            }
+        }
+    }
+
+    protected void DoPoof()
+    {
+        switch (Action)
             {
                 case PTAction.PoofIn:
                     if (!active)
@@ -56,7 +68,14 @@ public class PoofTrigger : MonoBehaviour
                         }
                     }
                     break;
-            }  
+            } 
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Player")
+        {
+             DoPoof();
         }
     }
 }

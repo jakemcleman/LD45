@@ -557,6 +557,31 @@ PrefabInstance:
       propertyPath: poofs.Array.data[4]
       value: 
       objectReference: {fileID: 48612695}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 7.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b7e82be5073264aacb88c372f71685, type: 3}
 --- !u!1001 &169865930
@@ -1914,6 +1939,31 @@ PrefabInstance:
       propertyPath: poofs.Array.data[2]
       value: 
       objectReference: {fileID: 1178359062}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 2.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b7e82be5073264aacb88c372f71685, type: 3}
 --- !u!1001 &1250383893
