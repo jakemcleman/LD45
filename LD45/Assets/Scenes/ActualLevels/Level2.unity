@@ -1914,12 +1914,12 @@ PrefabInstance:
     - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
       propertyPath: poofFromVector.z
-      value: 100
+      value: -38.86
       objectReference: {fileID: 0}
     - target: {fileID: 8858161312241224300, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
       propertyPath: poofFromVector.x
-      value: -100
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 602517326072630164, guid: 44133b1ab6d3d1e45b42504467e54820,
         type: 3}
@@ -3271,11 +3271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1400748600, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
       propertyPath: poofFromVector.z
-      value: 100
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 1400748600, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
       propertyPath: poofFromVector.x
-      value: -100
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb04ec220d0cb642a3e4e06b70c19fa, type: 3}
