@@ -1998,6 +1998,11 @@ PrefabInstance:
       propertyPath: poofs.Array.data[11]
       value: 
       objectReference: {fileID: 1984237221}
+    - target: {fileID: 4318240512854186957, guid: 17b7e82be5073264aacb88c372f71685,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4318240512854186958, guid: 17b7e82be5073264aacb88c372f71685,
         type: 3}
       propertyPath: m_Size.x

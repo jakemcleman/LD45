@@ -45,6 +45,7 @@ public class PoofTrigger : MonoBehaviour
                     {
                         if (poofs.Length > 0)
                         {
+                            Debug.Log("Poofing in " + poofs.Length + " objects");
                             foreach (GameObject poof in poofs)
                             {
                                 poof.SetActive(true);
@@ -60,7 +61,8 @@ public class PoofTrigger : MonoBehaviour
                     {
                         if (poofs.Length > 0)
                         {
-                            foreach (GameObject poof in poofs)
+                        Debug.Log("Poofing out " + poofs.Length + " objects");
+                        foreach (GameObject poof in poofs)
                             {
                                 poof.GetComponent<ObjectPoofer>().StartPoofOut();
                             }
