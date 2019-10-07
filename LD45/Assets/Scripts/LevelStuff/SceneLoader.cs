@@ -200,6 +200,9 @@ public class SceneLoader : MonoBehaviour
         MoveNewMap();
         MoveToScene(SceneManager.GetSceneByBuildIndex(nextSceneIndex));
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (doUnload) UnLoadScene(trigger);
     }
 }
