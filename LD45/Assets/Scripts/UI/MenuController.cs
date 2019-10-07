@@ -70,6 +70,11 @@ public class MenuController : MonoBehaviour
         pauseOpen = false;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void MusicVolume (float val)
     {
         //Put music volume shit here
