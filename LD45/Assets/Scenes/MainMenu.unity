@@ -300,8 +300,10 @@ MonoBehaviour:
   pauseBeforeTypingLength: 3
   cursorBlinkRate: 1
   typeRate: 0.1
+  leaveCursorWhenDone: 0
   animate: 1
   spaceAccelFactor: 10
+  activateOnCompletion: []
 --- !u!114 &272749801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,11 +501,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitFor: {fileID: 272749800}
-  pauseBeforeTypingLength: 3
+  pauseBeforeTypingLength: 0
   cursorBlinkRate: 1
   typeRate: 0.1
+  leaveCursorWhenDone: 0
   animate: 1
   spaceAccelFactor: 10
+  activateOnCompletion: []
 --- !u!114 &653957064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,8 +672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1094, y: -596.1}
-  m_SizeDelta: {x: 2000, y: 700.30005}
+  m_AnchoredPosition: {x: 1094, y: -632.9}
+  m_SizeDelta: {x: 2000, y: 626.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191837920
 MonoBehaviour:
@@ -687,8 +691,10 @@ MonoBehaviour:
   pauseBeforeTypingLength: 3
   cursorBlinkRate: 0.5
   typeRate: 0.1
+  leaveCursorWhenDone: 0
   animate: 1
   spaceAccelFactor: 10
+  activateOnCompletion: []
 --- !u!114 &1191837921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,8 +1184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1094, y: -163.48047}
-  m_SizeDelta: {x: 2000, y: 164.95}
+  m_AnchoredPosition: {x: 1247.8, y: -200.24988}
+  m_SizeDelta: {x: 2307.6, y: 238.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040057806
 MonoBehaviour:
@@ -1197,8 +1203,10 @@ MonoBehaviour:
   pauseBeforeTypingLength: 2
   cursorBlinkRate: 0.5
   typeRate: 0.1
+  leaveCursorWhenDone: 0
   animate: 1
   spaceAccelFactor: 10
+  activateOnCompletion: []
 --- !u!114 &2040057807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,7 +1227,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 595ebdbdb3c26da4cb162ce24fccdddc, type: 3}
-    m_FontSize: 150
+    m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1230,7 +1238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Void Couch
+  m_Text: 'Asset Stream
 
 '
 --- !u!222 &2040057808
