@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public static bool gameMusicHasStarted = false;
+
     public int firstLevelIndex;
     public int lastLevelIndex;
     private int curSceneIndex;
