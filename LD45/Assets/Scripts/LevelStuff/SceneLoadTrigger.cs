@@ -38,15 +38,15 @@ public class SceneLoadTrigger : MonoBehaviour
             switch (action)
             {
                 case STAction.Load:
-                    sceneLoader.StartLoad(false);
+                    sceneLoader.StartLoad(this.gameObject, false);
                     break;
 
                 case STAction.Unload:
-                    sceneLoader.UnLoadScene();
+                    sceneLoader.UnLoadScene(this.gameObject);
                     break;
 
                 case STAction.Both:
-                    sceneLoader.StartLoad(true);
+                    sceneLoader.StartLoad(this.gameObject, true);
                     break;
             }
         }

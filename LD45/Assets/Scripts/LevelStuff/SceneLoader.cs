@@ -21,8 +21,6 @@ public class SceneLoader : MonoBehaviour
 
     public string nextSceneName;
 
-    private bool isLoaded;
-
     private IEnumerator coroutine;
 
     // Start is called before the first frame update
@@ -35,24 +33,16 @@ public class SceneLoader : MonoBehaviour
         eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 
         curSceneIndex = firstLevelIndex;
-
-        isLoaded = false;
     }
 
-    public void StartLoad(bool doUnload, string sceneName = null)
+    public void StartLoad(GameObject trigger, bool doUnload, string sceneName = null)
     {      
-        if (!isLoaded)
-        {
-            coroutine = LoadSceneAsync(doUnload, sceneName);
-            StartCoroutine(coroutine);
-        }
-        else
-        {
-            Debug.LogError("New scene has already been loaded");
-        }
+        coroutine = LoadSceneAsync(trigger, doUnload, sceneName);
+        StartCoroutine(coroutine);
+        trigger.SetActive(false);
     }
 
-    public void UnLoadScene(string sceneName = null)
+    public void UnLoadScene(GameObject trigger, string sceneName = null)
     {
         Scene unloadScene;
         if (sceneName == null)
@@ -76,6 +66,7 @@ public class SceneLoader : MonoBehaviour
             }
 
             SceneManager.UnloadSceneAsync(unloadScene);
+            trigger.SetActive(false);
         }
     }
 
@@ -179,7 +170,7 @@ public class SceneLoader : MonoBehaviour
         newMap.transform.position -= moveVector;
     }
 
-    IEnumerator LoadSceneAsync(bool doUnload, string sceneName = null)
+    IEnumerator LoadSceneAsync(GameObject trigger, bool doUnload, string sceneName = null)
     {
         AsyncOperation asyncLoad;
         
@@ -192,18 +183,18 @@ public class SceneLoader : MonoBehaviour
         {
             asyncLoad = SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Additive);
             nextSceneIndex = SceneManager.GetSceneByName(nextSceneName).buildIndex;
-        }      
+        }
+
+        Debug.Log("Loading scene: " + SceneManager.GetSceneByBuildIndex(nextSceneIndex).name + " At index: " + nextSceneIndex);
 
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        isLoaded = true;
-
         MoveNewMap();
         MoveToScene(SceneManager.GetSceneByBuildIndex(nextSceneIndex));
 
-        if (doUnload) UnLoadScene();
+        if (doUnload) UnLoadScene(trigger);
     }
 }
