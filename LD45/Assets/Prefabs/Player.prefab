@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10e7293964a0914599cb8ac94f2c791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music_event: event:/Music/Test_Music
+  music_event: event:/Music/GameplayMusic
 --- !u!1 &2128392623443550988
 GameObject:
   m_ObjectHideFlags: 0
