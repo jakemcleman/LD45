@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
+    private float baseFootstepTime = 0.4f;
+
     private float groundFootstepTime;
     private float wallrunFootstepTime;
-    private float groundFootstepTimeInterval = 0.4f;
+    private float wallclimbFootstepTime;
+
+    private float groundFootstepTimeInterval;
     private float wallrunFootstepTimeInterval;
+    private float wallclimbFootstepTimeInterval;
 
     private MovementController movement;
 
@@ -17,18 +22,21 @@ public class PlayerAudio : MonoBehaviour
         movement = GetComponent<MovementController>();
         movement.onMotionStateEvent.AddListener(MotionStateChange);
 
-        wallrunFootstepTimeInterval = movement.wallRunBaseSpeed / 100.0f;
+        groundFootstepTimeInterval = baseFootstepTime;
+        wallrunFootstepTimeInterval = baseFootstepTime - (movement.wallRunBaseSpeed * 0.004f);
+        wallclimbFootstepTimeInterval = baseFootstepTime - (movement.wallClimbSpeed * 0.01f);
 
         groundFootstepTime = groundFootstepTimeInterval;
         wallrunFootstepTime = wallrunFootstepTimeInterval;
+        wallclimbFootstepTime = wallclimbFootstepTimeInterval;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovementAudio();
+        FootstepAudio();
     }
-    private void MovementAudio()
+    private void FootstepAudio()
     {
         switch (movement.CurrentMotionState)
         {
@@ -48,6 +56,15 @@ public class PlayerAudio : MonoBehaviour
                 {
                     PlayFootstep();
                     wallrunFootstepTime = wallrunFootstepTimeInterval;
+                }
+                break;
+            case MotionState.Wallclimb:
+                if (wallclimbFootstepTime > 0)
+                    wallclimbFootstepTime -= Time.deltaTime;
+                else
+                {
+                    PlayFootstep();
+                    wallclimbFootstepTime = wallclimbFootstepTimeInterval;
                 }
                 break;
         }
