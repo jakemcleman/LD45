@@ -56,7 +56,7 @@ public class ObjectPoofer : MonoBehaviour
         while (this.gameObject.GetComponentInChildren<Checkpoint>() != null && this.gameObject.GetComponentInChildren<Checkpoint>().getActive() == true)
         {
             Debug.Log("Can't poof out yet, there's an active checkpoint");
-            yield return null;
+            yield return new WaitForSeconds(1.0f);
         }
 
         yield return new WaitForSeconds(delay);
