@@ -7,6 +7,8 @@ public class PlayerWeaponController : MonoBehaviour
 {
     public GameObject[] weapons;
 
+    public bool[] weaponUnlocked;
+
     private int curWeaponIndex;
     private WeaponWielder wielder;
     private ProgressBar reloadUI;
@@ -47,23 +49,38 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
+    public void UnlockWeapon(int index)
+    {
+        if(!weaponUnlocked[index])
+        {
+            weaponUnlocked[index] = true;
+            if(index > 0) weaponUnlocked[0] = false;
+            ChangeToWeapon(index);
+        }
+    }
+
     private void ChangeToWeapon(int index)
     {
         foreach(MeshRenderer mr in weapons[curWeaponIndex].GetComponentsInChildren<MeshRenderer>())
         {
             mr.enabled = false;
         }
-        
+
         curWeaponIndex = index;
         if (curWeaponIndex >= weapons.Length) curWeaponIndex = 0;
         if (curWeaponIndex < 0) curWeaponIndex = weapons.Length - 1;
 
+        while(!weaponUnlocked[curWeaponIndex])
+        {
+            ChangeToWeapon(curWeaponIndex + 1);
+        }
+        
         foreach(MeshRenderer mr in weapons[curWeaponIndex].GetComponentsInChildren<MeshRenderer>())
         {
             mr.enabled = true;
         }
 
-        IWeapon newWep = weapons[index].GetComponent<IWeapon>();
+        IWeapon newWep = weapons[curWeaponIndex].GetComponent<IWeapon>();
         if(newWep == null) Debug.LogError("New weapon is not a weapon, does not implement IWeapon");
         wielder.CurrentWeapon = newWep;
     }
