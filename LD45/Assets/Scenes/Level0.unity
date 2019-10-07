@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913bd0acded7ad744bf58c08401824d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagePerSecond: 50
+  DamagePerSecond: 250
 --- !u!4 &379991840
 Transform:
   m_ObjectHideFlags: 0
