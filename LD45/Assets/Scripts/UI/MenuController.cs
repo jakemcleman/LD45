@@ -10,6 +10,15 @@ public class MenuController : MonoBehaviour
     private CanvasGroup curMenu;
     private CanvasGroup hud;
 
+    public static bool Paused
+    {
+        get
+        {
+            MenuController mc = FindObjectOfType<MenuController>();
+            return mc != null ? mc.GetPauseOpen() : false;
+        }
+    }
+
     public bool GetPauseOpen()
     {
         return pauseOpen;
