@@ -65,7 +65,7 @@ public class SceneLoader : MonoBehaviour
             {
                 if (cp.scene == SceneManager.GetSceneByBuildIndex(curSceneIndex) && cp.GetComponent<Checkpoint>().getActive() == true)
                 {
-                    Debug.LogError("There is still an active checkpoint in this scene");
+                    Debug.LogError("There is still an active checkpoint " + cp.name + " in this scene " + unloadScene.buildIndex + "  CurSceneIndex: " + curSceneIndex + "; Active scene: " + SceneManager.GetActiveScene().buildIndex);
                     return;
                 }
             }
