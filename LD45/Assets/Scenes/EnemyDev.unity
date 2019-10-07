@@ -1208,7 +1208,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6302778129955023433, guid: 1e3a06042ddaadd469886691524d8938,
+    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: internalWeaponName
+      value: BasicGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846632448934612122, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: isAuto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846632448934612122, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: internalWeaponName
+      value: MG
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172667737506293, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718390321962202409, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172668575671135, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718390323471439747, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: m_Enabled
       value: 0

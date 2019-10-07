@@ -17,7 +17,7 @@ public class PlayerWeaponController : MonoBehaviour
         reloadUI = GameObject.Find("ReloadIndicator").GetComponent<ProgressBar>();
 
         curWeaponIndex = 0;
-        wielder.CurrentWeapon = weapons[curWeaponIndex].GetComponent<IWeapon>();
+        ChangeToWeapon(curWeaponIndex);
 
         wielder.onWeaponReloadEvent.AddListener(OnWeaponReload);
     }
