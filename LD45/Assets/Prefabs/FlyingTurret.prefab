@@ -144,7 +144,7 @@ MonoBehaviour:
   aboveAmount: 10
   yawRate: 45
   orbitRate: 0.01
-  retreatTime: 15.5
+  retreatTime: 0.5
 --- !u!114 &5435196925608711054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +163,10 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: 50
+  maxHealth: 100
   damageMultiplier: 1
+  damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
+    type: 3}
 --- !u!114 &5435196925608711055
 MonoBehaviour:
   m_ObjectHideFlags: 0
