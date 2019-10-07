@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bishop
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1914c63a504b16143801014b0d896e83,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1914c63a504b16143801014b0d896e83,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chess_Bishop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088189690733992619, guid: b110fbcac98594e439f491cc703fa33d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 6677635755637710999, guid: b110fbcac98594e439f491cc703fa33d,
         type: 3}
