@@ -42,6 +42,8 @@ public class FlyingEnemy: MonoBehaviour
 
     private void Update()
     {
+        if (MenuController.Paused) return;
+        
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
         GameObject tempTarget = PickTarget(potentialTargets);
         // state adjustment

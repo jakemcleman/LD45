@@ -13,6 +13,15 @@ public class MenuController : MonoBehaviour
     FMOD.Studio.VCA vca_mus;
     FMOD.Studio.VCA vca_sfx;
 
+    public static bool Paused
+    {
+        get
+        {
+            MenuController mc = FindObjectOfType<MenuController>();
+            return mc != null ? mc.GetPauseOpen() : false;
+        }
+    }
+
     public bool GetPauseOpen()
     {
         return pauseOpen;
