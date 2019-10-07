@@ -43,7 +43,7 @@ public class FlyingEnemy: MonoBehaviour
     private void Update()
     {
         if (MenuController.Paused) return;
-        
+
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
         GameObject tempTarget = PickTarget(potentialTargets);
         // state adjustment
@@ -63,7 +63,7 @@ public class FlyingEnemy: MonoBehaviour
 
         if (_curState == FlyingEnemyState.Attacking && healthChanged) {
             healthChanged = false;
-            ChangeFlyingEnemyState(FlyingEnemyState.Retreating);
+            //ChangeFlyingEnemyState(FlyingEnemyState.Retreating);
         }
         if (_curState == FlyingEnemyState.Retreating) 
         {
