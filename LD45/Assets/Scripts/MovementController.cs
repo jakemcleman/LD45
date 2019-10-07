@@ -467,9 +467,9 @@ public class MovementController : MonoBehaviour
 
                 InvokeMotionStateEvent(_currMotionState, nextMotionState);
 
-                MotionStateInitialize(prevState, nextMotionState);
-
                 _currMotionState = nextMotionState;
+
+                MotionStateInitialize(prevState, nextMotionState);
             }
         }
     }
