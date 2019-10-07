@@ -23,8 +23,6 @@ public class BulletWhiz : MonoBehaviour
         if (other.tag != "Projectile")
             return;
 
-        Debug.Log("BULLET PASSED BY PLAYER!");
-
         FMODUnity.RuntimeManager.PlayOneShot(event_path, other.gameObject.transform.position);
     }
 }

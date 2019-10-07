@@ -28,7 +28,7 @@ public class TurretEnemy : MonoBehaviour
     public float nonAutoFireRate = 1.0f;
     private float fireTimer;
 
-
+    private Health health;
 
     private GameObject lastTarget = null;
     private Vector3 aimPoint;
@@ -39,6 +39,9 @@ public class TurretEnemy : MonoBehaviour
         fireTimer = 0;
 
         idleAimPoint = transform.position + 10 * transform.forward;
+
+        health = GetComponent<Health>();
+        health.onHealthChange.AddListener(TurretTakesDamage);
     }
 
     private void OnDrawGizmos()
@@ -252,5 +255,10 @@ public class TurretEnemy : MonoBehaviour
             }
         }
         return best;
+    }
+
+    private void TurretTakesDamage(HealthChangeEvent e)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Enemy_Damage", transform.position);
     }
 }
