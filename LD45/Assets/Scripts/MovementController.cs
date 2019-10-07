@@ -734,7 +734,7 @@ public class MovementController : MonoBehaviour
             {
                 _wallRunSpeed = wallRunBaseSpeed;
             }
-            ChangeMotionState(MotionState.Wallrun);
+            ChangeMotionState(MotionState.WallrunStart);
         }
     }
 
@@ -745,7 +745,7 @@ public class MovementController : MonoBehaviour
         {
             _dirToWall = -surfaceNormal;
 
-            ChangeMotionState(MotionState.Wallclimb);
+            ChangeMotionState(MotionState.WallclimbStart);
         }
     }
 
