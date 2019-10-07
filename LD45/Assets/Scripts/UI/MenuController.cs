@@ -61,12 +61,12 @@ public class MenuController : MonoBehaviour
         pauseOpen = false;
     }
 
-    public void MusicVolume (int val)
+    public void MusicVolume (float val)
     {
         //Put music volume shit here
     }
 
-    public void SFXVolume(int val)
+    public void SFXVolume(float val)
     {
         //Put SFX volume shit here
     }
