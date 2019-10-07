@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3150393512176132681}
   m_Layer: 0
   m_Name: HouseWallDoorOpen
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ef4c87485c4eda94390ec46fb6731ace,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ef4c87485c4eda94390ec46fb6731ace,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -185,6 +190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 10c701a8bbdd03241a7c2bb546c96870,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 10c701a8bbdd03241a7c2bb546c96870,
         type: 3}

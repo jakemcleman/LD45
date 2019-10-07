@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 6009610172724000309}
   m_Layer: 0
   m_Name: HouseWallSolid
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall_Solid
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 76606bc5df3b11643a6e31f14b96f051,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 76606bc5df3b11643a6e31f14b96f051,
         type: 3}
