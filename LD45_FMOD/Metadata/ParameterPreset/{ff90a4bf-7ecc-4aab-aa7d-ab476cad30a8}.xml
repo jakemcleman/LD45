@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{ff90a4bf-7ecc-4aab-aa7d-ab476cad30a8}">
+		<property name="name">
+			<value>Railgun_Ammo</value>
+		</property>
+		<relationship name="folder">
+			<destination>{32a205ae-9ed5-4d80-9b20-b23097f2950f}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c6bed522-f8e2-412d-8b64-512758bac4d8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c6bed522-f8e2-412d-8b64-512758bac4d8}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>
