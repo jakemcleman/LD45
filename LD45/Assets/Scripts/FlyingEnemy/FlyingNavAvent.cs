@@ -65,7 +65,7 @@ public class FlyingNavAvent : MonoBehaviour
         //Debug.DrawLine(transform.position, transform.position + (testVel.normalized * castLength), Color.grey, 0.5f);
 
         RaycastHit hit; 
-        return Physics.SphereCast(transform.position, agentRadius, testVel.normalized, out hit, castLength);
+        return Physics.SphereCast(transform.position, agentRadius, testVel.normalized, out hit, castLength, ~(1 << 8));
     }
 
     private void TestSolution(Vector3 adjustmentAcc, ref List<Vector3> optionsList)
