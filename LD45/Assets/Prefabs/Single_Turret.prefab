@@ -139,7 +139,8 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 50
   damageMultiplier: 1
-  damageIndicatorPrefab: {fileID: 0}
+  damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
+    type: 3}
 --- !u!114 &1217541683608974279
 MonoBehaviour:
   m_ObjectHideFlags: 0

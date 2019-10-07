@@ -122,7 +122,7 @@ MonoBehaviour:
   maxSpeed: 10
   acceleration: 1
   yAccelerationModifier: 0.5
-  agentRadius: 1
+  agentRadius: 0.5
   decelerateEarly: 0
   arrivalRange: 1
   targetPosition: {x: 0, y: 0, z: 0}
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSightRange: 500
-  targetOrbitRadius: 15
-  aboveAmount: 10
+  targetOrbitRadius: 10
+  aboveAmount: 5
   yawRate: 45
   orbitRate: 0.01
   retreatTime: 0.5
@@ -163,7 +163,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: 100
+  maxHealth: 60
   damageMultiplier: 1
   damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
     type: 3}
