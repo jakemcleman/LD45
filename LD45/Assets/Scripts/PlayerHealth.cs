@@ -50,7 +50,6 @@ public class PlayerHealth : MonoBehaviour
     private void OnHealthChange(HealthChangeEvent e)
     {
         health_state.setParameterByName("Player_Health", health.HealthRatio);
-        Debug.Log("HEALTH CHANGE " + e.amount);
 
         healthBar.Fill = health.HealthRatio;
     }
