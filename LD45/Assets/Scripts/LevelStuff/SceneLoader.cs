@@ -97,6 +97,11 @@ public class SceneLoader : MonoBehaviour
             if (k.gameObject.scene == nextScene) Destroy(k.gameObject);
         }
 
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("PlsKill"))
+        {
+            if (g.gameObject.scene == nextScene) Destroy(g);
+        }
+
         curSceneIndex = nextSceneIndex;
 
         //Activates the newly loaded scene

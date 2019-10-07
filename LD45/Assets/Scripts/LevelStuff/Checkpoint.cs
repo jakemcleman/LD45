@@ -10,6 +10,9 @@ public class Checkpoint : MonoBehaviour
 
     private bool active;
 
+    public GameObject InactiveCP;
+    public GameObject ActiveCP;
+
     static Checkpoint()
     {
         onCheckpoint = new UnityEvent();

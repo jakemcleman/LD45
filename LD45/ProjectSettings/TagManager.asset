@@ -15,6 +15,7 @@ TagManager:
   - Map
   - Checkpoint
   - Turret
+  - PlsKill
   layers:
   - Default
   - TransparentFX
