@@ -619,7 +619,7 @@ MonoBehaviour:
   numJumps: 2
   sprintModifier: 2
   gravity: 60
-  maxFallSpeed: 40
+  maxFallSpeed: 30
   normalHeight: 2
   crouchHeight: 1
   wallRunMaxTime: 2
@@ -660,8 +660,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   wallRunVerticalDriftIntensity: 0.5
   wallClimbMaxTime: 2
-  wallClimbSpeed: 10
-  footstepTimeInterval: 0.4
+  wallClimbSpeed: 20
   _currMotionState: 0
   _enableGravity: 1
   onMotionStateEvent:
