@@ -4258,6 +4258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 671589661, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
+      propertyPath: weaponUnlocked.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
 --- !u!1001 &1004781443
@@ -5069,7 +5073,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 489d6a7a9c3a2e64582010db8a38a482,
         type: 3}
       propertyPath: m_RootOrder
-      value: 123
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 489d6a7a9c3a2e64582010db8a38a482,
         type: 3}
@@ -7395,12 +7399,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.8683444
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
@@ -7410,7 +7414,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.4959617
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
@@ -7425,7 +7429,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 120.534004
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 31a766cad2cb8b344be4471b52782129,
         type: 3}
@@ -7523,7 +7527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 122
+  m_RootOrder: 123
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1823661765
 PrefabInstance:
