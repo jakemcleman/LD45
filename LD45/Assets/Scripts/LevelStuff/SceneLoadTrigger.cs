@@ -28,10 +28,10 @@ public class SceneLoadTrigger : MonoBehaviour
         {
             Debug.LogError("No Scene Manager found, adding a new one :)");
             Instantiate(SceneManagerGO);
-            Debug.Log("Current scene build index: " + this.gameObject.scene.buildIndex);
             sceneLoader = SceneManagerGO.GetComponent<SceneLoader>();
             sceneLoader.firstLevelIndex = this.gameObject.scene.buildIndex;
             sceneLoader.ResetCurIndex();
+            Debug.Log("Current scene build index: " + this.gameObject.scene.buildIndex);
         }
         else
         {
