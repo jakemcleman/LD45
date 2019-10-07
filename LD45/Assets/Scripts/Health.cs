@@ -66,10 +66,14 @@ public class Health : MonoBehaviour
         onHealthChange.Invoke(healthChange);
 
         curHealth -= amount * damageMultiplier;
-        GameObject indicator = Instantiate(damageIndicatorPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
-        float damage = amount * damageMultiplier;
-        indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Random.insideUnitSphere;
-        indicator.GetComponent<TextMesh>().text = damage.ToString();
+
+        if(damageIndicatorPrefab != null)
+        {
+            GameObject indicator = Instantiate(damageIndicatorPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
+            float damage = amount * damageMultiplier;
+            indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Random.insideUnitSphere;
+            indicator.GetComponent<TextMesh>().text = damage.ToString();
+        }
 
         if(curHealth <= 0)
         {
