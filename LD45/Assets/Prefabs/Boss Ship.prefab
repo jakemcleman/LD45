@@ -24,11 +24,11 @@ GameObject:
   - component: {fileID: 3859790203982412639}
   - component: {fileID: 3859790203982412638}
   - component: {fileID: 3859790203982412705}
+  - component: {fileID: 552124032}
   - component: {fileID: 3859790203982412636}
   - component: {fileID: 3859790203982412634}
   - component: {fileID: 3859790203982412637}
   - component: {fileID: 552124031}
-  - component: {fileID: 552124032}
   - component: {fileID: 556590973025166364}
   m_Layer: 8
   m_Name: Boss Ship
@@ -99,6 +99,28 @@ MonoBehaviour:
   arrivalRange: 1
   targetPosition: {x: 0, y: 0, z: 0}
   retreat: 0
+--- !u!114 &552124032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859790203982412704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d62e311b9e07e43b1c90892680f71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: 1000
+  damageMultiplier: 1
+  damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
+    type: 3}
 --- !u!65 &3859790203982412636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,28 +182,6 @@ MonoBehaviour:
   - {fileID: 8215432185087670556}
   ShakeMagnitude: 1
   flashColor: {r: 1, g: 0.28773582, b: 0.28773582, a: 0.53333336}
---- !u!114 &552124032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859790203982412704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6d62e311b9e07e43b1c90892680f71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  maxHealth: 1000
-  damageMultiplier: 1
-  damageIndicatorPrefab: {fileID: 3377288788906692999, guid: 072a8752b9f66f046885168f95dadd7f,
-    type: 3}
 --- !u!114 &556590973025166364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,22 +667,22 @@ PrefabInstance:
       propertyPath: rightYawLimit
       value: 110
       objectReference: {fileID: 0}
-    - target: {fileID: 3852117493834189646, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 815707119955003751, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6317070013962735063, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
         type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4795264434285969598, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852117493834189646, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 815707119955003751, guid: 4d0e8f4e499810c499bb4904a8d8d5ab,
         type: 3}
       propertyPath: m_Layer
       value: 8
