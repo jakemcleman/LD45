@@ -41,15 +41,26 @@ public class PlayerWeaponController : MonoBehaviour
         // Test weapon switching code - if this is a real thing we want do this better with a real input button
         if (Input.GetKeyDown(KeyCode.E))
         {
-            curWeaponIndex++;
-            if (curWeaponIndex >= weapons.Length) curWeaponIndex = 0;
-
-            ChangeToWeapon(curWeaponIndex);
+            ChangeToWeapon(curWeaponIndex + 1);
         }
     }
 
     private void ChangeToWeapon(int index)
     {
+        foreach(MeshRenderer mr in weapons[curWeaponIndex].GetComponentsInChildren<MeshRenderer>())
+        {
+            mr.enabled = false;
+        }
+        
+        curWeaponIndex = index;
+        if (curWeaponIndex >= weapons.Length) curWeaponIndex = 0;
+        if (curWeaponIndex < 0) curWeaponIndex = weapons.Length - 1;
+
+        foreach(MeshRenderer mr in weapons[curWeaponIndex].GetComponentsInChildren<MeshRenderer>())
+        {
+            mr.enabled = true;
+        }
+
         IWeapon newWep = weapons[index].GetComponent<IWeapon>();
         if(newWep == null) Debug.LogError("New weapon is not a weapon, does not implement IWeapon");
         wielder.CurrentWeapon = newWep;
