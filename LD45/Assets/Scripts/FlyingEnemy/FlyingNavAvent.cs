@@ -82,7 +82,7 @@ public class FlyingNavAvent : MonoBehaviour
         float closenessToDesiredDirection = Vector3.Dot(GetVelResultFromAccel(adjustmentAcc).normalized, toTarget.normalized);
         float verticalMovementCost = adjustmentAcc.y;
 
-        return (closenessToDesiredDirection * 3) + (verticalMovementCost * -1);
+        return (closenessToDesiredDirection * 3) + (verticalMovementCost * -3);
     }
 
     private void Update()

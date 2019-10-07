@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa181c66de3cd57409d8c6dcab86bb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 25
+  damageAmount: 60
   speed: 500
   direction: {x: 0, y: 0, z: 0}
   Timeout: 2

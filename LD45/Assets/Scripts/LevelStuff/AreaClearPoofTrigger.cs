@@ -11,6 +11,18 @@ public class AreaClearPoofTrigger : PoofTrigger
 
     private bool cleared;
 
+    private void OnDrawGizmosSelected()
+    {
+        foreach(Health enemyHealth in AreaEnemies)
+        {
+            if(enemyHealth != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(enemyHealth.transform.position, 5.0f);
+            }
+        }
+    }
+
     private void Start()
     {
         foreach(Health enemyHealth in AreaEnemies)
