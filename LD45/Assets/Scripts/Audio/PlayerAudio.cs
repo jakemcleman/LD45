@@ -120,7 +120,6 @@ public class PlayerAudio : MonoBehaviour
 
     private void SetSurfaceParameter(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.tag);
         AudioDefs.Surface surface = AudioDefs.Surface.None;
         switch (hit.collider.gameObject.tag)
         {

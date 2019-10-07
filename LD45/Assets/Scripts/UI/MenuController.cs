@@ -10,6 +10,9 @@ public class MenuController : MonoBehaviour
     private CanvasGroup curMenu;
     private CanvasGroup hud;
 
+    FMOD.Studio.VCA vca_mus;
+    FMOD.Studio.VCA vca_sfx;
+
     public bool GetPauseOpen()
     {
         return pauseOpen;
@@ -18,6 +21,11 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        vca_mus = FMODUnity.RuntimeManager.GetVCA("vca:/Music");
+        vca_sfx = FMODUnity.RuntimeManager.GetVCA("vca:/SFX");
+        vca_mus.setVolume(1.0f);
+        vca_sfx.setVolume(1.0f);
+
         pausePanel = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
         hud = GameObject.Find("HUD").GetComponent<CanvasGroup>();
 
@@ -63,11 +71,11 @@ public class MenuController : MonoBehaviour
 
     public void MusicVolume (float val)
     {
-        //Put music volume shit here
+        vca_mus.setVolume(val);
     }
 
     public void SFXVolume(float val)
     {
-        //Put SFX volume shit here
+        vca_sfx.setVolume(val);
     }
 }
