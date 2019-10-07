@@ -60,7 +60,7 @@
 			<destination>{2f4eba6b-6001-465b-9999-e670bf65a344}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{76b566cc-c0f2-4d99-a546-d394823035d3}</destination>
+			<destination>{872d5e6d-e08f-4554-b70e-9c75b7d1e274}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{80b190e9-6738-4c5b-ad78-18728c9db8c3}" />
@@ -190,7 +190,7 @@
 	<object class="MixerBusFader" id="{42774ed7-0164-4619-a9a6-57a9d1473902}" />
 	<object class="SpatialiserEffect" id="{dbafe49e-ba71-412b-9348-4cf3c0a0149b}">
 		<property name="maximumDistance">
-			<value>150</value>
+			<value>200</value>
 		</property>
 	</object>
 	<object class="ThreeEQEffect" id="{03f498f8-e6d7-45fb-81cc-75a0a5a8fb39}">
@@ -204,7 +204,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>2.5</value>
 		</property>
 		<property name="curveShape">
 			<value>-0.338691503</value>
@@ -215,7 +215,7 @@
 			<value>200</value>
 		</property>
 		<property name="value">
-			<value>-11</value>
+			<value>-8.5</value>
 		</property>
 	</object>
 	<object class="Automator" id="{c6c42a76-ed71-47b0-83f7-d29cbafcd5b3}">

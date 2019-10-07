@@ -64,7 +64,7 @@
 			<destination>{effcc041-f8cf-447d-a13c-fe16d40cd79e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{76b566cc-c0f2-4d99-a546-d394823035d3}</destination>
+			<destination>{99180c73-b188-4a75-9ed9-e76bd9297d29}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{9e40f55b-34a4-43a3-a653-1cec158abf5d}" />
@@ -145,7 +145,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d686dc44-2b50-48af-9c8c-501a3e462d61}">
 		<property name="volume">
-			<value>-11</value>
+			<value>-2.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{4b349d11-8822-467a-a48d-83c7de5a0944}</destination>
@@ -705,7 +705,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{755a16c2-0f1b-46e1-89d0-eb832285dda8}" />
 	<object class="MixerBusFader" id="{f415612f-a5bf-4f25-8a01-e894480f4a72}" />
-	<object class="SpatialiserEffect" id="{f47040bf-10c9-4e8c-a928-50bdc3e63a75}" />
+	<object class="SpatialiserEffect" id="{f47040bf-10c9-4e8c-a928-50bdc3e63a75}">
+		<property name="distanceRolloffType">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="ThreeEQEffect" id="{a7322f23-d857-485c-af12-5857d6b5c3ea}">
 		<relationship name="automators">
 			<destination>{823dd718-2b2a-4194-8101-f2bd23179fd9}</destination>
