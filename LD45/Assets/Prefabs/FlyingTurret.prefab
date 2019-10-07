@@ -116,16 +116,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5435196925608711050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a65b02d7cbe82458d07cd3d35aef59, type: 3}
+  m_Script: {fileID: 11500000, guid: 345a8b329e701a24d8a6b39b17d2a17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 10
   acceleration: 1
-  yAccelerationModifier: 0
-  agentRadius: 3
+  yAccelerationModifier: 0.5
+  agentRadius: 1
   decelerateEarly: 0
   arrivalRange: 1
-  targetPosition: {x: 0, y: 15, z: 5}
+  targetPosition: {x: 0, y: 0, z: 0}
+  retreat: 0
 --- !u!114 &5435196925608711088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,14 +136,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5435196925608711050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f0eef31abe624469ad772a1bdd8ec0, type: 3}
+  m_Script: {fileID: 11500000, guid: be4781d9352cf444a9bd86cec1a3089d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSightRange: 100
+  maxSightRange: 500
   targetOrbitRadius: 15
   aboveAmount: 10
-  yawRate: 90
-  orbitRate: 0.1
+  yawRate: 45
+  orbitRate: 0.01
+  retreatTime: 15.5
 --- !u!114 &5435196925608711054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +304,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5435196925608711089}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 0aa3b2a8ff856a1479662d882664d350,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretFlying_Base
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0aa3b2a8ff856a1479662d882664d350,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,11 +364,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0aa3b2a8ff856a1479662d882664d350,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretFlying_Base
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa3b2a8ff856a1479662d882664d350, type: 3}
 --- !u!4 &4341437168613490910 stripped
@@ -383,6 +385,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5435196925608711089}
     m_Modifications:
+    - target: {fileID: 2221249892867281626, guid: 4599352ffdaeda14aa49458a0b8412ad,
+        type: 3}
+      propertyPath: m_Name
+      value: Single_Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 2221249892867281631, guid: 4599352ffdaeda14aa49458a0b8412ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -437,11 +444,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.00002
-      objectReference: {fileID: 0}
-    - target: {fileID: 2221249892867281626, guid: 4599352ffdaeda14aa49458a0b8412ad,
-        type: 3}
-      propertyPath: m_Name
-      value: Single_Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4599352ffdaeda14aa49458a0b8412ad, type: 3}
