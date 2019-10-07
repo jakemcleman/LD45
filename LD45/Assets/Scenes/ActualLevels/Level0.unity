@@ -907,10 +907,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 671589662, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
-      propertyPath: startingWeapon
-      value: 
-      objectReference: {fileID: 800033883}
     - target: {fileID: 1621496581, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
       propertyPath: reloadTime
       value: 2
@@ -919,6 +915,10 @@ PrefabInstance:
       propertyPath: shotCooldownTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 671589662, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
+      propertyPath: startingWeapon
+      value: 
+      objectReference: {fileID: 800033883}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
 --- !u!1 &727368667 stripped
@@ -1213,17 +1213,17 @@ PrefabInstance:
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3353452252871563982, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
