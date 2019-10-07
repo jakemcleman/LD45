@@ -75,8 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSightRange: 500
   targetOrbitRadius: 40
-  aboveAmount: 15
-  yawRate: 45
+  aboveAmount: 5
+  yawRate: 15
   orbitRate: 0.01
   retreatTime: 15.5
 --- !u!114 &3859790203982412705
@@ -94,7 +94,7 @@ MonoBehaviour:
   maxSpeed: 5
   acceleration: 0.5
   yAccelerationModifier: 0.5
-  agentRadius: 9.46
+  agentRadius: 1
   decelerateEarly: 0
   arrivalRange: 1
   targetPosition: {x: 0, y: 0, z: 0}
@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_TurretFlying_Rotor (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -387,6 +392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretFlying_Rotor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
         type: 3}
@@ -475,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_TurretFlying_Rotor (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,9 +547,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4cffe5dd2ea38d40aa88792e53f9898, type: 3}
---- !u!23 &4854407248152854141 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+--- !u!4 &7870566432918976690 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
     type: 3}
   m_PrefabInstance: {fileID: 2901279919145620392}
   m_PrefabAsset: {fileID: 0}
@@ -544,9 +559,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2901279919145620392}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7870566432918976690 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+--- !u!23 &4854407248152854141 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: e4cffe5dd2ea38d40aa88792e53f9898,
     type: 3}
   m_PrefabInstance: {fileID: 2901279919145620392}
   m_PrefabAsset: {fileID: 0}
@@ -754,15 +769,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c637bd6f0bb40b48a77cbf147156381, type: 3}
---- !u!23 &6813244366722991494 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 8c637bd6f0bb40b48a77cbf147156381,
-    type: 3}
-  m_PrefabInstance: {fileID: 3859790204217452627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8136331564359369545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8c637bd6f0bb40b48a77cbf147156381,
+    type: 3}
+  m_PrefabInstance: {fileID: 3859790204217452627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6813244366722991494 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 8c637bd6f0bb40b48a77cbf147156381,
     type: 3}
   m_PrefabInstance: {fileID: 3859790204217452627}
   m_PrefabAsset: {fileID: 0}
@@ -868,6 +883,16 @@ PrefabInstance:
       propertyPath: rightYawLimit
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4579176558121838719, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745221043527785454, guid: 46373667a271c7942b21a8efedd4072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46373667a271c7942b21a8efedd4072f, type: 3}
 --- !u!4 &4579290479158888861 stripped
@@ -945,18 +970,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221791196435824409, guid: 4599352ffdaeda14aa49458a0b8412ad,
         type: 3}
-      propertyPath: maxSightRange
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221791196435824409, guid: 4599352ffdaeda14aa49458a0b8412ad,
-        type: 3}
       propertyPath: maxBarrelElevation
       value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221791196435824409, guid: 4599352ffdaeda14aa49458a0b8412ad,
-        type: 3}
-      propertyPath: minBarrelDepression
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4221791196435824409, guid: 4599352ffdaeda14aa49458a0b8412ad,
         type: 3}
@@ -1088,16 +1103,16 @@ PrefabInstance:
       propertyPath: rightYawLimit
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
+    - target: {fileID: 4579176558121838719, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
-      propertyPath: weapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 4579290479102996389}
-    - target: {fileID: 5308377895373788182, guid: 46373667a271c7942b21a8efedd4072f,
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745221043527785454, guid: 46373667a271c7942b21a8efedd4072f,
         type: 3}
-      propertyPath: weapons.Array.data[1]
-      value: 
-      objectReference: {fileID: 4579290480266133769}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46373667a271c7942b21a8efedd4072f, type: 3}
 --- !u!4 &4579290480099505638 stripped
@@ -1106,30 +1121,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3859790205377207244}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4579290479102996389 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 728548294531839081, guid: 46373667a271c7942b21a8efedd4072f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3859790205377207244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d60f50765dea64fac3cd2e27191600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4579290480266133769 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 728548293513910981, guid: 46373667a271c7942b21a8efedd4072f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3859790205377207244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d60f50765dea64fac3cd2e27191600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6561830123214332458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1141,6 +1132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_TurretFlying_Rotor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
         type: 3}
@@ -1199,9 +1195,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4cffe5dd2ea38d40aa88792e53f9898, type: 3}
---- !u!1 &2896272701551983395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+--- !u!4 &2191838452314294576 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
     type: 3}
   m_PrefabInstance: {fileID: 6561830123214332458}
   m_PrefabAsset: {fileID: 0}
@@ -1211,9 +1207,9 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 6561830123214332458}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2191838452314294576 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e4cffe5dd2ea38d40aa88792e53f9898,
+--- !u!1 &2896272701551983395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e4cffe5dd2ea38d40aa88792e53f9898,
     type: 3}
   m_PrefabInstance: {fileID: 6561830123214332458}
   m_PrefabAsset: {fileID: 0}

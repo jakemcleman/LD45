@@ -1208,40 +1208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
+    - target: {fileID: 2439994648505696064, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
-      propertyPath: internalWeaponName
-      value: BasicGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846632448934612122, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: isAuto
+      propertyPath: projectilesPerShot
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846632448934612122, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: internalWeaponName
-      value: MG
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172667737506293, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7718390321962202409, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172668575671135, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7718390323471439747, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
@@ -3260,10 +3230,15 @@ PrefabInstance:
       propertyPath: aboveAmount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3859790203982412638, guid: a9cd52485ff76ec45a775cc873d1056e,
+        type: 3}
+      propertyPath: yawRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3859790203982412705, guid: a9cd52485ff76ec45a775cc873d1056e,
         type: 3}
       propertyPath: maxSpeed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3859790203982412705, guid: a9cd52485ff76ec45a775cc873d1056e,
         type: 3}
@@ -3283,7 +3258,7 @@ PrefabInstance:
     - target: {fileID: 3859790203982412705, guid: a9cd52485ff76ec45a775cc873d1056e,
         type: 3}
       propertyPath: acceleration
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2896272701551983395, guid: a9cd52485ff76ec45a775cc873d1056e,
         type: 3}
