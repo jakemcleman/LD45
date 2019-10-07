@@ -280,7 +280,7 @@
 	</object>
 	<object class="MultiSound" id="{9a3b0298-b7fa-45c6-b050-8d99d9ef76c3}">
 		<property name="length">
-			<value>0.90000000000000002</value>
+			<value>0.41518749999999999</value>
 		</property>
 		<property name="startOffset">
 			<value>7</value>
@@ -288,6 +288,9 @@
 		<relationship name="modulators">
 			<destination>{49957048-22c1-4a5c-8f65-4dee45158aa0}</destination>
 			<destination>{2c944fa2-357a-4cfc-948b-d47435650bde}</destination>
+		</relationship>
+		<relationship name="fadeOutCurve">
+			<destination>{bde2c411-8e03-4729-91d7-eb49992ced4d}</destination>
 		</relationship>
 		<relationship name="sounds">
 			<destination>{9335d23a-7fbc-4411-946c-d6d31df423d6}</destination>
@@ -575,6 +578,14 @@
 			<value>7.5</value>
 		</property>
 	</object>
+	<object class="FadeCurve" id="{bde2c411-8e03-4729-91d7-eb49992ced4d}">
+		<relationship name="startPoint">
+			<destination>{a17ada0c-9e9c-4d3b-9d48-5ee801f0503e}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{257f1630-540c-4ae9-9c85-7eeb26efc852}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{9335d23a-7fbc-4411-946c-d6d31df423d6}">
 		<relationship name="audioFile">
 			<destination>{04abcce0-f399-473c-87ec-bb18916051a1}</destination>
@@ -725,6 +736,25 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{30a3ea1a-2500-42ec-82a0-16971844d5b2}" />
+	<object class="AutomationPoint" id="{a17ada0c-9e9c-4d3b-9d48-5ee801f0503e}">
+		<property name="position">
+			<value>0.13</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{257f1630-540c-4ae9-9c85-7eeb26efc852}">
+		<property name="position">
+			<value>0.41518749999999999</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{7104300e-d196-4a56-98a9-34604ae25066}">
 		<relationship name="parameter">
 			<destination>{641b7ef5-1569-45f9-864a-ccf96c4cee4d}</destination>
