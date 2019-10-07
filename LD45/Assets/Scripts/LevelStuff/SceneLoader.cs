@@ -63,7 +63,7 @@ public class SceneLoader : MonoBehaviour
         {
             foreach (GameObject cp in GameObject.FindGameObjectsWithTag("Checkpoint"))
             {
-                if (cp.scene == SceneManager.GetSceneByBuildIndex(curSceneIndex) && cp.GetComponent<Checkpoint>().getActive() == true)
+                if (cp.scene == unloadScene && cp.GetComponent<Checkpoint>().getActive() == true)
                 {
                     Debug.LogError("There is still an active checkpoint " + cp.name + " in this scene " + unloadScene.buildIndex + "  CurSceneIndex: " + curSceneIndex + "; Active scene: " + SceneManager.GetActiveScene().buildIndex);
                     return;

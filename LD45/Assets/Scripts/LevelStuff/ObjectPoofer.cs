@@ -22,6 +22,14 @@ public class ObjectPoofer : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+
+        Gizmos.DrawSphere(transform.position, 10.0f);
+        Gizmos.DrawLine(transform.position, transform.position + poofFromVector);
+    }
+
     public void StartPoofIn()
     {
         StartCoroutine("PoofIn");
