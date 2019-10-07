@@ -93,7 +93,9 @@ public class PlayerAudio : MonoBehaviour
             case MotionState.JumpStart:
                 PlayJump();
                 break;
+            case MotionState.Wallrun:
             case MotionState.WallrunStart:
+            case MotionState.Wallclimb:
             case MotionState.WallclimbStart:
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, eMotion.dirToWall, out hit, 10.0f, layerMask, QueryTriggerInteraction.Ignore))
