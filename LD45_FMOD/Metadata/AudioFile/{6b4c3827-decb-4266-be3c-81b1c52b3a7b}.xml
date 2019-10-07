@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{6b4c3827-decb-4266-be3c-81b1c52b3a7b}">
+		<property name="assetPath">
+			<value>METAL_ON_METAL09.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.5325170068027212</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1332f68-7a87-4263-8b46-37cf30ad35cd}</destination>
+		</relationship>
+	</object>
+</objects>
