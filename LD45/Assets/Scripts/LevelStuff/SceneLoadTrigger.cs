@@ -20,7 +20,7 @@ public class SceneLoadTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneLoader = GameObject.Find("Map").GetComponent<SceneLoader>();
+        sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
         if (sceneLoader == null)
         {
             Debug.LogError("No Map in Scene, please add a map with a scene loader");
