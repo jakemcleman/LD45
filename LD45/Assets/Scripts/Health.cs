@@ -83,6 +83,7 @@ public class Health : MonoBehaviour
      */
     public bool Heal(float amount) 
     {
+        Debug.Log("HEAL " + amount);
         // Check if healing is possible to avoid wasting health packs
         if(amount == 0 || curHealth >= maxHealth)
         {

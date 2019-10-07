@@ -12,6 +12,7 @@ public class SceneLoader : MonoBehaviour
 
     private GameObject player;
     private GameObject canvas;
+    private GameObject light;
     //private GameObject newMap;
 
     public string nextSceneName;
@@ -25,6 +26,7 @@ public class SceneLoader : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         canvas = GameObject.FindGameObjectWithTag("UI");
+        light = GameObject.FindObjectOfType<Light>().gameObject;
 
         isLoaded = false;
     }
@@ -71,14 +73,32 @@ public class SceneLoader : MonoBehaviour
 
     private void MoveToScene(Scene nextScene)
     {
+        //Let's go find any duplicate players or lights or canvas and destroy them!!!
+        foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (p.scene == nextScene) Destroy(p);
+        }
+
+        foreach (GameObject c in GameObject.FindGameObjectsWithTag("UI"))
+        {
+            if (c.scene == nextScene) Destroy(c);
+        }
+
+        Light[] lights = GameObject.FindObjectsOfType<Light>();
+        foreach (Light l in lights)
+        {
+            if (l.gameObject.scene == nextScene) Destroy(l.gameObject);
+        }
+
         curSceneIndex = nextSceneIndex;
 
         //Activates the newly loaded scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(curSceneIndex));
-
+        
         //Insert any root level objects that need to move scenes here
         SceneManager.MoveGameObjectToScene(player, nextScene);
         SceneManager.MoveGameObjectToScene(canvas, nextScene);
+        SceneManager.MoveGameObjectToScene(light, nextScene);
         SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
     }
 
