@@ -29,6 +29,7 @@ public class WeaponPickup : MonoBehaviour
         {
             PlayerWeaponController wepCon = col.GetComponent<PlayerWeaponController>();
             if (wepCon != null){
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Pickup_Weapon", transform.position);
                 wepCon.UnlockWeapon(weaponIndex);
                 Destroy(gameObject);
             }

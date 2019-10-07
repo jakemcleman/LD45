@@ -19,6 +19,7 @@ public class TextButton : MonoBehaviour
     }
     public void OnSelect()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/UI_ButtonHover", transform.position);
         textObject.text = ">>" + fullText;
         textObject.font = selectedFont;
     }
