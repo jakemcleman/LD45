@@ -16,8 +16,8 @@ public class ObjectPoofer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        endPosition = this.transform.position;
-        this.transform.position = poofFromVector;
+        endPosition = this.transform.localPosition;
+        this.transform.localPosition = poofFromVector;
 
         this.gameObject.SetActive(false);
     }

@@ -317,7 +317,7 @@ public class MovementController : MonoBehaviour
             --_numJumpsRemaining;
 
             Grounded = false;
-            ChangeMotionState(MotionState.Jump);
+            ChangeMotionState(MotionState.JumpStart);
         }
     }
 
@@ -463,17 +463,11 @@ public class MovementController : MonoBehaviour
         {
             if (_currMotionState != nextMotionState)
             {
-                MotionStateEvent motionStateEvent;
-                motionStateEvent.prevState = _currMotionState;
-                motionStateEvent.nextState = nextMotionState;
-                motionStateEvent.dirToWall = InWallTech() ? _dirToWall : Vector3.zero;
+                MotionState prevState = _currMotionState;
 
-                if (onMotionStateEvent != null)
-                {
-                    onMotionStateEvent.Invoke(motionStateEvent);
-                }
+                InvokeMotionStateEvent(_currMotionState, nextMotionState);
 
-                MotionStateInitialize(_currMotionState, nextMotionState);
+                MotionStateInitialize(prevState, nextMotionState);
 
                 _currMotionState = nextMotionState;
             }
@@ -507,10 +501,25 @@ public class MovementController : MonoBehaviour
         //Entering
         switch(nextState)
         {
+            case MotionState.JumpStart:
+            {
+                    ChangeMotionState(MotionState.Jump);
+                    break;
+            }
+            case MotionState.WallrunStart:
+            {
+                    ChangeMotionState(MotionState.Wallrun);
+                    break;
+            }
             case MotionState.Wallrun:
             {
                     _wallRunTimer = wallRunMaxTime;
                     _transitionBlocked = true;
+                    break;
+            }
+            case MotionState.WallclimbStart:
+            {
+                    ChangeMotionState(MotionState.Wallclimb);
                     break;
             }
             case MotionState.Wallclimb:
@@ -725,7 +734,7 @@ public class MovementController : MonoBehaviour
             {
                 _wallRunSpeed = wallRunBaseSpeed;
             }
-            ChangeMotionState(MotionState.Wallrun);
+            ChangeMotionState(MotionState.WallrunStart);
         }
     }
 
@@ -736,7 +745,20 @@ public class MovementController : MonoBehaviour
         {
             _dirToWall = -surfaceNormal;
 
-            ChangeMotionState(MotionState.Wallclimb);
+            ChangeMotionState(MotionState.WallclimbStart);
+        }
+    }
+
+    void InvokeMotionStateEvent(MotionState prev, MotionState next)
+    {
+        MotionStateEvent motionStateEvent;
+        motionStateEvent.prevState = prev;
+        motionStateEvent.nextState = next;
+        motionStateEvent.dirToWall = InWallTech() ? _dirToWall : Vector3.zero;
+
+        if (onMotionStateEvent != null)
+        {
+            onMotionStateEvent.Invoke(motionStateEvent);
         }
     }
     #endregion
