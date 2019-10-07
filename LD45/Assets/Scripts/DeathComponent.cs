@@ -13,15 +13,24 @@ public class DeathComponent : MonoBehaviour
     [FMODUnity.EventRef]
     public string death_event;
 
+    private bool alreadyDied;
+
     void Start()
     {
         Health healthComp = GetComponent<Health>();
 
         healthComp.onDeath.AddListener(OnDeath);
+
+        alreadyDied = false;
     }
 
     private void OnDeath() 
     {
+        // BAD KLUDGE FIX BECAUSE IDK WHY THINGS ARE DOUBLE DYING
+        if(alreadyDied) return;
+
+        alreadyDied = true;
+        
         // Kill all the children
         foreach(Health childHealth in GetComponentsInChildren<Health>())
         {

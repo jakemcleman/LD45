@@ -16,8 +16,10 @@ public class Weapon_Advanced : MonoBehaviour, IWeapon
     public float reloadTime = 1.0f;
     private float cooldownClock;
 
-
     public bool isAuto = false;
+
+    public string internalWeaponName = "UNNAMED_WEAPON_I_FUCKED_UP";
+    public string displayWeaponName = "UNNAMED_WEAPON_I_FUCKED_UP";
 
     /*
     * Width in degrees of the cone of bullet spread
@@ -33,12 +35,12 @@ public class Weapon_Advanced : MonoBehaviour, IWeapon
 
     public string GetDisplayName()
     {
-        return "Machine Gun";
+        return displayWeaponName;
     }
 
     public string GetInternalName()
     {
-        return "MG";
+        return internalWeaponName;
     }
 
     public float GetCurrentAmmoRatio()
