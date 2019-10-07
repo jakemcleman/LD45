@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15caf5bae0107bc49bc563daf3373efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InactiveCP: {fileID: 8916784999446125136, guid: 76cd009be0662e04ea36f0704ab2ec6a,
+  InactiveCP: {fileID: -927199367670048503, guid: 82c6fe74958876f4781e5419ca5e69db,
     type: 3}
   ActiveCP: {fileID: 3952065546279843623, guid: da443cc4474fc004d87e98fe75cbf8ba,
     type: 3}
