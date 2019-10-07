@@ -12,8 +12,8 @@ public class SceneLoader : MonoBehaviour
 
     private GameObject player;
     private GameObject canvas;
-    private GameObject light;
-    //private GameObject newMap;
+    private GameObject curlight;
+    private GameObject kz;
 
     public string nextSceneName;
 
@@ -26,7 +26,8 @@ public class SceneLoader : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         canvas = GameObject.FindGameObjectWithTag("UI");
-        light = GameObject.FindObjectOfType<Light>().gameObject;
+        curlight = GameObject.FindObjectOfType<Light>().gameObject;
+        kz = GameObject.FindObjectOfType<Killzone>().gameObject;
 
         isLoaded = false;
     }
@@ -90,6 +91,12 @@ public class SceneLoader : MonoBehaviour
             if (l.gameObject.scene == nextScene) Destroy(l.gameObject);
         }
 
+        Killzone[] kzs = GameObject.FindObjectsOfType<Killzone>();
+        foreach (Killzone k in kzs)
+        {
+            if (k.gameObject.scene == nextScene) Destroy(k.gameObject);
+        }
+
         curSceneIndex = nextSceneIndex;
 
         //Activates the newly loaded scene
@@ -98,7 +105,8 @@ public class SceneLoader : MonoBehaviour
         //Insert any root level objects that need to move scenes here
         SceneManager.MoveGameObjectToScene(player, nextScene);
         SceneManager.MoveGameObjectToScene(canvas, nextScene);
-        SceneManager.MoveGameObjectToScene(light, nextScene);
+        SceneManager.MoveGameObjectToScene(curlight, nextScene);
+        SceneManager.MoveGameObjectToScene(kz, nextScene);
         SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
     }
 
