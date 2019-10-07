@@ -71,13 +71,16 @@ public class TurretEnemy : MonoBehaviour
             Gizmos.DrawRay(weapon.transform.position, downExtent);
         }
 
-        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, maxEngagementRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxSightRange);
     }
 
     private void Update()
     {
         if (MenuController.Paused) return;
-        
+
         GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject target = PickTarget(potentialTargets);
