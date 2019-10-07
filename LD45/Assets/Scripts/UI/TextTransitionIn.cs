@@ -131,6 +131,7 @@ public class TextTransitionIn : MonoBehaviour
                         {
                             stateTimer = 0;
                             textObject.text = fullText.Substring(0, curStringPos) + "█";
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Keystroke", transform.position);
                         }
                     }
                     break;

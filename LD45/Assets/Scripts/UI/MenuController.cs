@@ -84,6 +84,8 @@ public class MenuController : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        SceneLoader.gameMusicHasStarted = false;
+
         Time.timeScale = 1;
         pauseOpen = false;
         SceneManager.LoadScene("MainMenu");

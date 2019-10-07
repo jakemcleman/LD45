@@ -34,6 +34,8 @@ public class SceneLoader : MonoBehaviour
         kz = GameObject.FindObjectOfType<Killzone>().gameObject;
         eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 
+        curSceneIndex = firstLevelIndex;
+
         isLoaded = false;
     }
 
