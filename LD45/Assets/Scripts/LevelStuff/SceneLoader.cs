@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public static bool gameMusicHasStarted = false;
+
     public int firstLevelIndex;
     public int lastLevelIndex;
     private int curSceneIndex;
@@ -14,6 +17,7 @@ public class SceneLoader : MonoBehaviour
     private GameObject canvas;
     private GameObject curlight;
     private GameObject kz;
+    private GameObject eventSystem;
 
     public string nextSceneName;
 
@@ -28,6 +32,7 @@ public class SceneLoader : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("UI");
         curlight = GameObject.FindObjectOfType<Light>().gameObject;
         kz = GameObject.FindObjectOfType<Killzone>().gameObject;
+        eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 
         isLoaded = false;
     }
@@ -85,6 +90,12 @@ public class SceneLoader : MonoBehaviour
             if (c.scene == nextScene) Destroy(c);
         }
 
+        EventSystem[] eventSystems = GameObject.FindObjectsOfType<EventSystem>();
+        foreach (EventSystem es in eventSystems)
+        {
+            if (es.gameObject.scene == nextScene) Destroy(es.gameObject);
+        }
+
         Light[] lights = GameObject.FindObjectsOfType<Light>();
         foreach (Light l in lights)
         {
@@ -110,6 +121,7 @@ public class SceneLoader : MonoBehaviour
         //Insert any root level objects that need to move scenes here
         SceneManager.MoveGameObjectToScene(player, nextScene);
         SceneManager.MoveGameObjectToScene(canvas, nextScene);
+        SceneManager.MoveGameObjectToScene(eventSystem, nextScene);
         SceneManager.MoveGameObjectToScene(curlight, nextScene);
         SceneManager.MoveGameObjectToScene(kz, nextScene);
         SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
