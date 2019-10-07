@@ -78,6 +78,11 @@ public class MenuController : MonoBehaviour
         pauseOpen = false;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void MusicVolume (float val)
     {
         vca_mus.setVolume(val);
