@@ -1357,8 +1357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a88b6f87a15a440b11705502c65eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevelIndex: 0
-  lastLevelIndex: 0
+  firstLevelIndex: 1
+  lastLevelIndex: 2
   nextSceneName: 
 --- !u!4 &2102856988
 Transform:
@@ -1846,20 +1846,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6817959983123198783, guid: 397cb4cb4f86232428af1319bb3294d5,
+    - target: {fileID: 6817959982680856836, guid: 397cb4cb4f86232428af1319bb3294d5,
         type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
+      propertyPath: m_AnchoredPosition.x
+      value: 281.1001
       objectReference: {fileID: 0}
-    - target: {fileID: 6817959983123198783, guid: 397cb4cb4f86232428af1319bb3294d5,
+    - target: {fileID: 6817959982680856836, guid: 397cb4cb4f86232428af1319bb3294d5,
         type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 2560
-      objectReference: {fileID: 0}
-    - target: {fileID: 6817959983123198783, guid: 397cb4cb4f86232428af1319bb3294d5,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1440
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6817959982036201788, guid: 397cb4cb4f86232428af1319bb3294d5,
         type: 3}
