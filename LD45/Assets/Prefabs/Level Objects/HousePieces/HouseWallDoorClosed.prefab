@@ -99,6 +99,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   poofDuration: 3
   delay: 0
+--- !u!65 &4696364657969130582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7547893602142275983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.02, y: 4.07, z: 0.25}
+  m_Center: {x: 0, y: 1.98, z: 0}
 --- !u!1001 &1990147021313216646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,6 +186,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef4c87485c4eda94390ec46fb6731ace, type: 3}
+--- !u!1 &7547893602142275983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ef4c87485c4eda94390ec46fb6731ace,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990147021313216646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6837828614222035868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ef4c87485c4eda94390ec46fb6731ace,
