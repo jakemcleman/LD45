@@ -17,6 +17,8 @@ public class TextTransitionIn : MonoBehaviour
     public float pauseBeforeTypingLength = 3.0f;
     public float cursorBlinkRate = 1.0f;
     public float typeRate = 0.1f;
+    
+    public bool leaveCursorWhenDone = false;
 
     private Text textObject;
     private string fullText;
@@ -29,6 +31,8 @@ public class TextTransitionIn : MonoBehaviour
     public bool animate = true;
 
     public float spaceAccelFactor = 10;
+
+    public GameObject[] activateOnCompletion;
 
     private void Start()
     {
@@ -43,6 +47,11 @@ public class TextTransitionIn : MonoBehaviour
         blinkOn = false;
         if(waitFor != null) curState = AnimState.WaitingToBlink;
         else curState = AnimState.WaitingToStart;
+
+        foreach(GameObject go in activateOnCompletion)
+        {
+            go.SetActive(false);
+        }
     }
 
     private void DoCursorBlink()
@@ -100,16 +109,23 @@ public class TextTransitionIn : MonoBehaviour
                     break;
                 case AnimState.TypingText:
                     stateTimer += Time.deltaTime * speedFactor;
-                    while(stateTimer > typeRate)
+                    bool anyKey = Input.anyKeyDown;
+                    while(stateTimer > typeRate || anyKey)
                     {
                         curStringPos++;
                         SetBlinkness(true);
+                        anyKey = false;
                         if(curStringPos >= fullText.Length)
                         {
                             textObject.text = fullText;
                             stateTimer = 0;
                             curState = AnimState.Complete;
-                            shouldBlink = false;
+                            shouldBlink = leaveCursorWhenDone;
+
+                            foreach(GameObject go in activateOnCompletion)
+                            {
+                                go.SetActive(true);
+                            }
                         }
                         else
                         {
@@ -117,6 +133,10 @@ public class TextTransitionIn : MonoBehaviour
                             textObject.text = fullText.Substring(0, curStringPos) + "█";
                         }
                     }
+                    break;
+                case AnimState.Complete:
+                    if(leaveCursorWhenDone) DoCursorBlink();
+                    
                     break;
             }
         }
