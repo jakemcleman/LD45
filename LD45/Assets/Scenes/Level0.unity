@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a88b6f87a15a440b11705502c65eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevelIndex: 0
-  lastLevelIndex: 0
+  firstLevelIndex: 1
+  lastLevelIndex: 2
   nextSceneName: 
 --- !u!4 &149615613
 Transform:
