@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
 
         SetSpawnToCurrentState();
     }
+    public bool Heal(float amount)
+    {
+        return health.Heal(amount);
+    }
 
     public void SetSpawn(Vector3 position, Vector3 facing)
     {
@@ -46,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnHealthChange(HealthChangeEvent e)
     {
         health_state.setParameterByName("Player_Health", health.HealthRatio);
+        Debug.Log("HEALTH CHANGE " + e.amount);
 
         healthBar.Fill = health.HealthRatio;
     }
