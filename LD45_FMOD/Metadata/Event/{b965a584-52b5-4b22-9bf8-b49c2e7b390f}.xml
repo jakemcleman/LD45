@@ -60,7 +60,7 @@
 			<destination>{cbeb635e-5eb5-4e1a-a3cd-c21e69da46f3}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{76b566cc-c0f2-4d99-a546-d394823035d3}</destination>
+			<destination>{872d5e6d-e08f-4554-b70e-9c75b7d1e274}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{d1bbaaff-082c-47a4-b776-996702946c1b}" />
@@ -121,16 +121,13 @@
 			<value>8</value>
 		</property>
 		<property name="pitch">
-			<value>-24</value>
+			<value>-12</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{a499f80b-5ff3-418f-a332-f7772d295b81}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5acab975-a814-4724-a646-3616a92043f9}">
-		<property name="volume">
-			<value>-7.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -192,6 +189,9 @@
 	</object>
 	<object class="MixerBusFader" id="{01f20179-e836-4086-bce7-86064b62004c}" />
 	<object class="SpatialiserEffect" id="{4dd87aea-663d-4511-94a7-21f41979c6e4}">
+		<property name="distanceRolloffType">
+			<value>2</value>
+		</property>
 		<property name="maximumDistance">
 			<value>200</value>
 		</property>
@@ -207,7 +207,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-4</value>
+			<value>1</value>
 		</property>
 		<property name="curveShape">
 			<value>0.539890826</value>
@@ -218,7 +218,7 @@
 			<value>200</value>
 		</property>
 		<property name="value">
-			<value>-14</value>
+			<value>-15</value>
 		</property>
 	</object>
 	<object class="Automator" id="{a5f55904-9d70-4543-902c-eec419b656a8}">
