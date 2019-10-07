@@ -31,6 +31,7 @@ public class SceneLoadTrigger : MonoBehaviour
             Debug.Log("Current scene build index: " + this.gameObject.scene.buildIndex);
             sceneLoader = SceneManagerGO.GetComponent<SceneLoader>();
             sceneLoader.firstLevelIndex = this.gameObject.scene.buildIndex;
+            sceneLoader.ResetCurIndex();
         }
         else
         {

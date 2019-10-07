@@ -35,6 +35,11 @@ public class SceneLoader : MonoBehaviour
         curSceneIndex = firstLevelIndex;
     }
 
+    public void ResetCurIndex()
+    {
+        curSceneIndex = firstLevelIndex;
+    }
+
     public void StartLoad(GameObject trigger, bool doUnload, string sceneName = null)
     {      
         coroutine = LoadSceneAsync(trigger, doUnload, sceneName);
