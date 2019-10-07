@@ -36,8 +36,11 @@ public class MenuController : MonoBehaviour
         vca_mus.setVolume(1.0f);
         vca_sfx.setVolume(1.0f);
 
-        pausePanel = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
-        hud = GameObject.Find("HUD").GetComponent<CanvasGroup>();
+        GameObject pausePanelObj = GameObject.Find("PauseMenu");
+        if(pausePanelObj != null) pausePanel = pausePanelObj.GetComponent<CanvasGroup>();
+
+        GameObject hudObj = GameObject.Find("HUD");
+        if(hudObj != null)hud = hudObj.GetComponent<CanvasGroup>();
 
         pauseOpen = false;
 
