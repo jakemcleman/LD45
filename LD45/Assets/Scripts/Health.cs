@@ -75,6 +75,14 @@ public class Health : MonoBehaviour
             indicator.GetComponent<TextMesh>().text = damage.ToString();
         }
 
+        Health[] parentHealths = GetComponentsInParent<Health>();
+
+        foreach(Health parentHealth in parentHealths)
+        {
+            if(parentHealth != null && parentHealth != this) parentHealth.TakeDamage(amount / 2);
+        } 
+            
+
         if(curHealth <= 0)
         {
             // TODO: die
