@@ -23,6 +23,8 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public bool isMainMenu = false;
+
     public bool GetPauseOpen()
     {
         return pauseOpen;
@@ -45,6 +47,17 @@ public class MenuController : MonoBehaviour
         pauseOpen = false;
 
         curMenu = hud;
+
+        if(!isMainMenu)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void TogglePause()
