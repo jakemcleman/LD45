@@ -24,6 +24,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
+        if (MenuController.Paused) return;
+
         if (Input.GetButtonDown("Fire1"))
         {
             wielder.FirePrimary(false);

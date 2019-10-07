@@ -16,9 +16,16 @@ public class PlayerAudio : MonoBehaviour
 
     private MovementController movement;
 
+    FMOD.Studio.EventInstance footstep_event;
+
+    int layerMask = 1 << 9;
+
     // Start is called before the first frame update
     void Start()
     {
+        footstep_event = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Player_Run");
+        footstep_event.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+
         movement = GetComponent<MovementController>();
         movement.onMotionStateEvent.AddListener(MotionStateChange);
 
@@ -29,6 +36,8 @@ public class PlayerAudio : MonoBehaviour
         groundFootstepTime = groundFootstepTimeInterval;
         wallrunFootstepTime = wallrunFootstepTimeInterval;
         wallclimbFootstepTime = wallclimbFootstepTimeInterval;
+
+        layerMask = ~layerMask;
     }
 
     // Update is called once per frame
@@ -36,6 +45,7 @@ public class PlayerAudio : MonoBehaviour
     {
         FootstepAudio();
     }
+
     private void FootstepAudio()
     {
         switch (movement.CurrentMotionState)
@@ -45,6 +55,12 @@ public class PlayerAudio : MonoBehaviour
                     groundFootstepTime -= Time.deltaTime;
                 else
                 {
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 3.0f, layerMask, QueryTriggerInteraction.Ignore))
+                    {
+                        Debug.Log(hit.collider.gameObject.tag);
+                        SetSurfaceParameter(hit);
+                    }
                     PlayFootstep();
                     groundFootstepTime = groundFootstepTimeInterval;
                 }
@@ -77,17 +93,57 @@ public class PlayerAudio : MonoBehaviour
             case MotionState.JumpStart:
                 PlayJump();
                 break;
+            case MotionState.Wallrun:
+            case MotionState.WallrunStart:
+            case MotionState.Wallclimb:
+            case MotionState.WallclimbStart:
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, eMotion.dirToWall, out hit, 10.0f, layerMask, QueryTriggerInteraction.Ignore))
+                {
+                    SetSurfaceParameter(hit);
+                }
+                break;
         }
             
     }
 
+    #region Audio Events
     private void PlayJump()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Jump", transform.position);
     }
-
+    
     private void PlayFootstep()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Player_Run", transform.position);
+        footstep_event.start();
     }
+
+    private void SetSurfaceParameter(RaycastHit hit)
+    {
+        AudioDefs.Surface surface = AudioDefs.Surface.None;
+        switch (hit.collider.gameObject.tag)
+        {
+            case "Wood":
+                surface = AudioDefs.Surface.Wood;
+                break;
+            case "Dirt":
+                surface = AudioDefs.Surface.Dirt;
+                break;
+            case "Stone":
+                surface = AudioDefs.Surface.Stone;
+                break;
+            case "Metal":
+                surface = AudioDefs.Surface.Metal;
+                break;
+            case "Sandbag":
+                surface = AudioDefs.Surface.Sandbag;
+                break;
+            default:
+                surface = AudioDefs.Surface.None;
+                break;
+        }
+
+        footstep_event.setParameterByName("Surface", (int)surface);
+    }
+    #endregion
 }

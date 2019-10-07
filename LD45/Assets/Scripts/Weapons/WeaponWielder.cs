@@ -55,6 +55,8 @@ public class WeaponWielder : MonoBehaviour
 
     public void FirePrimary(bool fireAuto)
     {
+        if (MenuController.Paused) return;
+
         if (CurrentWeapon.PrimaryFire(this, fireAuto))
         {
             // Cannot set local parameters without an event instance, so we make one here instead of using PlayOneShot
@@ -69,6 +71,8 @@ public class WeaponWielder : MonoBehaviour
 
     public void Reload()
     {
+        if (MenuController.Paused) return;
+        
         if(CurrentWeapon.Reload(this))
         {
             FMODUnity.RuntimeManager.PlayOneShot(weapon_path + CurrentWeapon.GetInternalName() + "_Reload",

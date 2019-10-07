@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7298325125503151013}
   m_Layer: 0
   m_Name: CrateObject
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   poofDuration: 1
+  delay: 0
 --- !u!1001 &7778683856088805844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,10 +110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate
       objectReference: {fileID: 0}
-    - target: {fileID: -6860895033569716450, guid: 51d42fe3d2f566449bf1d9ac7a8e56c5,
+    - target: {fileID: -927199367670048503, guid: 51d42fe3d2f566449bf1d9ac7a8e56c5,
         type: 3}
-      propertyPath: m_Convex
-      value: 1
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 51d42fe3d2f566449bf1d9ac7a8e56c5,
         type: 3}
@@ -182,6 +183,11 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 51d42fe3d2f566449bf1d9ac7a8e56c5,
         type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6860895033569716450, guid: 51d42fe3d2f566449bf1d9ac7a8e56c5,
+        type: 3}
+      propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

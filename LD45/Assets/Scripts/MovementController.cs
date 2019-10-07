@@ -559,7 +559,8 @@ public class MovementController : MonoBehaviour
     bool InAirState()
     {
         return _currMotionState == MotionState.Jump
-            || _currMotionState == MotionState.Falling;
+            || _currMotionState == MotionState.Falling
+            || _currMotionState == MotionState.JumpStart;
     }
 
     bool InGroundState()
@@ -571,7 +572,9 @@ public class MovementController : MonoBehaviour
     bool InWallTech()
     {
         return _currMotionState == MotionState.Wallrun
-            || _currMotionState == MotionState.Wallclimb;
+            || _currMotionState == MotionState.WallrunStart
+            || _currMotionState == MotionState.Wallclimb
+            || _currMotionState == MotionState.WallclimbStart;
     }
     #endregion
 
