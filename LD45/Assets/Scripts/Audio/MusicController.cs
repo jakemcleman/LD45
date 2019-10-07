@@ -17,7 +17,7 @@ public class MusicController : MonoBehaviour
         {
             string name = SceneManager.GetActiveScene().name;
 
-            if (name != "MainMenu")
+            if (name != "MainMenu" && name != "Nothing")
             {
                 music = FMODUnity.RuntimeManager.CreateInstance(music_event);
                 music.start();

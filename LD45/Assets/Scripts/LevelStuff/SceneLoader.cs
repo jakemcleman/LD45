@@ -32,12 +32,13 @@ public class SceneLoader : MonoBehaviour
         kz = GameObject.FindObjectOfType<Killzone>().gameObject;
         eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 
-        curSceneIndex = firstLevelIndex;
+        ResetCurIndex();
     }
 
     public void ResetCurIndex()
     {
         curSceneIndex = firstLevelIndex;
+        Debug.Log("Setting curSceneIndex to " + curSceneIndex);
     }
 
     public void StartLoad(GameObject trigger, bool doUnload, string sceneName = null)
