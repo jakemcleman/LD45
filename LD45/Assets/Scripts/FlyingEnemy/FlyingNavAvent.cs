@@ -87,6 +87,8 @@ public class FlyingNavAvent : MonoBehaviour
 
     private void Update()
     {
+        if (MenuController.Paused) return;
+        
         // If we're retreating, reverse the vector st we move away instead of
         // forward
         Vector3 toTarget = (retreat) ? transform.position - targetPosition :

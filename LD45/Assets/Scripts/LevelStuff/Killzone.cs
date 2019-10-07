@@ -12,6 +12,8 @@ public class Killzone : MonoBehaviour
     
     private void Update()
     {
+        if (MenuController.Paused) return;
+        
         Health[] healthComponents = GameObject.FindObjectsOfType<Health>();
 
         foreach(Health healthComp in healthComponents)
