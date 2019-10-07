@@ -527,11 +527,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.34929
       objectReference: {fileID: 0}
-    - target: {fileID: 7850525323145979601, guid: 0ac873b0cc70b124bbe9e1b4dedaccb7,
-        type: 3}
-      propertyPath: action
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac873b0cc70b124bbe9e1b4dedaccb7, type: 3}
 --- !u!1001 &134825524
@@ -988,6 +983,12 @@ PrefabInstance:
       propertyPath: action
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7850525323145979601, guid: 0ac873b0cc70b124bbe9e1b4dedaccb7,
+        type: 3}
+      propertyPath: SceneManagerGO
+      value: 
+      objectReference: {fileID: 6046859823517818617, guid: b0f37f3748e52db499a07dfd87555fd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac873b0cc70b124bbe9e1b4dedaccb7, type: 3}
 --- !u!1001 &426633592
@@ -1001,16 +1002,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrateObject (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.x
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
@@ -1081,6 +1072,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 26.324999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.x
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501ab374afa805641b730990ea07769e, type: 3}
@@ -1277,11 +1278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrateObject (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.y
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1351,6 +1347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20.766914
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501ab374afa805641b730990ea07769e, type: 3}
@@ -1839,16 +1840,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrateObject
       objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.x
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1918,6 +1909,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 26.324999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.x
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501ab374afa805641b730990ea07769e, type: 3}
@@ -2067,16 +2068,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrateObject (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.x
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2147,6 +2138,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 26.324999
       objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3353452252871563982, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2199,11 +2200,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrateObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: poofFromVector.y
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
@@ -2274,6 +2270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20.766914
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: poofFromVector.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3353452252871563982, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
@@ -2741,16 +2742,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlsKill
       objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: delay
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2820,6 +2811,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: delay
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298325125503151013, guid: 501ab374afa805641b730990ea07769e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501ab374afa805641b730990ea07769e, type: 3}

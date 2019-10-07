@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoadTrigger : MonoBehaviour
 {
     private SceneLoader sceneLoader;
 
     public string sceneName = null;
+
+    public GameObject SceneManagerGO;
 
     public enum STAction
     {
@@ -23,7 +26,10 @@ public class SceneLoadTrigger : MonoBehaviour
         sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
         if (sceneLoader == null)
         {
-            Debug.LogError("No Map in Scene, please add a map with a scene loader");
+            Debug.LogError("No Scene Manager found, adding a new one :)");
+            Instantiate(SceneManagerGO);
+            Debug.Log("Current scene build index: " + this.gameObject.scene.buildIndex);
+            SceneManagerGO.GetComponent<SceneLoader>().firstLevelIndex = this.gameObject.scene.buildIndex;
         }
         else
         {
