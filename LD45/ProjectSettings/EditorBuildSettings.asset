@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/DampSplash.unity
+    guid: 4f7d5a05dd6718c4abc85e581ef0e158
+  - enabled: 1
     path: Assets/Scenes/Nothing.unity
     guid: c742085bdd6fd1f4da7b53a50786bd66
   - enabled: 1
