@@ -160,7 +160,7 @@
 			<value>-0.5</value>
 		</property>
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Gunshot</value>
 		</property>
 		<relationship name="automators">
 			<destination>{d9912fcb-61c7-4642-8686-20706796e475}</destination>
@@ -199,7 +199,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{dbde07c9-45f1-4c91-bc61-cc04f3f6fdeb}">
 		<property name="name">
-			<value>Click</value>
+			<value>Click Layer</value>
 		</property>
 		<relationship name="automators">
 			<destination>{43a540cb-6b3a-4652-93fe-4e673c119ee9}</destination>
