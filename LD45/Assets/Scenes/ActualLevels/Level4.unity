@@ -1495,12 +1495,12 @@ PrefabInstance:
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7456082
+      value: 0.74561
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.5
+      value: 17.389
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
@@ -1515,7 +1515,7 @@ PrefabInstance:
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.4026552
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
@@ -1525,7 +1525,7 @@ PrefabInstance:
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.91535175
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
@@ -1540,7 +1540,7 @@ PrefabInstance:
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 47.489002
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
@@ -1550,17 +1550,17 @@ PrefabInstance:
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2145504
+      value: 1.3525233
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2145504
+      value: 1.3525233
       objectReference: {fileID: 0}
     - target: {fileID: 6155473333974264228, guid: f4faa2563be14eb43b43c05882f23cad,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2145504
+      value: 1.3525233
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4faa2563be14eb43b43c05882f23cad, type: 3}
