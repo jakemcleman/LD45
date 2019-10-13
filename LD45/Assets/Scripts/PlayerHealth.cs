@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [RequireComponent(typeof(Health))]
 public class PlayerHealth : MonoBehaviour
@@ -56,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDeath()
     {
+        Analytics.SendEvent("level_fail", SceneLoader.CurrentScene);
         Respawn();
     }
 

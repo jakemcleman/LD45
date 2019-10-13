@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class MenuController : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         vca_mus = FMODUnity.RuntimeManager.GetVCA("vca:/Music");
         vca_sfx = FMODUnity.RuntimeManager.GetVCA("vca:/SFX");
         vca_mus.setVolume(1.0f);
@@ -107,6 +109,8 @@ public class MenuController : MonoBehaviour
     public void LoadGameStart()
     {
         SceneManager.LoadScene("Level0");
+
+        Analytics.SendEvent("game_start", 0);
     }
 
     public void ExitGame()

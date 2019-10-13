@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class SceneLoader : MonoBehaviour
     public string nextSceneName;
 
     private IEnumerator coroutine;
+
+    public static int CurrentScene
+    {
+        get 
+        {
+            return FindObjectOfType<SceneLoader>().curSceneIndex;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +55,8 @@ public class SceneLoader : MonoBehaviour
         coroutine = LoadSceneAsync(trigger, doUnload, sceneName);
         StartCoroutine(coroutine);
         trigger.SetActive(false);
+
+        Analytics.SendEvent("level_complete", curSceneIndex);
     }
 
     public void UnLoadScene(GameObject trigger, string sceneName = null)
@@ -124,6 +135,8 @@ public class SceneLoader : MonoBehaviour
         SceneManager.MoveGameObjectToScene(curlight, nextScene);
         SceneManager.MoveGameObjectToScene(kz, nextScene);
         SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
+
+        Analytics.SendEvent("level_start", curSceneIndex);
     }
 
     private void MoveNewMap()
