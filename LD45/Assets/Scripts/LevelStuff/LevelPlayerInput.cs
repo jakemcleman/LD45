@@ -20,6 +20,7 @@ public class LevelPlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("Reset");
+            AnalyticsReporter.ReportPlayerReset(transform.position);
             pHealth.Respawn();
         }
 

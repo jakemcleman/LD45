@@ -12,6 +12,8 @@ public class WeaponPickup : MonoBehaviour
 
     public int weaponIndex = 1;
 
+    private static string[] weaponNames = new string[] {"None", "Pistol", "Shotgun", "SMG", "Railgun"};
+
     private void Start()
     {
         displayMesh = transform.Find("WeapMesh");
@@ -33,6 +35,8 @@ public class WeaponPickup : MonoBehaviour
                 wepCon.UnlockWeapon(weaponIndex);
                 Destroy(gameObject);
             }
+
+            AnalyticsReporter.ReportPickup(transform.position, weaponNames[weaponIndex] + "_pickup");
         }
     }
 }

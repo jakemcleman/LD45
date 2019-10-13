@@ -13,6 +13,8 @@ public class HealthPackTrigger : MonoBehaviour {
                     Destroy(gameObject);
                 }
             }
+
+            AnalyticsReporter.ReportPickup(transform.position, "health_pickup");
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -55,8 +54,6 @@ public class SceneLoader : MonoBehaviour
         coroutine = LoadSceneAsync(trigger, doUnload, sceneName);
         StartCoroutine(coroutine);
         trigger.SetActive(false);
-
-        Analytics.SendEvent("level_complete", curSceneIndex);
     }
 
     public void UnLoadScene(GameObject trigger, string sceneName = null)
@@ -89,6 +86,8 @@ public class SceneLoader : MonoBehaviour
 
     private void MoveToScene(Scene nextScene)
     {
+        AnalyticsReporter.ReportLevelCompleted();
+
         //Let's go find any duplicate players or lights or canvas and destroy them!!!
         foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -136,7 +135,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.MoveGameObjectToScene(kz, nextScene);
         SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
 
-        Analytics.SendEvent("level_start", curSceneIndex);
+       
     }
 
     private void MoveNewMap()

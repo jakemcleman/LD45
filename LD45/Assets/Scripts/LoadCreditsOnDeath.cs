@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
 
 [RequireComponent(typeof(Health))]
 public class LoadCreditsOnDeath : MonoBehaviour
@@ -16,8 +15,8 @@ public class LoadCreditsOnDeath : MonoBehaviour
 
     private void OnDeath() 
     {
-        SceneManager.LoadScene("EndScreen");
+        AnalyticsReporter.ReportLevelCompleted();
 
-        Analytics.SendEvent("game_over", 0);
+        SceneManager.LoadScene("EndScreen");
     }
 }
