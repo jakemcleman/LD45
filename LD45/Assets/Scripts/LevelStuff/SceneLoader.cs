@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     private GameObject kz;
     private GameObject eventSystem;
 
-    private List<GameObject> permanentObjects; 
+    private List<GameObject> permanentObjects = new List<GameObject>(); 
 
     public string nextSceneName;
 
@@ -36,7 +36,7 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        permanentObjects.Add(this.gameObject);
+        //permanentObjects.Add(this.gameObject);
 
         //player = GameObject.FindGameObjectWithTag("Player");
         //canvas = GameObject.FindGameObjectWithTag("UI");
@@ -51,6 +51,8 @@ public class SceneLoader : MonoBehaviour
     {
         PermanentObject newObjPO = newObj.GetComponent<PermanentObject>();
 
+        if (newObjPO.objectType == "PlsKill") return;
+
         foreach (GameObject oldObj in permanentObjects)
         {
             PermanentObject oldObjPO = oldObj.GetComponent<PermanentObject>();
@@ -59,6 +61,7 @@ public class SceneLoader : MonoBehaviour
             {
                 if (newObjPO.deleteOverride == true)
                 {
+                    Debug.Log("Override; Deleteing " + oldObj + " Adding " + newObj);
                     Destroy(oldObj);
                     permanentObjects.Remove(oldObj);
                     permanentObjects.Add(newObj);
@@ -66,12 +69,14 @@ public class SceneLoader : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Found Duplicate; Deleting " + newObj);
                     Destroy(newObj);
                     return;
                 }
             }
         }
 
+        Debug.Log("No Duplicate; Adding " + newObj);
         permanentObjects.Add(newObj);
     }
 
