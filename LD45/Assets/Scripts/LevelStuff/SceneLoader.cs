@@ -19,6 +19,8 @@ public class SceneLoader : MonoBehaviour
     private GameObject kz;
     private GameObject eventSystem;
 
+    private List<GameObject> permanentObjects; 
+
     public string nextSceneName;
 
     private IEnumerator coroutine;
@@ -34,13 +36,43 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        canvas = GameObject.FindGameObjectWithTag("UI");
-        curlight = GameObject.FindObjectOfType<Light>().gameObject;
-        kz = GameObject.FindObjectOfType<Killzone>().gameObject;
-        eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
+        permanentObjects.Add(this.gameObject);
+
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //canvas = GameObject.FindGameObjectWithTag("UI");
+        //curlight = GameObject.FindObjectOfType<Light>().gameObject;
+        //kz = GameObject.FindObjectOfType<Killzone>().gameObject;
+        //eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 
         ResetCurIndex();
+    }
+
+    public void RegisterDestroy(GameObject newObj)
+    {
+        PermanentObject newObjPO = newObj.GetComponent<PermanentObject>();
+
+        foreach (GameObject oldObj in permanentObjects)
+        {
+            PermanentObject oldObjPO = oldObj.GetComponent<PermanentObject>();
+
+            if (newObjPO.objectType == oldObjPO.objectType)
+            {
+                if (newObjPO.deleteOverride == true)
+                {
+                    Destroy(oldObj);
+                    permanentObjects.Remove(oldObj);
+                    permanentObjects.Add(newObj);
+                    return;
+                }
+                else
+                {
+                    Destroy(newObj);
+                    return;
+                }
+            }
+        }
+
+        permanentObjects.Add(newObj);
     }
 
     public void ResetCurIndex()
@@ -89,38 +121,38 @@ public class SceneLoader : MonoBehaviour
         AnalyticsReporter.ReportLevelCompleted();
 
         //Let's go find any duplicate players or lights or canvas and destroy them!!!
-        foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if (p.scene == nextScene) Destroy(p);
-        }
+        //foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
+        //{
+        //    if (p.scene == nextScene) Destroy(p);
+        //}
 
-        foreach (GameObject c in GameObject.FindGameObjectsWithTag("UI"))
-        {
-            if (c.scene == nextScene) Destroy(c);
-        }
+        //foreach (GameObject c in GameObject.FindGameObjectsWithTag("UI"))
+        //{
+        //    if (c.scene == nextScene) Destroy(c);
+        //}
 
-        EventSystem[] eventSystems = GameObject.FindObjectsOfType<EventSystem>();
-        foreach (EventSystem es in eventSystems)
-        {
-            if (es.gameObject.scene == nextScene) Destroy(es.gameObject);
-        }
+        //EventSystem[] eventSystems = GameObject.FindObjectsOfType<EventSystem>();
+        //foreach (EventSystem es in eventSystems)
+        //{
+        //    if (es.gameObject.scene == nextScene) Destroy(es.gameObject);
+        //}
 
-        Light[] lights = GameObject.FindObjectsOfType<Light>();
-        foreach (Light l in lights)
-        {
-            if (l.gameObject.scene == nextScene) Destroy(l.gameObject);
-        }
+        //Light[] lights = GameObject.FindObjectsOfType<Light>();
+        //foreach (Light l in lights)
+        //{
+        //    if (l.gameObject.scene == nextScene) Destroy(l.gameObject);
+        //}
 
-        Killzone[] kzs = GameObject.FindObjectsOfType<Killzone>();
-        foreach (Killzone k in kzs)
-        {
-            if (k.gameObject.scene == nextScene) Destroy(k.gameObject);
-        }
+        //Killzone[] kzs = GameObject.FindObjectsOfType<Killzone>();
+        //foreach (Killzone k in kzs)
+        //{
+        //    if (k.gameObject.scene == nextScene) Destroy(k.gameObject);
+        //}
 
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("PlsKill"))
-        {
-            if (g.gameObject.scene == nextScene) Destroy(g);
-        }
+        //foreach (GameObject g in GameObject.FindGameObjectsWithTag("PlsKill"))
+        //{
+        //    if (g.gameObject.scene == nextScene) Destroy(g);
+        //}
 
         curSceneIndex = nextSceneIndex;
 
@@ -128,12 +160,18 @@ public class SceneLoader : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(curSceneIndex));
         
         //Insert any root level objects that need to move scenes here
-        SceneManager.MoveGameObjectToScene(player, nextScene);
-        SceneManager.MoveGameObjectToScene(canvas, nextScene);
-        SceneManager.MoveGameObjectToScene(eventSystem, nextScene);
-        SceneManager.MoveGameObjectToScene(curlight, nextScene);
-        SceneManager.MoveGameObjectToScene(kz, nextScene);
-        SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
+        foreach (GameObject go in permanentObjects)
+        {
+            if (go.GetComponent<PermanentObject>().objectType == "PlsKill") Destroy(go);
+            else SceneManager.MoveGameObjectToScene(go, nextScene);
+        }
+
+        //SceneManager.MoveGameObjectToScene(player, nextScene);
+        //SceneManager.MoveGameObjectToScene(canvas, nextScene);
+        //SceneManager.MoveGameObjectToScene(eventSystem, nextScene);
+        //SceneManager.MoveGameObjectToScene(curlight, nextScene);
+        //SceneManager.MoveGameObjectToScene(kz, nextScene);
+        //SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
 
        
     }
