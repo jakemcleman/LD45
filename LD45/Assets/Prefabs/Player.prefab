@@ -569,7 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGroundSpeed: 30
   maxAirSpeed: 50
-  maxGroundAcceleration: 800
+  maxGroundAcceleration: 700
   groundAcceleration:
     serializedVersion: 2
     m_Curve:
