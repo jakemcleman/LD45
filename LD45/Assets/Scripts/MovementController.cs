@@ -161,6 +161,8 @@ public class MovementController : MonoBehaviour
                 }
                 else
                 {
+                    if (Input.GetKey(KeyCode.J))
+                        Debug.Log("DebugBreakPoint");
                     StartWallrun(horizontalForward, hit.normal);
                 }
             }
@@ -583,7 +585,7 @@ public class MovementController : MonoBehaviour
         _wallRunTimer -= Time.deltaTime;
         if (_wallRunTimer >= 0.0f)
         {
-            float raycastLength = 2 * _cc.radius;
+            float raycastLength = 3 * _cc.radius;
             _ray.origin = transform.position;
             _ray.direction = _dirToWall;
             if (Physics.Raycast(_ray, out _hitInfo, raycastLength)) //If still there, keep running
@@ -723,7 +725,7 @@ public class MovementController : MonoBehaviour
     void StartWallrun(Vector3 horizontalForward, Vector3 surfaceNormal)
     {
         //If the angle between the previous wall and the current wall is < 10 degree
-        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(horizontalForward, surfaceNormal).normalized);
+        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(_motion, surfaceNormal).normalized);
         if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
         {
             _dirToWall = -surfaceNormal;
@@ -741,7 +743,7 @@ public class MovementController : MonoBehaviour
 
     void StartWallclimb(Vector3 horizontalForward, Vector3 surfaceNormal)
     {
-        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(horizontalForward, surfaceNormal).normalized);
+        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(_motion, surfaceNormal).normalized);
         if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
         {
             _dirToWall = -surfaceNormal;
