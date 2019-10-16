@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     private GameObject kz;
     private GameObject eventSystem;
 
-    private List<GameObject> permanentObjects = new List<GameObject>(); 
+    private static List<GameObject> permanentObjects = new List<GameObject>(); 
 
     public string nextSceneName;
 
