@@ -13,6 +13,10 @@ public class PlayerWeaponController : MonoBehaviour
     private WeaponWielder wielder;
     private ProgressBar reloadUI;
 
+    private Transform headTransform;
+
+    private float maxWeaponAimAdjustRange = 200;
+
     private void Start()
     {
         wielder = GetComponent<WeaponWielder>();
@@ -22,11 +26,15 @@ public class PlayerWeaponController : MonoBehaviour
         ChangeToWeapon(curWeaponIndex);
 
         wielder.onWeaponReloadEvent.AddListener(OnWeaponReload);
+
+        headTransform = GetComponentInChildren<Camera>().transform;
     }
 
     private void Update()
     {
         if (MenuController.Paused) return;
+
+        PointWeaponAtCrosshair();
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -46,6 +54,17 @@ public class PlayerWeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ChangeToWeapon(curWeaponIndex + 1);
+        }
+    }
+
+    private void PointWeaponAtCrosshair()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxWeaponAimAdjustRange, ~(1 << 9)))
+        {
+            Transform curWeapon = weapons[curWeaponIndex].transform;
+            Vector3 toHitPoint = (hit.point - curWeapon.position).normalized;
+            curWeapon.forward = toHitPoint;
         }
     }
 
