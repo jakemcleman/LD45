@@ -132,7 +132,11 @@ public class SceneLoader : MonoBehaviour
         //Delete any PlsKill Objects
         foreach (GameObject go in permanentObjects)
         {
-            if (go.GetComponent<PermanentObject>().objectType == "PlsKill") Destroy(go);
+            if (go.GetComponent<PermanentObject>().objectType == "PlsKill")
+            {
+                Debug.Log("Destroying PlsKill object " + go);
+                Destroy(go);
+            }
             else SceneManager.MoveGameObjectToScene(go, nextScene);
         }       
     }
