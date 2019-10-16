@@ -45,7 +45,12 @@ public class SceneLoader : MonoBehaviour
 
         PermanentObject newObjPO = newObj.GetComponent<PermanentObject>();
 
-        if (newObjPO.objectType == "PlsKill") return;
+        if (newObjPO.objectType == "PlsKill")
+        {
+            Debug.Log("Found PlzKill object: " + newObj);
+            permanentObjects.Add(newObj);
+            return;
+        }
 
         foreach (GameObject oldObj in permanentObjects)
         {
