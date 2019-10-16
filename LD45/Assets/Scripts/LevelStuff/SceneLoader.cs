@@ -164,7 +164,6 @@ public class SceneLoader : MonoBehaviour
         //Activates the newly loaded scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(curSceneIndex));
         
-        //Insert any root level objects that need to move scenes here
         foreach (GameObject go in permanentObjects)
         {
             if (go.GetComponent<PermanentObject>().objectType == "PlsKill") Destroy(go);
@@ -225,6 +224,7 @@ public class SceneLoader : MonoBehaviour
 
         Quaternion rotateVector = Quaternion.FromToRotation(curEnd.GetComponent<LevelStartEndPoint>().direction, newStart.GetComponent<LevelStartEndPoint>().direction);
         newMap.transform.rotation = rotateVector;
+        Debug.Log("Map rotation vector: " + rotateVector.eulerAngles);
         
         Vector3 moveVector = newStart.transform.position - curEnd.transform.position;
         Debug.Log("Start point: " + newStart.transform.position + " End point: " + curEnd.transform.position + " Move vector: " + moveVector);
