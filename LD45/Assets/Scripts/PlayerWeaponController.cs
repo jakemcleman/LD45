@@ -60,12 +60,16 @@ public class PlayerWeaponController : MonoBehaviour
     private void PointWeaponAtCrosshair()
     {
         RaycastHit hit;
+        Transform curWeapon = weapons[curWeaponIndex].transform;
+        Vector3 toHitPoint = headTransform.forward;
+
         if(Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxWeaponAimAdjustRange, ~(1 << 9)))
         {
-            Transform curWeapon = weapons[curWeaponIndex].transform;
-            Vector3 toHitPoint = (hit.point - curWeapon.position).normalized;
-            curWeapon.forward = toHitPoint;
+            toHitPoint = (hit.point - curWeapon.position).normalized;
+            
         }
+        
+        curWeapon.forward = toHitPoint;
     }
 
     public void UnlockWeapon(int index)
