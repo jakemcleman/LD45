@@ -71,5 +71,7 @@ public class PlayerHealth : MonoBehaviour
         transform.position = respawnPosition;
         transform.forward = respawnFacing;
         cc.enabled = true;
+
+        cc.SimpleMove(Vector3.zero);
     }
 }
