@@ -179,7 +179,6 @@ public class SceneLoader : MonoBehaviour
 
        
     }
-
     private void MoveNewMap()
     {
         Debug.Log("Moving new map");
@@ -222,9 +221,12 @@ public class SceneLoader : MonoBehaviour
         if (curEnd == null) Debug.LogError("Could not find the current level's endpoint");
         if (newStart == null) Debug.LogError("Could not find the new level's startpoint");
 
-        Quaternion rotateVector = Quaternion.FromToRotation(curEnd.GetComponent<LevelStartEndPoint>().direction, newStart.GetComponent<LevelStartEndPoint>().direction);
+        Vector2 endDir = new Vector2(curEnd.GetComponent<LevelStartEndPoint>().direction.x, curEnd.GetComponent<LevelStartEndPoint>().direction.z);
+        Vector2 startDir = new Vector2(newStart.GetComponent<LevelStartEndPoint>().direction.x, newStart.GetComponent<LevelStartEndPoint>().direction.z);
+        Quaternion rotateVector = Quaternion.Euler(0, Utility.AngleBetweenVector2(startDir, endDir),0);
         newMap.transform.rotation = rotateVector;
         Debug.Log("Map rotation vector: " + rotateVector.eulerAngles);
+        
         
         Vector3 moveVector = newStart.transform.position - curEnd.transform.position;
         Debug.Log("Start point: " + newStart.transform.position + " End point: " + curEnd.transform.position + " Move vector: " + moveVector);
