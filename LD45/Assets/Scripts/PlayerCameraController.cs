@@ -114,7 +114,14 @@ public class PlayerCameraController : MonoBehaviour
         quickTurnTimer = quickTurnTime;
         float y = transform.forward.y;
         originalYaw = m_TargetCameraState.yaw;
-        targetYaw = originalYaw + 180;
+        if (!Utility.Close(dirToWall, Vector3.zero))
+        {
+            targetYaw = originalYaw + Vector3.SignedAngle(transform.forward, -dirToWall, Vector3.up);
+        }
+        else
+        {
+            targetYaw = originalYaw + 180;
+        }
     }
 
     private void QuickTurnUpdate()
