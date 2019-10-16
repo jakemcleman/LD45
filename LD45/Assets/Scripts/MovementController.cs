@@ -219,7 +219,7 @@ public class MovementController : MonoBehaviour
         _velocity -= externalVelocity;
 
         if (_inputQueue[_inputIndex].quickTurnInput)
-            _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? Vector3.zero : _dirToWall);
+            _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? transform.forward : _dirToWall);
 
         UpdateTimers();
 
@@ -342,21 +342,19 @@ public class MovementController : MonoBehaviour
                 ChangeMotionState(MotionState.Running);
 
                 float speedRatio = _velocity.magnitude / maxGroundSpeed;
-                float accelAmount = maxGroundAcceleration * groundAcceleration.Evaluate(speedRatio);
-                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
-                Vector3 decelComponent = _motion * groundDeceleration * Time.deltaTime;
+                float accelAmount = maxGroundAcceleration * groundAcceleration.Evaluate(speedRatio) + groundDeceleration;
 
-                _velocity += accelComponent + decelComponent;
+                _velocity += -RemoveUpDir(_velocity.normalized) * groundDeceleration * Time.deltaTime;
+                _velocity += _motion * accelAmount * Time.deltaTime;
                 //Debug.Log("[ApplyAcceleration] GroundDeceleration");
             }
             else //In Air
             {
                 float speedRatio = _velocity.magnitude / maxAirSpeed;
-                float accelAmount = maxAirAcceleration * airAcceleration.Evaluate(speedRatio);
-                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
-                Vector3 decelComponent = _motion * airDeceleration * Time.deltaTime;
-
-                _velocity += accelComponent + decelComponent;
+                float accelAmount = maxAirAcceleration * airAcceleration.Evaluate(speedRatio) + airDeceleration;
+                
+                _velocity += -RemoveUpDir(_velocity.normalized) * airDeceleration * Time.deltaTime;
+                _velocity += _motion * accelAmount * Time.deltaTime;
             }
         }
         //Directional input is 0
