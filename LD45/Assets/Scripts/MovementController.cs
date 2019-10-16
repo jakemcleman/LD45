@@ -219,7 +219,7 @@ public class MovementController : MonoBehaviour
         _velocity -= externalVelocity;
 
         if (_inputQueue[_inputIndex].quickTurnInput)
-            _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? transform.forward : _dirToWall);
+            _camera.StartQuickTurn(Utility.Close(_dirToWall, Vector3.zero) ? Vector3.zero : _dirToWall);
 
         UpdateTimers();
 
