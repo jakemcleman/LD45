@@ -116,7 +116,7 @@ public class MovementController : MonoBehaviour
 
     public void ResetState()
     {
-        _currMotionState = MotionState.Falling;
+        ChangeMotionState(MotionState.Falling);
         _numJumpsRemaining = numJumps;
         _uncapHorizontalSpeed = false;
         _wallResetTimer = wallRunRegrabTime;
@@ -161,8 +161,6 @@ public class MovementController : MonoBehaviour
                 }
                 else
                 {
-                    if (Input.GetKey(KeyCode.J))
-                        Debug.Log("DebugBreakPoint");
                     StartWallrun(horizontalForward, hit.normal);
                 }
             }
