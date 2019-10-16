@@ -69,9 +69,9 @@ public class Health : MonoBehaviour
 
         if(damageIndicatorPrefab != null)
         {
-            GameObject indicator = Instantiate(damageIndicatorPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
-            float damage = amount * damageMultiplier;
-            indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Random.insideUnitSphere;
+            GameObject indicator = Instantiate(damageIndicatorPrefab, transform.position, Quaternion.identity) as GameObject;
+            float damage = Mathf.Min(10000, amount * damageMultiplier);
+            indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Vector3.up;
             indicator.GetComponent<TextMesh>().text = damage.ToString();
         }
 
