@@ -19,6 +19,8 @@ public class SceneLoader : MonoBehaviour
     private GameObject kz;
     private GameObject eventSystem;
 
+    private List<GameObject> permanentObjects = new List<GameObject>(); 
+
     public string nextSceneName;
 
     private IEnumerator coroutine;
@@ -34,13 +36,40 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        canvas = GameObject.FindGameObjectWithTag("UI");
-        curlight = GameObject.FindObjectOfType<Light>().gameObject;
-        kz = GameObject.FindObjectOfType<Killzone>().gameObject;
-        eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
-
         ResetCurIndex();
+    }
+
+    public void RegisterDestroy(GameObject newObj)
+    {
+        PermanentObject newObjPO = newObj.GetComponent<PermanentObject>();
+
+        if (newObjPO.objectType == "PlsKill") return;
+
+        foreach (GameObject oldObj in permanentObjects)
+        {
+            PermanentObject oldObjPO = oldObj.GetComponent<PermanentObject>();
+
+            if (newObjPO.objectType == oldObjPO.objectType)
+            {
+                if (newObjPO.deleteOverride == true)
+                {
+                    Debug.Log("Override; Deleteing " + oldObj + " Adding " + newObj);
+                    Destroy(oldObj);
+                    permanentObjects.Remove(oldObj);
+                    permanentObjects.Add(newObj);
+                    return;
+                }
+                else
+                {
+                    Debug.Log("Found Duplicate; Deleting " + newObj);
+                    Destroy(newObj);
+                    return;
+                }
+            }
+        }
+
+        Debug.Log("No Duplicate; Adding " + newObj);
+        permanentObjects.Add(newObj);
     }
 
     public void ResetCurIndex()
@@ -88,56 +117,18 @@ public class SceneLoader : MonoBehaviour
     {
         AnalyticsReporter.ReportLevelCompleted();
 
-        //Let's go find any duplicate players or lights or canvas and destroy them!!!
-        foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if (p.scene == nextScene) Destroy(p);
-        }
-
-        foreach (GameObject c in GameObject.FindGameObjectsWithTag("UI"))
-        {
-            if (c.scene == nextScene) Destroy(c);
-        }
-
-        EventSystem[] eventSystems = GameObject.FindObjectsOfType<EventSystem>();
-        foreach (EventSystem es in eventSystems)
-        {
-            if (es.gameObject.scene == nextScene) Destroy(es.gameObject);
-        }
-
-        Light[] lights = GameObject.FindObjectsOfType<Light>();
-        foreach (Light l in lights)
-        {
-            if (l.gameObject.scene == nextScene) Destroy(l.gameObject);
-        }
-
-        Killzone[] kzs = GameObject.FindObjectsOfType<Killzone>();
-        foreach (Killzone k in kzs)
-        {
-            if (k.gameObject.scene == nextScene) Destroy(k.gameObject);
-        }
-
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("PlsKill"))
-        {
-            if (g.gameObject.scene == nextScene) Destroy(g);
-        }
-
         curSceneIndex = nextSceneIndex;
 
         //Activates the newly loaded scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(curSceneIndex));
         
-        //Insert any root level objects that need to move scenes here
-        SceneManager.MoveGameObjectToScene(player, nextScene);
-        SceneManager.MoveGameObjectToScene(canvas, nextScene);
-        SceneManager.MoveGameObjectToScene(eventSystem, nextScene);
-        SceneManager.MoveGameObjectToScene(curlight, nextScene);
-        SceneManager.MoveGameObjectToScene(kz, nextScene);
-        SceneManager.MoveGameObjectToScene(this.gameObject, nextScene);
-
-       
+        //Delete any PlsKill Objects
+        foreach (GameObject go in permanentObjects)
+        {
+            if (go.GetComponent<PermanentObject>().objectType == "PlsKill") Destroy(go);
+            else SceneManager.MoveGameObjectToScene(go, nextScene);
+        }       
     }
-
     private void MoveNewMap()
     {
         Debug.Log("Moving new map");
@@ -180,8 +171,12 @@ public class SceneLoader : MonoBehaviour
         if (curEnd == null) Debug.LogError("Could not find the current level's endpoint");
         if (newStart == null) Debug.LogError("Could not find the new level's startpoint");
 
-        Quaternion rotateVector = Quaternion.FromToRotation(curEnd.GetComponent<LevelStartEndPoint>().direction, newStart.GetComponent<LevelStartEndPoint>().direction);
+        Vector2 endDir = new Vector2(curEnd.GetComponent<LevelStartEndPoint>().direction.x, curEnd.GetComponent<LevelStartEndPoint>().direction.z);
+        Vector2 startDir = new Vector2(newStart.GetComponent<LevelStartEndPoint>().direction.x, newStart.GetComponent<LevelStartEndPoint>().direction.z);
+        Quaternion rotateVector = Quaternion.Euler(0, Utility.AngleBetweenVector2(startDir, endDir),0);
         newMap.transform.rotation = rotateVector;
+        Debug.Log("Map rotation vector: " + rotateVector.eulerAngles);
+        
         
         Vector3 moveVector = newStart.transform.position - curEnd.transform.position;
         Debug.Log("Start point: " + newStart.transform.position + " End point: " + curEnd.transform.position + " Move vector: " + moveVector);
