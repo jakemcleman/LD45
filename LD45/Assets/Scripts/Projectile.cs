@@ -117,7 +117,6 @@ public class Projectile : MonoBehaviour
 
         speed = 0;
         hasHit = true;
-        Debug.Log("hit point: " + hitPoint);
         transform.position = hitPoint;
         GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject, persistAfterHitTime);

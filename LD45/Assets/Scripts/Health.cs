@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
             indicator.GetComponent<DamageIndicatorMotion>().velocity = (damage / 600) * Vector3.up;
             indicator.GetComponent<TextMesh>().text = damage.ToString();
         }
-
+        
         Health[] parentHealths = GetComponentsInParent<Health>();
 
         foreach(Health parentHealth in parentHealths)

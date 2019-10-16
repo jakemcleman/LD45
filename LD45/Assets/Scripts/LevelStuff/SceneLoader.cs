@@ -132,7 +132,11 @@ public class SceneLoader : MonoBehaviour
         //Delete any PlsKill Objects
         foreach (GameObject go in permanentObjects)
         {
-            if (go.GetComponent<PermanentObject>().objectType == "PlsKill")
+            if(go == null)
+            {
+                Debug.LogWarning("Dead object still in permanent list");
+            }
+            else if (go.GetComponent<PermanentObject>().objectType == "PlsKill")
             {
                 Debug.Log("Destroying PlsKill object " + go);
                 Destroy(go);
