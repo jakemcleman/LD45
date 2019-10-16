@@ -35,7 +35,7 @@ public class SceneLoadTrigger : MonoBehaviour
         }
         else
         {
-            Debug.Log(sceneLoader);
+            //Debug.Log(sceneLoader);
         }
     }
 

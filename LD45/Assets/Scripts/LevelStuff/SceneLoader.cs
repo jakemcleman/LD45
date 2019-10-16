@@ -41,6 +41,8 @@ public class SceneLoader : MonoBehaviour
 
     public void RegisterDestroy(GameObject newObj)
     {
+        Debug.Log(newObj + " has started registering");
+
         PermanentObject newObjPO = newObj.GetComponent<PermanentObject>();
 
         if (newObjPO.objectType == "PlsKill") return;
