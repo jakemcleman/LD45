@@ -33,6 +33,18 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    public static void ClearPOs()
+    {
+        if (permanentObjects != null)
+        {
+            permanentObjects = new List<GameObject>();
+        }
+        else
+        {
+            permanentObjects.Clear();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +66,13 @@ public class SceneLoader : MonoBehaviour
 
         foreach (GameObject oldObj in permanentObjects)
         {
+            if (oldObj == null)
+            {
+                Debug.LogWarning("Dead object still in permanent list, deleting " + oldObj);
+                permanentObjects.Remove(oldObj);
+                return;
+            }
+
             PermanentObject oldObjPO = oldObj.GetComponent<PermanentObject>();
 
             if (newObjPO.objectType == oldObjPO.objectType)
@@ -86,7 +105,8 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void StartLoad(GameObject trigger, bool doUnload, string sceneName = null)
-    {      
+    {
+        Debug.Log("Starting load");
         coroutine = LoadSceneAsync(trigger, doUnload, sceneName);
         StartCoroutine(coroutine);
         trigger.SetActive(false);
@@ -130,20 +150,21 @@ public class SceneLoader : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(curSceneIndex));
         
         //Delete any PlsKill Objects
-        foreach (GameObject go in permanentObjects)
+        for (int i = 0; i < permanentObjects.Count; i++)
         {
-            if(go == null)
+            if (permanentObjects[i] == null)
             {
                 Debug.LogWarning("Dead object still in permanent list");
             }
-            else if (go.GetComponent<PermanentObject>().objectType == "PlsKill")
+            else if (permanentObjects[i].GetComponent<PermanentObject>().objectType == "PlsKill")
             {
-                Debug.Log("Destroying PlsKill object " + go);
-                permanentObjects.Remove(go);
-                Destroy(go);
+                Debug.Log("Destroying PlsKill object " + permanentObjects[i]);
+                Destroy(permanentObjects[i]);
+                permanentObjects.RemoveAt(i);
+                i--;
             }
-            else SceneManager.MoveGameObjectToScene(go, nextScene);
-        }       
+            else SceneManager.MoveGameObjectToScene(permanentObjects[i], nextScene);
+        }   
     }
     private void MoveNewMap()
     {

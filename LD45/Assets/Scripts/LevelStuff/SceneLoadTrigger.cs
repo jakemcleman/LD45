@@ -41,6 +41,11 @@ public class SceneLoadTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (sceneLoader == null)
+        {
+            sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
+        }
+
         if (col.tag == "Player")
         {
             switch (action)

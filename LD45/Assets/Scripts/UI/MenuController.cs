@@ -108,6 +108,8 @@ public class MenuController : MonoBehaviour
 
     public void LoadGameStart()
     {
+        SceneLoader.ClearPOs();
+
         SceneManager.LoadScene("Level0");
 
         Analytics.SendEvent("game_start", 0);

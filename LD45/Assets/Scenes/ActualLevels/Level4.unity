@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 7007395565380830710, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.16
+      value: 21.86
       objectReference: {fileID: 0}
     - target: {fileID: 7007395565380830710, guid: 1e3a06042ddaadd469886691524d8938,
         type: 3}
@@ -256,11 +256,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: spreadAngle
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 671589661, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
       propertyPath: weaponUnlocked.Array.data[1]
       value: 1
@@ -276,6 +271,11 @@ PrefabInstance:
     - target: {fileID: 671589662, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
       propertyPath: onWeaponChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: spreadAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
@@ -671,7 +671,7 @@ PrefabInstance:
     - target: {fileID: 3427818919767904387, guid: 063d1119098c6ea46932b86356269f84,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.66869
+      value: 21.28
       objectReference: {fileID: 0}
     - target: {fileID: 3427818919767904387, guid: 063d1119098c6ea46932b86356269f84,
         type: 3}
@@ -1166,7 +1166,7 @@ PrefabInstance:
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.388689
       objectReference: {fileID: 0}
     - target: {fileID: 2309998095055073888, guid: 501ab374afa805641b730990ea07769e,
         type: 3}
@@ -2126,7 +2126,7 @@ PrefabInstance:
     - target: {fileID: 6046859823517818617, guid: b0f37f3748e52db499a07dfd87555fd0,
         type: 3}
       propertyPath: m_Name
-      value: SceneManager
+      value: SceneManagerlvl4
       objectReference: {fileID: 0}
     - target: {fileID: 6046859823517818623, guid: b0f37f3748e52db499a07dfd87555fd0,
         type: 3}
