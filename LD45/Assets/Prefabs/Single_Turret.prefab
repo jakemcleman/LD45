@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7652952687628688267}
   - component: {fileID: 1217541683608974279}
   - component: {fileID: 5170650681693587872}
+  - component: {fileID: 5851535150751803227}
   m_Layer: 8
   m_Name: TurretBase
   m_TagString: Untagged
@@ -174,6 +175,19 @@ MonoBehaviour:
   - {fileID: 1214590990353049230}
   ShakeMagnitude: 0.1
   flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
+--- !u!114 &5851535150751803227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453908759513769434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05647208ee34dc34ba8d27224fd4d014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDied: 0
 --- !u!1 &4437752948997840870
 GameObject:
   m_ObjectHideFlags: 0

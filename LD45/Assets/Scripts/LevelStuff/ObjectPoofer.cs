@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPoofer : MonoBehaviour
@@ -13,11 +12,24 @@ public class ObjectPoofer : MonoBehaviour
     public float delay = 0;
     private float animationTime;
 
+    private bool currentlyIn;
+
+    public bool PoofedIn
+    {
+        get { return currentlyIn; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        Reset();
+    }
+
+    public void Reset()
+    {
         endPosition = this.transform.localPosition;
         this.transform.localPosition = poofFromVector;
+        currentlyIn = false;
 
         this.gameObject.SetActive(false);
     }
@@ -55,10 +67,13 @@ public class ObjectPoofer : MonoBehaviour
 
             yield return null;
         }
+
+        currentlyIn = true;
     }
 
     IEnumerator PoofOut()
     {
+        currentlyIn = false;
         animationTime = 0f;
 
         while (this.gameObject.GetComponentInChildren<Checkpoint>() != null && this.gameObject.GetComponentInChildren<Checkpoint>().getActive() == true)

@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class Checkpoint : MonoBehaviour
 {
-    private static UnityEvent onCheckpoint;
+    public static UnityEvent onCheckpoint;
+    public static UnityEvent onReset;
     private static Checkpoint activeCheckpoint;
 
     private bool active;
@@ -18,6 +19,7 @@ public class Checkpoint : MonoBehaviour
     static Checkpoint()
     {
         onCheckpoint = new UnityEvent();
+        onReset = new UnityEvent();
         activeCheckpoint = null;
     }
 

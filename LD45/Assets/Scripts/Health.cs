@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
     public float CurrentHealth 
     {
         get { return curHealth; }
+        set { SetHealth(value); }
     }
 
     public float HealthRatio 
@@ -85,8 +86,7 @@ public class Health : MonoBehaviour
 
         if(curHealth <= 0)
         {
-            // TODO: die
-            onDeath.Invoke();
+            Kill();
             return true;
         }
         else 
@@ -106,7 +106,6 @@ public class Health : MonoBehaviour
         {
             return false;
         }
-            
 
         if (Debug.isDebugBuild) 
         {
@@ -123,5 +122,28 @@ public class Health : MonoBehaviour
         if (curHealth > maxHealth) curHealth = maxHealth;
 
         return true;
+    }
+
+    private void Kill()
+    {
+        // TODO: die
+        onDeath.Invoke();
+    }
+
+    private void SetHealth(float amount)
+    {
+        if(amount > curHealth)
+        {
+            Heal(amount - curHealth);
+        }
+        else
+        {
+            TakeDamage(curHealth - amount);
+        }
+    }
+    
+    public void Reset()
+    {
+        CurrentHealth = maxHealth;
     }
 }

@@ -73,5 +73,7 @@ public class PlayerHealth : MonoBehaviour
         cc.enabled = true;
 
         cc.SimpleMove(Vector3.zero);
+
+        Checkpoint.onReset.Invoke();
     }
 }
