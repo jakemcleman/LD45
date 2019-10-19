@@ -58,7 +58,7 @@ public class PlayerAudio : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 3.0f, layerMask, QueryTriggerInteraction.Ignore))
                     {
-                        Debug.Log(hit.collider.gameObject.tag);
+                        //Debug.Log(hit.collider.gameObject.tag);
                         SetSurfaceParameter(hit);
                     }
                     PlayFootstep();

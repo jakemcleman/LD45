@@ -74,8 +74,6 @@ public class HitEffect : MonoBehaviour
     {
         isFlashing = on;
 
-        Debug.Log("Flashing " + on);
-
         for(int i = 0; i < toFlash.Length; ++i)
         {
             MeshRenderer renderer = toFlash[i];

@@ -100,8 +100,6 @@ public class Projectile : MonoBehaviour
 
         Health otherHealth = other.GetComponent<Health>();
 
-        Debug.Log("Collided");
-
         if(otherHealth)
         {
             bool killed = otherHealth.TakeDamage(damageAmount);
@@ -111,8 +109,6 @@ public class Projectile : MonoBehaviour
                 // Death audio event here
                 Debug.Log("Target destroyed");
             }
-            else 
-                Debug.Log("Did damage");
         }
 
         speed = 0;
