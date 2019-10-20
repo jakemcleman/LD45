@@ -2961,11 +2961,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
-        type: 3}
-      propertyPath: spreadAngle
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 671589661, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
       propertyPath: weaponUnlocked.Array.data[1]
       value: 1
@@ -2989,6 +2984,11 @@ PrefabInstance:
     - target: {fileID: 671589662, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
       propertyPath: onWeaponChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083179081760547995, guid: 1e3a06042ddaadd469886691524d8938,
+        type: 3}
+      propertyPath: spreadAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a06042ddaadd469886691524d8938, type: 3}
@@ -6347,6 +6347,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5682665009491968990, guid: 397cb4cb4f86232428af1319bb3294d5,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682665009491968990, guid: 397cb4cb4f86232428af1319bb3294d5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682665009491968990, guid: 397cb4cb4f86232428af1319bb3294d5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768687602640604981, guid: 397cb4cb4f86232428af1319bb3294d5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768687602640604981, guid: 397cb4cb4f86232428af1319bb3294d5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6817959983123198777, guid: 397cb4cb4f86232428af1319bb3294d5,
         type: 3}
       propertyPath: m_Name
