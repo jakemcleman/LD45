@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7652952687628688267}
   - component: {fileID: 1217541683608974279}
   - component: {fileID: 5170650681693587872}
-  - component: {fileID: 5851535150751803227}
+  - component: {fileID: 8728391093418912943}
   m_Layer: 8
   m_Name: TurretBase
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MonoBehaviour:
   - {fileID: 1214590990353049230}
   ShakeMagnitude: 0.1
   flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
---- !u!114 &5851535150751803227
+--- !u!114 &8728391093418912943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

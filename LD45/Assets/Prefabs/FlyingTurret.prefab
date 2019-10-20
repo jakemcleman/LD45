@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 5435196925608711054}
   - component: {fileID: 5435196925608711055}
   - component: {fileID: 1864174870}
-  - component: {fileID: 4433134593578625501}
+  - component: {fileID: 3856429302730117288}
   m_Layer: 0
   m_Name: FlyingTurret
   m_TagString: Untagged
@@ -200,7 +200,7 @@ MonoBehaviour:
   - {fileID: 5387445685846834371}
   ShakeMagnitude: 0.1
   flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
---- !u!114 &4433134593578625501
+--- !u!114 &3856429302730117288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,6 +226,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinRate: 720
+--- !u!114 &3830576385373581664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845317541315217389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05647208ee34dc34ba8d27224fd4d014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDied: 0
 --- !u!1001 &2439040409549213974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,6 +494,12 @@ PrefabInstance:
 --- !u!4 &7071225397075718376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2221249892867281631, guid: 4599352ffdaeda14aa49458a0b8412ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 9003114615664648759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6845317541315217389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2453908759513769434, guid: 4599352ffdaeda14aa49458a0b8412ad,
     type: 3}
   m_PrefabInstance: {fileID: 9003114615664648759}
   m_PrefabAsset: {fileID: 0}

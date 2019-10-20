@@ -8,7 +8,7 @@ public class EplodedDebris : MonoBehaviour
     public float cleanupTime = 10;
     public float throwForce = 10;
 
-    void Start()
+    private void Start()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody rb in rigidbodies)
@@ -16,6 +16,13 @@ public class EplodedDebris : MonoBehaviour
             rb.AddForce(Random.insideUnitSphere * throwForce);
         }
 
+        Checkpoint.onReset.AddListener(OnResetToCheckpoint);
+
         Destroy(gameObject, cleanupTime);
+    }
+
+    private void OnResetToCheckpoint()
+    {
+        Destroy(gameObject);
     }
 }

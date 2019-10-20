@@ -88,8 +88,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 2.3, z: 3.86}
-  m_Center: {x: 0, y: 1.11, z: 1.29}
+  m_Size: {x: 1.99, y: 2.06, z: 0.47}
+  m_Center: {x: 0, y: 2.23, z: -0.04}
 --- !u!114 &4221791196435824409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5972569477242516511}
   - component: {fileID: 1745315699760227830}
-  - component: {fileID: 3989786863992357218}
+  - component: {fileID: 7152700259068709064}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
@@ -226,25 +226,18 @@ MonoBehaviour:
   onWeaponReloadEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3989786863992357218
+--- !u!114 &7152700259068709064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4437752948997840870}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498ff09bd39d33a4eb2bd0139984a1af, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb677d7808e030439f726505d4b5f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1708820672937298290, guid: 2bdca240191f2fc40bc84ab56576fa08,
-    type: 3}
-  maxAmmo: 60
-  curAmmo: 0
-  shotCooldownTime: 0.1
-  reloadTime: 1
-  spreadAngle: 10
 --- !u!1001 &3033344898786501140
 PrefabInstance:
   m_ObjectHideFlags: 0

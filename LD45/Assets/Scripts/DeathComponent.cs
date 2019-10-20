@@ -28,7 +28,7 @@ public class DeathComponent : MonoBehaviour
             // Apparently I need this because objects count as their own fucking child?
             if(GetComponent<Health>() != childHealth)
             {
-                childHealth.TakeDamage(float.MaxValue);
+                childHealth.Kill();
             }
         }       
 

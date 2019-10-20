@@ -25,6 +25,8 @@ public class Health : MonoBehaviour
     private float curHealth;
     public GameObject damageIndicatorPrefab;
 
+    const bool enableDamageIndicators = false;
+
     public float CurrentHealth 
     {
         get { return curHealth; }
@@ -68,7 +70,7 @@ public class Health : MonoBehaviour
 
         curHealth -= amount * damageMultiplier;
 
-        if(damageIndicatorPrefab != null)
+        if(enableDamageIndicators && damageIndicatorPrefab != null)
         {
             GameObject indicator = Instantiate(damageIndicatorPrefab, transform.position, Quaternion.identity) as GameObject;
             float damage = Mathf.Min(10000, amount * damageMultiplier);
@@ -124,7 +126,7 @@ public class Health : MonoBehaviour
         return true;
     }
 
-    private void Kill()
+    public void Kill()
     {
         // TODO: die
         onDeath.Invoke();

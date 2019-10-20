@@ -15,8 +15,8 @@ public class CheckpointReset : MonoBehaviour
 
     State resetToState;
 
-    private ObjectPoofer objectPoofer;
-    private Health objectHealth;
+    private ObjectPoofer objectPoofer = null;
+    private Health objectHealth = null;
 
     public bool hasDied = false;
 

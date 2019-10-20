@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6187114744155617741}
   - component: {fileID: 2041328224310960924}
   - component: {fileID: 8062882907415282290}
+  - component: {fileID: 3100610342480631143}
   m_Layer: 8
   m_Name: TurretBody
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 50
   damageMultiplier: 1
+  damageIndicatorPrefab: {fileID: 0}
 --- !u!114 &2041328224310960924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +137,19 @@ MonoBehaviour:
   - {fileID: 5700102939269068800}
   ShakeMagnitude: 0.1
   flashColor: {r: 1, g: 0.25, b: 0.25, a: 0.5}
+--- !u!114 &3100610342480631143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201950692396505241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05647208ee34dc34ba8d27224fd4d014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDied: 0
 --- !u!1 &8639986346459596227
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +330,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8639986346459596226}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -370,16 +395,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911015f0480dbe8489faae71e0eb1c73, type: 3}
 --- !u!4 &7024870741771173583 stripped
@@ -401,6 +416,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1026807848743659694}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 489d6a7a9c3a2e64582010db8a38a482,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBody
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 489d6a7a9c3a2e64582010db8a38a482,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -456,11 +476,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 489d6a7a9c3a2e64582010db8a38a482,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBody
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489d6a7a9c3a2e64582010db8a38a482, type: 3}
 --- !u!4 &7031839372941485914 stripped
@@ -482,6 +497,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8639986346899252116}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_TurretBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 911015f0480dbe8489faae71e0eb1c73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -536,16 +561,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_TurretBarrel
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 911015f0480dbe8489faae71e0eb1c73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911015f0480dbe8489faae71e0eb1c73, type: 3}
