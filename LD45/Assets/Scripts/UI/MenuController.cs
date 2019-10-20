@@ -34,11 +34,18 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         vca_mus = FMODUnity.RuntimeManager.GetVCA("vca:/Music");
         vca_sfx = FMODUnity.RuntimeManager.GetVCA("vca:/SFX");
-        vca_mus.setVolume(1.0f);
-        vca_sfx.setVolume(1.0f);
+
+        //Load volume settings
+        if (PlayerPrefs.HasKey("MusicVolume")) vca_mus.setVolume(PlayerPrefs.GetFloat("MusicVolume"));
+        else vca_mus.setVolume(1.0f);
+        if (PlayerPrefs.HasKey("SFXVolume")) vca_sfx.setVolume(PlayerPrefs.GetFloat("SFXVolume"));
+        else vca_sfx.setVolume(1.0f);
+
+        //Load Mouse settings
+        if (PlayerPrefs.HasKey("MouseAcceleration")) PlayerCameraController.SetMouseAccel(PlayerPrefs.GetInt("MouseAcceleration") == 1);
+        if (PlayerPrefs.HasKey("MouseSensitivity")) PlayerCameraController.SetMouseSens(PlayerPrefs.GetFloat("MouseSensitivity"));
 
         GameObject pausePanelObj = GameObject.Find("PauseMenu");
         if(pausePanelObj != null) pausePanel = pausePanelObj.GetComponent<CanvasGroup>();
@@ -123,11 +130,13 @@ public class MenuController : MonoBehaviour
     public void MusicVolume (float val)
     {
         vca_mus.setVolume(val);
+        PlayerPrefs.SetFloat("MusicVolume", val);
     }
 
     public void SFXVolume(float val)
     {
         vca_sfx.setVolume(val);
+        PlayerPrefs.SetFloat("SFXVolume", val);
     }
 
     public void MouseSensitivity (float val)

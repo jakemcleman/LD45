@@ -71,11 +71,13 @@ public class PlayerCameraController : MonoBehaviour
     public static void SetMouseAccel (bool val)
     {
         mouseAccel = val;
+        PlayerPrefs.SetInt("MouseAcceleration", val ? 1 : 0);
     }
 
     public static void SetMouseSens (float val)
     {
         mouseSens = val;
+        PlayerPrefs.SetFloat("MouseSensitivity", val);
     }
 
     void OnEnable()
