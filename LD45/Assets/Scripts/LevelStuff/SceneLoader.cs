@@ -13,12 +13,6 @@ public class SceneLoader : MonoBehaviour
     private int curSceneIndex;
     private int nextSceneIndex;
 
-    private GameObject player;
-    private GameObject canvas;
-    private GameObject curlight;
-    private GameObject kz;
-    private GameObject eventSystem;
-
     private static List<GameObject> permanentObjects = new List<GameObject>(); 
 
     public string nextSceneName;

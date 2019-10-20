@@ -5,6 +5,8 @@ using UnityEngine;
 public class PermanentObject : MonoBehaviour
 {
     public string objectType  = "PlsKill";
+
+    [Tooltip("Warning: Delete Override can probably serioulsy fuck shit up, don't use unless you know what you're doing!")]
     public bool deleteOverride = false;
 
     private SceneLoader SL;

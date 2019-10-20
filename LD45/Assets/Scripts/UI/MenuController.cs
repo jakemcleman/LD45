@@ -129,4 +129,14 @@ public class MenuController : MonoBehaviour
     {
         vca_sfx.setVolume(val);
     }
+
+    public void MouseSensitivity (float val)
+    {
+        PlayerCameraController.SetMouseSens(val);
+    }
+
+    public void MouseAcceleration (bool val)
+    {
+        PlayerCameraController.SetMouseAccel(val);
+    }
 }
