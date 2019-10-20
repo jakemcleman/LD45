@@ -9,25 +9,29 @@ public class DamageIndicatorMotion : MonoBehaviour
     public float cutoffVelocity = 0.2f;
     private float timeCounter = 0.0f;
     public Vector3 velocity = new Vector3();
-    // Start is called before the first frame update
+
+    private Vector3 startPos;
+
+    private TextMesh textMesh;
+
     void Start()
     {
-        
+        startPos = transform.position;
+
+        textMesh = GetComponent<TextMesh>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       gameObject.transform.position = gameObject.transform.position + velocity * Time.deltaTime;
-       velocity = velocity - (deceleration * Time.deltaTime) * velocity.normalized;
-       if (velocity.magnitude < cutoffVelocity)
-       {
-           velocity = Vector3.zero;
-       }
-       timeCounter += Time.deltaTime;
-       if (timeCounter >= maxTime)
-       {
-           Destroy(gameObject);
-       }
+        timeCounter += Time.deltaTime;
+        Vector3 endPos = startPos + (maxTime * velocity);
+        float t = timeCounter / maxTime;
+
+        transform.position = Vector3.Lerp(startPos, endPos, t);
+        
+        if (timeCounter >= maxTime)
+        {
+            Destroy(gameObject);
+        }
     }
 }

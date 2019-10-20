@@ -39,7 +39,7 @@ public class DeathComponent : MonoBehaviour
             {
                 childHealth.TakeDamage(float.MaxValue);
             }
-        }
+        }       
 
         // Play death sound
         FMODUnity.RuntimeManager.PlayOneShot(death_event, transform.position);
@@ -50,7 +50,7 @@ public class DeathComponent : MonoBehaviour
             spawned.transform.position = transform.position;
             spawned.transform.rotation = transform.rotation;
         }
-
+        
         Destroy(gameObject);
     }
 

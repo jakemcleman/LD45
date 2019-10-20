@@ -181,20 +181,20 @@ public class TurretEnemy : MonoBehaviour
 
     protected void RotateArmsToTarget(Vector3 targetPos)
     {
-        Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
-        localTargetPos.x = 0.0f;
-
-        Vector3 clampedLocalVec2Target = localTargetPos;
-        if (localTargetPos.y >= 0.0f)
-            clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * maxBarrelElevation, float.MaxValue);
-        else
-            clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * minBarrelDepression, float.MaxValue);
-
-        Quaternion rotationGoal = Quaternion.LookRotation(clampedLocalVec2Target);
-        
-
         foreach(WeaponWielder weapon in weapons)
         {
+            Vector3 localTargetPos = transform.InverseTransformPoint(targetPos);
+            localTargetPos.x = 0.0f;
+            localTargetPos.y -= weapon.transform.localPosition.y;
+
+            Vector3 clampedLocalVec2Target = localTargetPos;
+            if (localTargetPos.y >= 0.0f)
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * maxBarrelElevation, float.MaxValue);
+            else
+                clampedLocalVec2Target = Vector3.RotateTowards(Vector3.forward, localTargetPos, Mathf.Deg2Rad * minBarrelDepression, float.MaxValue);
+
+            Quaternion rotationGoal = Quaternion.LookRotation(clampedLocalVec2Target);
+            
             Quaternion newRotation = Quaternion.RotateTowards(weapon.transform.localRotation, rotationGoal, barrelRate * Time.deltaTime);
             weapon.transform.localRotation = newRotation;
         }
@@ -202,10 +202,9 @@ public class TurretEnemy : MonoBehaviour
 
     protected bool IsAimingAtTarget(Vector3 targetPos)
     {
-        Vector3 towardsTarget = (targetPos - transform.position).normalized;
-    
         foreach(WeaponWielder weapon in weapons)
         {
+            Vector3 towardsTarget = (targetPos - weapon.transform.position).normalized;
             if(Vector3.Dot(weapon.transform.forward, towardsTarget) > closeEnoughToShoot) 
             {
                 return true;

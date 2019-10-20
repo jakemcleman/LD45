@@ -116,7 +116,7 @@ public class MovementController : MonoBehaviour
 
     public void ResetState()
     {
-        _currMotionState = MotionState.Falling;
+        ChangeMotionState(MotionState.Falling);
         _numJumpsRemaining = numJumps;
         _uncapHorizontalSpeed = false;
         _wallResetTimer = wallRunRegrabTime;
@@ -342,21 +342,19 @@ public class MovementController : MonoBehaviour
                 ChangeMotionState(MotionState.Running);
 
                 float speedRatio = _velocity.magnitude / maxGroundSpeed;
-                float accelAmount = maxGroundAcceleration * groundAcceleration.Evaluate(speedRatio);
-                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
-                Vector3 decelComponent = _motion * groundDeceleration * Time.deltaTime;
+                float accelAmount = maxGroundAcceleration * groundAcceleration.Evaluate(speedRatio) + groundDeceleration;
 
-                _velocity += accelComponent + decelComponent;
+                _velocity += -RemoveUpDir(_velocity.normalized) * groundDeceleration * Time.deltaTime;
+                _velocity += _motion * accelAmount * Time.deltaTime;
                 //Debug.Log("[ApplyAcceleration] GroundDeceleration");
             }
             else //In Air
             {
                 float speedRatio = _velocity.magnitude / maxAirSpeed;
-                float accelAmount = maxAirAcceleration * airAcceleration.Evaluate(speedRatio);
-                Vector3 accelComponent = _motion * accelAmount * Time.deltaTime;
-                Vector3 decelComponent = _motion * airDeceleration * Time.deltaTime;
-
-                _velocity += accelComponent + decelComponent;
+                float accelAmount = maxAirAcceleration * airAcceleration.Evaluate(speedRatio) + airDeceleration;
+                
+                _velocity += -RemoveUpDir(_velocity.normalized) * airDeceleration * Time.deltaTime;
+                _velocity += _motion * accelAmount * Time.deltaTime;
             }
         }
         //Directional input is 0
@@ -585,7 +583,7 @@ public class MovementController : MonoBehaviour
         _wallRunTimer -= Time.deltaTime;
         if (_wallRunTimer >= 0.0f)
         {
-            float raycastLength = 2 * _cc.radius;
+            float raycastLength = 3 * _cc.radius;
             _ray.origin = transform.position;
             _ray.direction = _dirToWall;
             if (Physics.Raycast(_ray, out _hitInfo, raycastLength)) //If still there, keep running
@@ -725,7 +723,7 @@ public class MovementController : MonoBehaviour
     void StartWallrun(Vector3 horizontalForward, Vector3 surfaceNormal)
     {
         //If the angle between the previous wall and the current wall is < 10 degree
-        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(horizontalForward, surfaceNormal).normalized);
+        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(_motion, surfaceNormal).normalized);
         if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
         {
             _dirToWall = -surfaceNormal;
@@ -743,7 +741,7 @@ public class MovementController : MonoBehaviour
 
     void StartWallclimb(Vector3 horizontalForward, Vector3 surfaceNormal)
     {
-        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(horizontalForward, surfaceNormal).normalized);
+        float angleBetween = Vector3.Angle(_dirToWall, Vector3.Project(_motion, surfaceNormal).normalized);
         if (angleBetween > 10.0f || _dirToWall == Vector3.zero)
         {
             _dirToWall = -surfaceNormal;

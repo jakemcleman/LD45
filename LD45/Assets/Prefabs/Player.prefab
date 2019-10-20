@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172962441}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788583559}
   - component: {fileID: 5846632448934612122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Machine Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1621496580}
   - component: {fileID: 7116357578712650589}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051519430}
   - component: {fileID: 8083179081760547995}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5589278814367670149}
   - component: {fileID: 7319095978107874526}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EmptyWeap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 7985845481410956724}
   - component: {fileID: 5823870473371389895}
   - component: {fileID: 3141760875906133873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515619223912219380}
   - component: {fileID: 2439994648505696064}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Railgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7007395564452839052}
   - component: {fileID: 7007395564452839051}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -452,7 +452,8 @@ GameObject:
   - component: {fileID: 1799625302}
   - component: {fileID: 3320331747740356115}
   - component: {fileID: 599135114}
-  m_Layer: 0
+  - component: {fileID: 6952469983360022742}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -566,9 +567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a7f51c476fb55499e0d35a166e7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGroundSpeed: 25
-  maxAirSpeed: 35
-  maxGroundAcceleration: 300
+  maxGroundSpeed: 30
+  maxAirSpeed: 50
+  maxGroundAcceleration: 700
   groundAcceleration:
     serializedVersion: 2
     m_Curve:
@@ -627,13 +628,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  groundDeceleration: 800
+  groundDeceleration: 200
   airDeceleration: 100
   jumpSpeed: 30
   numJumps: 2
   sprintModifier: 2
   gravity: 60
-  maxFallSpeed: 30
+  maxFallSpeed: 100
   normalHeight: 2
   crouchHeight: 1
   wallRunMaxTime: 2
@@ -819,6 +820,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986bd1c6637b9ed4787b68cf029527d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6952469983360022742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007395565380830703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634fabc10cf1dc242aab9ae636c12fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: Player
+  deleteOverride: 0
 --- !u!1 &8520650120478169638
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +845,7 @@ GameObject:
   - component: {fileID: 3084985316465825575}
   - component: {fileID: 4514363472245451406}
   - component: {fileID: 1836672344282803458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletProxDetection
   m_TagString: BulletProx
   m_Icon: {fileID: 0}
@@ -884,11 +899,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788583559}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: bc542c93fb36835408c5e13a374ca862,
-        type: 3}
-      propertyPath: m_Name
-      value: UMP
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bc542c93fb36835408c5e13a374ca862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -944,6 +954,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bc542c93fb36835408c5e13a374ca862,
+        type: 3}
+      propertyPath: m_Name
+      value: UMP
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bc542c93fb36835408c5e13a374ca862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1600611943124364091, guid: bc542c93fb36835408c5e13a374ca862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -7139511448835637142, guid: bc542c93fb36835408c5e13a374ca862,
         type: 3}
       propertyPath: m_Enabled
@@ -968,6 +993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6c2d4fe5230c61e4795cd3b4695df3fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6c2d4fe5230c61e4795cd3b4695df3fd,
         type: 3}
@@ -1029,6 +1059,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6483191843551828330, guid: 6c2d4fe5230c61e4795cd3b4695df3fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c2d4fe5230c61e4795cd3b4695df3fd, type: 3}
 --- !u!4 &5006512736798667750 stripped
@@ -1048,6 +1083,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Railgun
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 05f83e7dcf2303a4dbacd123642e7826,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05f83e7dcf2303a4dbacd123642e7826,
         type: 3}
@@ -1109,6 +1149,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1487914795075345079, guid: 05f83e7dcf2303a4dbacd123642e7826,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f83e7dcf2303a4dbacd123642e7826, type: 3}
 --- !u!4 &8723604989032082566 stripped
@@ -1124,11 +1169,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1621496580}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: c52cf3b43835dc04a97956674e658777,
-        type: 3}
-      propertyPath: m_Name
-      value: Shotty
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c52cf3b43835dc04a97956674e658777,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1184,10 +1224,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c52cf3b43835dc04a97956674e658777,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotty
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c52cf3b43835dc04a97956674e658777,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7975057597985508661, guid: c52cf3b43835dc04a97956674e658777,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929132749422955248, guid: c52cf3b43835dc04a97956674e658777,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c52cf3b43835dc04a97956674e658777, type: 3}

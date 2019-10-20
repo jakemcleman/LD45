@@ -50,14 +50,17 @@ public class PlayerCameraController : MonoBehaviour
 
     [Header("Rotation Settings")]
     [Tooltip("X = Change in mouse position.\nY = Multiplicative factor for camera rotation.")]
-    public AnimationCurve mouseSensitivityCurve = new AnimationCurve(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f));
+    public AnimationCurve mouseAccelerationCurve = new AnimationCurve(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f)); 
 
     [Tooltip("Time it takes to interpolate camera rotation 99% of the way to the target."), Range(0.001f, 1f)]
     public float rotationLerpTime = 0.01f;
 
     [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
     public bool invertY = false;
-        
+
+    private static bool mouseAccel = true;
+    private static float mouseSens = 1;
+
     public float quickTurnTime = 0.25f;
     private float quickTurnTimer;
     private float targetYaw, originalYaw;
@@ -65,6 +68,17 @@ public class PlayerCameraController : MonoBehaviour
     public float maxPitchDegrees = 80;
     public float minPitchDegrees = -80;
 
+    public static void SetMouseAccel (bool val)
+    {
+        mouseAccel = val;
+        PlayerPrefs.SetInt("MouseAcceleration", val ? 1 : 0);
+    }
+
+    public static void SetMouseSens (float val)
+    {
+        mouseSens = val;
+        PlayerPrefs.SetFloat("MouseSensitivity", val);
+    }
 
     void OnEnable()
     {
@@ -91,18 +105,23 @@ public class PlayerCameraController : MonoBehaviour
         }
         else
         {
-            var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
+            Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X") * mouseSens, Input.GetAxis("Mouse Y") * mouseSens * (invertY ? 1 : -1));
 
-            var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
+            float mouseAccelerationFactor = 1;
 
-            m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
-            m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+            if (mouseAccel)
+            {
+                mouseAccelerationFactor = mouseAccelerationCurve.Evaluate(mouseMovement.magnitude);
+            }
+
+            m_TargetCameraState.yaw += mouseMovement.x * mouseAccelerationFactor;
+            m_TargetCameraState.pitch += mouseMovement.y * mouseAccelerationFactor;
             m_TargetCameraState.pitch = Mathf.Clamp(m_TargetCameraState.pitch, minPitchDegrees, maxPitchDegrees);
 
             // Framerate-independent interpolation
             // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
-            var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
-            var rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
+            float positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
+            float rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
             m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
         }
 
@@ -114,7 +133,14 @@ public class PlayerCameraController : MonoBehaviour
         quickTurnTimer = quickTurnTime;
         float y = transform.forward.y;
         originalYaw = m_TargetCameraState.yaw;
-        targetYaw = originalYaw + 180;
+        if (!Utility.Close(dirToWall, Vector3.zero))
+        {
+            targetYaw = originalYaw + Vector3.SignedAngle(transform.forward, -dirToWall, Vector3.up);
+        }
+        else
+        {
+            targetYaw = originalYaw + 180;
+        }
     }
 
     private void QuickTurnUpdate()
